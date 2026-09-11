@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SGR tools</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="ticker-wrap" aria-label="Precios de mercado">
+    <div id="ticker-bar" class="ticker-bar"></div>
+  </div>
+  <div class="container">
+    <header class="site-header site-header-home">
+      <div class="site-header-inner">
+        <div class="site-header-title-row">
+          <h1>SGR tools</h1>
+          <a class="btn-manual" href="/docs/manual-sgr-tools.pdf" download="manual-sgr-tools.pdf">Manual PDF</a>
+        </div>
+        <p class="subtitle">Gestión operativa · Fondo de Riesgo</p>
+      </div>
+      <span class="header-flag" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 16" width="32" height="22"><rect fill="#74ACDF" width="24" height="16"/><rect y="5.33" fill="#FFF" width="24" height="5.34"/><circle cx="12" cy="8" r="2.5" fill="#F4B800"/></svg></span>
+    </header>
+
+    <div class="cards-filter">
+      <span class="cards-filter-label">Ver:</span>
+      <button type="button" class="cards-filter-btn active" data-tag="">Todos</button>
+      <button type="button" class="cards-filter-btn" data-tag="SGR">SGR</button>
+      <button type="button" class="cards-filter-btn" data-tag="Operaciones">Operaciones</button>
+    </div>
+
+    <main class="cards-grid" id="cards-grid">
+      <a href="contingente.html" class="card" data-tag="SGR">
+        <h2 class="card-title">Contingente de avales</h2>
+        <ol class="card-desc card-desc-list">
+          <li>Cargá el Excel de cuotas.</li>
+          <li>Al procesar se ordenan los datos calculando Fecha mesa y Aforo (parametrizables).</li>
+          <li>Filtrá, armá vistas y descargá reportes Excel/PDF o el calendario de vencimientos.</li>
+        </ol>
+        <span class="card-tag">SGR</span>
+      </a>
+
+      <a href="calendario-global.html" class="card" data-tag="SGR">
+        <h2 class="card-title">Calendario Global</h2>
+        <p class="card-desc">Vista consolidada del Calendario de Rentas y las Fechas mesa del Contingente de avales.</p>
+        <span class="card-tag">SGR</span>
+      </a>
+
+      <a href="conciliacion.html" class="card" data-tag="Operaciones">
+        <h2 class="card-title">Conciliación</h2>
+        <p class="card-desc">Conciliación entre la custodia y la posición del Fondo de Riesgo</p>
+        <p class="card-meta" id="home-last-conciliation"></p>
+        <span class="card-tag">Operaciones</span>
+      </a>
+
+      <a href="calendario-rentas.html" class="card" data-tag="Operaciones">
+        <h2 class="card-title">Calendario de Rentas</h2>
+        <ol class="card-desc card-desc-list">
+          <li>Cargá el archivo de posición.</li>
+          <li>Se cruza la tenencia por ticker con el calendario público de Bolsar.</li>
+          <li>Visualizá únicamente los pagos correspondientes a activos en cartera.</li>
+        </ol>
+        <span class="card-tag">Operaciones</span>
+      </a>
+
+      <a href="rendimientos.html" class="card" data-tag="Operaciones">
+        <h2 class="card-title">Rendimientos</h2>
+        <ol class="card-desc card-desc-list">
+          <li>Cargá uno o varios archivos de posición, o ingresá fecha y Patrimonio Neto manualmente.</li>
+          <li>Calculá la evolución y el rendimiento mensual.</li>
+          <li>Visualizá gráficos, tabla y descargá reportes Excel/PDF.</li>
+        </ol>
+        <span class="card-tag">Operaciones</span>
+      </a>
+    </main>
+  </div>
+  <script src="assets/ticker.js"></script>
+  <script src="assets/api.js"></script>
+  <script>
+    (function () {
+      var btns = document.querySelectorAll(".cards-filter-btn");
+      var cards = document.querySelectorAll("#cards-grid .card");
+      btns.forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          btns.forEach(function (b) { b.classList.remove("active"); });
+          btn.classList.add("active");
+          var tag = btn.getAttribute("data-tag") || "";
+          cards.forEach(function (card) {
+            var t = card.getAttribute("data-tag") || "";
+            card.style.display = (!tag || t === tag) ? "" : "none";
+          });
+        });
+      });
+      var last = document.getElementById("home-last-conciliation");
+      if (last && typeof sgrFetch === "function") {
+        sgrFetch("/api/conciliacion/resultados").then(function (response) {
+          if (!response.ok) return null;
+          return response.json();
+        }).then(function (data) {
+          if (!data || !data.meta || !data.meta.processed_at) return;
+          var when = new Date(data.meta.processed_at);
+          last.textContent = "Última conciliación: " +
+            (isNaN(when.getTime()) ? data.meta.processed_at : when.toLocaleString("es-AR", {
+              dateStyle: "short",
+              timeStyle: "short"
+            }));
+        }).catch(function () {});
+      }
+    })();
+  </script>
+</body>
+</html>

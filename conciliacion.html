@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Conciliación | SGR tools</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="page-interna">
+  <div class="ticker-wrap" aria-label="Precios de mercado">
+    <div id="ticker-bar" class="ticker-bar"></div>
+  </div>
+  <div class="container container-wide">
+    <div class="page-header-row">
+      <a href="index.html" class="back-link">← Volver</a>
+      <header class="site-header">
+        <span class="header-flag" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 16" width="32" height="22"><rect fill="#74ACDF" width="24" height="16"/><rect y="5.33" fill="#FFF" width="24" height="5.34"/><circle cx="12" cy="8" r="2.5" fill="#F4B800"/></svg></span>
+        <h1>SGR tools</h1>
+        <p class="subtitle">Operaciones</p>
+      </header>
+    </div>
+
+    <main class="page-content">
+      <section class="form-block">
+        <h2 class="tool-title">Conciliación</h2>
+        <ol class="tool-desc tool-desc-list">
+          <li>Cargá el <strong>Archivo de Custodia</strong> (extracto) y el de <strong>Posición</strong> (tablero).</li>
+          <li>Al conciliar se cruza especie y valores nominales totalizados.</li>
+          <li>Se muestran coincidencias, diferencias y especies presentes en un solo lado.</li>
+        </ol>
+
+        <form id="form-conciliacion" novalidate action="javascript:void(0);">
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="file-custodia">Archivo de Custodia</label>
+              <input type="file" id="file-custodia" accept=".xlsx,.xls,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-excel" required>
+            </div>
+            <div class="form-group">
+              <label for="file-posicion">Posición</label>
+              <input type="file" id="file-posicion" accept=".xlsx,.xls,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-excel" required>
+            </div>
+            <div class="form-actions">
+              <button type="button" id="btn-conciliar">Conciliar</button>
+            </div>
+          </div>
+        </form>
+
+        <p id="status-msg" class="status-msg" role="status" aria-live="polite"></p>
+        <p id="last-conciliation" class="result-summary"></p>
+        <div id="summary" class="summary-chips" style="display:none;"></div>
+      </section>
+
+      <section id="results-section" class="form-block" style="display:none;">
+        <div class="toolbar-row">
+          <button type="button" id="btn-excel" class="btn btn-excel">Descargar Excel</button>
+        </div>
+        <p id="filter-count" class="result-summary"></p>
+        <div class="table-scroll">
+          <table class="result-table sticky" id="tabla-conciliacion">
+            <thead>
+              <tr>
+                <th>Especie</th>
+                <th>Denominación (posición)</th>
+                <th class="num">VN Custodia</th>
+                <th class="num">VN Posición</th>
+                <th class="num">Diferencia</th>
+                <th>Estado</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="assets/api.js"></script>
+  <script src="assets/ticker.js"></script>
+  <script>
+    (function () {
+      "use strict";
+
+      var state = { rows: [], meta: null, summary: null };
+
+      function $(id) { return document.getElementById(id); }
+
+      function setStatus(msg, kind) {
+        var el = $("status-msg");
+        el.textContent = msg || "";
+        el.className = "status-msg" + (kind ? " " + kind : "");
+      }
+
+      function fmtNum(n) {
+        if (n == null || n === "" || isNaN(Number(n))) return "—";
+        return Number(n).toLocaleString("es-AR", {
+          maximumFractionDigits: 0
+        });
+      }
+
+      function statusClass(estado) {
+        if (estado === "Coincidencia") return "row-ok";
+        if (estado === "Diferencia") return "row-diff";
+        return "row-warn";
+      }
+
+      function fmtWhen(iso) {
+        if (!iso) return "";
+        var parsed = new Date(iso);
+        if (isNaN(parsed.getTime())) return iso;
+        return parsed.toLocaleString("es-AR", {
+          dateStyle: "short",
+          timeStyle: "short"
+        });
+      }
+
+      function showLastConciliation(meta, prefix) {
+        var el = $("last-conciliation");
+        if (!meta || !meta.processed_at) {
+          el.textContent = "Todavía no hay una conciliación guardada en esta PC.";
+          return;
+        }
+        el.textContent = (prefix || "Última conciliación: ") + fmtWhen(meta.processed_at) +
+          (meta.custodia_file ? " · " + meta.custodia_file : "") +
+          (meta.posicion_file ? " / " + meta.posicion_file : "");
+      }
+
+      function renderSummary(data) {
+        var s = data.summary || {};
+        var el = $("summary");
+        el.style.display = "flex";
+        el.innerHTML =
+          '<span class="summary-chip">Especies: <strong>' + data.total + "</strong></span>" +
+          '<span class="summary-chip">Coincidencias: <strong>' + (s.coincidencias || 0) + "</strong></span>" +
+          '<span class="summary-chip">Diferencias: <strong>' + (s.diferencias || 0) + "</strong></span>" +
+          '<span class="summary-chip">Solo custodia: <strong>' + (s.solo_custodia || 0) + "</strong></span>" +
+          '<span class="summary-chip">Solo posición: <strong>' + (s.solo_posicion || 0) + "</strong></span>";
+      }
+
+      function renderTable() {
+        var tbody = $("tabla-conciliacion").querySelector("tbody");
+        tbody.innerHTML = "";
+        state.rows.forEach(function (row) {
+          var tr = document.createElement("tr");
+          tr.className = statusClass(row.estado);
+          tr.innerHTML =
+            "<td>" + (row.especie || "") + "</td>" +
+            "<td>" + (row.denominacion || "—") + "</td>" +
+            '<td class="num">' + fmtNum(row.vn_custodia) + "</td>" +
+            '<td class="num">' + fmtNum(row.vn_posicion) + "</td>" +
+            '<td class="num">' + fmtNum(row.diferencia) + "</td>" +
+            "<td>" + (row.estado || "") + "</td>";
+          tbody.appendChild(tr);
+        });
+        $("filter-count").innerHTML =
+          "Resultado: <strong>" + state.rows.length + "</strong> especies · VN con separador de miles (<strong>.</strong>) y decimales (<strong>,</strong>)";
+      }
+
+      async function conciliar() {
+        var cust = $("file-custodia").files && $("file-custodia").files[0];
+        var pos = $("file-posicion").files && $("file-posicion").files[0];
+        if (!cust || !pos) {
+          setStatus("Seleccioná Archivo de Custodia y Posición.", "error");
+          return;
+        }
+        setStatus("Conciliando…");
+        var fd = new FormData();
+        fd.append("custodia", cust);
+        fd.append("posicion", pos);
+        try {
+          var res = await sgrFetch("/api/conciliacion/conciliar", { method: "POST", body: fd });
+          var data = await res.json();
+          if (!res.ok) throw new Error(data.error || "Error al conciliar");
+          state.rows = data.rows || [];
+          state.meta = data.meta || null;
+          state.summary = data.summary || null;
+          $("results-section").style.display = "block";
+          renderSummary(data);
+          renderTable();
+          showLastConciliation(data.meta, "Última conciliación: ");
+          setStatus("Conciliación OK: " + data.total + " especies.", "ok");
+        } catch (err) {
+          var msg = String(err.message || err);
+          if (msg === "Failed to fetch" || msg.indexOf("NetworkError") !== -1) {
+            msg = "No se pudo conectar al servidor. Ejecutá run.bat y abrí http://127.0.0.1:5055";
+          }
+          setStatus(msg, "error");
+        }
+      }
+
+      $("btn-conciliar").addEventListener("click", conciliar);
+      (async function loadSaved() {
+        try {
+          var response = await sgrFetch("/api/conciliacion/resultados");
+          if (!response.ok) return;
+          var data = await response.json();
+          if (!data || !data.rows || !data.rows.length) {
+            showLastConciliation(data && data.meta);
+            return;
+          }
+          state.rows = data.rows || [];
+          state.meta = data.meta || null;
+          state.summary = data.summary || null;
+          $("results-section").style.display = "block";
+          renderSummary(data);
+          renderTable();
+          showLastConciliation(data.meta, "Última conciliación: ");
+        } catch (_error) {
+          showLastConciliation(null);
+        }
+      })();
+      $("btn-excel").addEventListener("click", async function () {
+        try {
+          var res = await sgrFetch("/api/conciliacion/export/excel", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ rows: state.rows })
+          });
+          if (!res.ok) {
+            var err = await res.json().catch(function () { return {}; });
+            throw new Error(err.error || "Error al exportar");
+          }
+          var blob = await res.blob();
+          var a = document.createElement("a");
+          a.href = URL.createObjectURL(blob);
+          a.download = "conciliacion_custodia_posicion.xlsx";
+          document.body.appendChild(a);
+          a.click();
+          a.remove();
+          URL.revokeObjectURL(a.href);
+        } catch (e) {
+          setStatus(String(e.message || e), "error");
+        }
+      });
+    })();
+  </script>
+</body>
+</html>

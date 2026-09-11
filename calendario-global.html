@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calendario Global | SGR tools</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="page-interna">
+  <div class="ticker-wrap" aria-label="Precios de mercado">
+    <div id="ticker-bar" class="ticker-bar"></div>
+  </div>
+  <div class="container container-wide">
+    <div class="page-header-row">
+      <a href="index.html" class="back-link">← Volver</a>
+      <header class="site-header">
+        <span class="header-flag" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 16" width="32" height="22"><rect fill="#74ACDF" width="24" height="16"/><rect y="5.33" fill="#FFF" width="24" height="5.34"/><circle cx="12" cy="8" r="2.5" fill="#F4B800"/></svg></span>
+        <h1>SGR tools</h1>
+        <p class="subtitle">SGR</p>
+      </header>
+    </div>
+
+    <main class="page-content">
+      <section class="form-block">
+        <h2 class="tool-title">Calendario Global</h2>
+        <p class="tool-desc">Consolida automáticamente los últimos resultados guardados del Calendario de Rentas y del Contingente de avales.</p>
+        <p id="status-msg" class="status-msg" role="status" aria-live="polite"></p>
+        <div id="summary" class="summary-chips" style="display:none;"></div>
+        <div class="global-legend" aria-label="Referencias">
+          <span><i class="legend-dot rentas"></i>Rentas</span>
+          <span><i class="legend-dot contingente"></i>Contingente</span>
+          <span><i class="legend-dot reclamada"></i>Contingente reclamado por el banco</span>
+          <span><i class="legend-dot manual"></i>Evento manual</span>
+        </div>
+
+        <form id="form-manual" class="global-manual-form" novalidate action="javascript:void(0);">
+          <h3>Agregar evento manual</h3>
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="manual-type">Tipo</label>
+              <input type="text" id="manual-type" placeholder="Ej.: Reunión, pago, vencimiento" required>
+            </div>
+            <div class="form-group">
+              <label for="manual-denomination">Denominación</label>
+              <input type="text" id="manual-denomination" required>
+            </div>
+            <div class="form-group">
+              <label for="manual-date">Fecha</label>
+              <input type="date" id="manual-date" required>
+            </div>
+            <div class="form-group">
+              <label for="manual-comment">Comentario</label>
+              <input type="text" id="manual-comment">
+            </div>
+            <div class="form-actions">
+              <button type="button" id="btn-add-manual">Guardar evento</button>
+            </div>
+          </div>
+        </form>
+      </section>
+
+      <section id="results-section" class="form-block" style="display:none;">
+        <div class="calendar-controls">
+          <div class="form-group">
+            <label for="cal-year">Año</label>
+            <select id="cal-year"></select>
+          </div>
+          <div class="form-group">
+            <label for="cal-month">Mes</label>
+            <select id="cal-month">
+              <option value="">Todos</option>
+              <option value="1">Enero</option>
+              <option value="2">Febrero</option>
+              <option value="3">Marzo</option>
+              <option value="4">Abril</option>
+              <option value="5">Mayo</option>
+              <option value="6">Junio</option>
+              <option value="7">Julio</option>
+              <option value="8">Agosto</option>
+              <option value="9">Septiembre</option>
+              <option value="10">Octubre</option>
+              <option value="11">Noviembre</option>
+              <option value="12">Diciembre</option>
+            </select>
+          </div>
+        </div>
+        <div id="calendar-grid-wrap">
+          <div class="calendar-grid" id="calendar-dow"></div>
+          <div class="calendar-grid" id="calendar-days"></div>
+        </div>
+        <div id="calendar-list"></div>
+      </section>
+    </main>
+  </div>
+
+  <script src="assets/api.js"></script>
+  <script src="assets/ticker.js"></script>
+  <script>
+    (function () {
+      "use strict";
+      var state = { data: null, draggingId: null };
+
+      function $(id) { return document.getElementById(id); }
+
+      function fmtNum(value) {
+        if (value == null || value === "" || isNaN(Number(value))) return "—";
+        return Number(value).toLocaleString("es-AR", {
+          maximumFractionDigits: 0
+        });
+      }
+
+      function eventClass(event) {
+        if (event.claimed) return "calendar-event global-event global-reclamada";
+        if (event.source === "Manual") return "calendar-event global-event global-manual";
+        return "calendar-event global-event " +
+          (event.source === "Rentas" ? "global-rentas" : "global-contingente");
+      }
+
+      function eventNode(event) {
+        var node = document.createElement("span");
+        node.className = eventClass(event);
+        node.title = event.comment || event.summary || event.subtitle || "";
+        node.draggable = true;
+        node.dataset.eventId = event.id;
+        node.addEventListener("dragstart", function (dragEvent) {
+          state.draggingId = event.id;
+          node.classList.add("dragging");
+          dragEvent.dataTransfer.effectAllowed = "move";
+          dragEvent.dataTransfer.setData("text/plain", event.id);
+        });
+        node.addEventListener("dragend", function () {
+          state.draggingId = null;
+          node.classList.remove("dragging");
+          document.querySelectorAll(".global-drop-target").forEach(function (cell) {
+            cell.classList.remove("global-drop-target");
+          });
+        });
+
+        var source = document.createElement("small");
+        source.textContent = event.source;
+        var title = document.createElement("strong");
+        title.textContent = event.title || "";
+        var subtitle = document.createElement("span");
+        subtitle.textContent = event.subtitle || "";
+        var value = document.createElement("span");
+        value.className = "ev-amt";
+        value.textContent = event.source === "Rentas"
+          ? "VN " + fmtNum(event.quantity)
+          : (event.source === "Manual"
+            ? (event.comment || "Sin comentario")
+            : "$ " + fmtNum(event.amount));
+        node.appendChild(source);
+        node.appendChild(title);
+        node.appendChild(subtitle);
+        node.appendChild(value);
+        return node;
+      }
+
+      function setupSelectors(preferredDate) {
+        var years = (state.data.calendar && state.data.calendar.years) || [];
+        var select = $("cal-year");
+        select.innerHTML = "";
+        years.forEach(function (year) {
+          var option = document.createElement("option");
+          option.value = year;
+          option.textContent = year;
+          select.appendChild(option);
+        });
+        var now = new Date();
+        var currentYear = preferredDate ? preferredDate.slice(0, 4) : String(now.getFullYear());
+        select.value = years.indexOf(currentYear) >= 0 ? currentYear : (years[0] || "");
+        $("cal-month").value = preferredDate
+          ? String(parseInt(preferredDate.slice(5, 7), 10))
+          : String(now.getMonth() + 1);
+      }
+
+      function matchingDates() {
+        var byDay = state.data.calendar.by_day || {};
+        var year = $("cal-year").value;
+        var month = $("cal-month").value;
+        return Object.keys(byDay).filter(function (day) {
+          if (year && day.slice(0, 4) !== year) return false;
+          return !month || parseInt(day.slice(5, 7), 10) === parseInt(month, 10);
+        }).sort();
+      }
+
+      function findEvent(eventId) {
+        var byDay = (state.data.calendar && state.data.calendar.by_day) || {};
+        var found = null;
+        Object.keys(byDay).some(function (day) {
+          found = (byDay[day] || []).find(function (event) { return event.id === eventId; });
+          return Boolean(found);
+        });
+        return found;
+      }
+
+      async function moveEvent(eventId, targetDate) {
+        var event = findEvent(eventId);
+        if (!event || event.date === targetDate) return;
+        var message = '¿Desea guardar el evento "' + (event.title || event.subtitle || "Evento") +
+          '" en la nueva fecha ' + targetDate.split("-").reverse().join("/") + "?";
+        if (!window.confirm(message)) return;
+
+        try {
+          var response = await sgrFetch("/api/calendario-global/mover", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ event_id: eventId, date: targetDate })
+          });
+          var data = await response.json();
+          if (!response.ok) throw new Error(data.error || "No se pudo mover el evento.");
+          render(data, targetDate);
+          $("status-msg").textContent = "Evento movido y guardado correctamente.";
+          $("status-msg").className = "status-msg ok";
+        } catch (error) {
+          $("status-msg").textContent = String(error.message || error);
+          $("status-msg").className = "status-msg error";
+        }
+      }
+
+      function renderGrid(year, month) {
+        var byDay = state.data.calendar.by_day || {};
+        var dow = $("calendar-dow");
+        var days = $("calendar-days");
+        dow.innerHTML = "";
+        days.innerHTML = "";
+        ["Lun", "Mar", "Mié", "Jue", "Vie", "Sáb", "Dom"].forEach(function (label) {
+          var item = document.createElement("div");
+          item.className = "calendar-dow";
+          item.textContent = label;
+          dow.appendChild(item);
+        });
+
+        var padding = (new Date(year, month - 1, 1).getDay() + 6) % 7;
+        var totalDays = new Date(year, month, 0).getDate();
+        for (var i = 0; i < padding; i++) {
+          var empty = document.createElement("div");
+          empty.className = "calendar-day empty";
+          days.appendChild(empty);
+        }
+        for (var day = 1; day <= totalDays; day++) {
+          var iso = String(year) + "-" + String(month).padStart(2, "0") + "-" +
+            String(day).padStart(2, "0");
+          var events = byDay[iso] || [];
+          let cell = document.createElement("div");
+          cell.className = "calendar-day" + (events.length ? " has-events" : "");
+          cell.dataset.date = iso;
+          cell.addEventListener("dragover", function (dragEvent) {
+            dragEvent.preventDefault();
+            dragEvent.dataTransfer.dropEffect = "move";
+            cell.classList.add("global-drop-target");
+          });
+          cell.addEventListener("dragleave", function (dragEvent) {
+            if (!cell.contains(dragEvent.relatedTarget)) {
+              cell.classList.remove("global-drop-target");
+            }
+          });
+          cell.addEventListener("drop", function (dragEvent) {
+            dragEvent.preventDefault();
+            cell.classList.remove("global-drop-target");
+            var eventId = dragEvent.dataTransfer.getData("text/plain") || state.draggingId;
+            if (eventId) moveEvent(eventId, cell.dataset.date);
+          });
+          if (events.some(function (event) { return event.claimed; })) {
+            cell.classList.add("has-reclamada");
+          }
+          var number = document.createElement("div");
+          number.className = "day-num";
+          number.textContent = day;
+          cell.appendChild(number);
+          events.forEach(function (event) { cell.appendChild(eventNode(event)); });
+          days.appendChild(cell);
+        }
+      }
+
+      function renderList(dates) {
+        var byDay = state.data.calendar.by_day || {};
+        var list = $("calendar-list");
+        list.innerHTML = "";
+        if (!dates.length) {
+          var empty = document.createElement("p");
+          empty.className = "result-summary";
+          empty.textContent = "No hay eventos para el período seleccionado.";
+          list.appendChild(empty);
+          return;
+        }
+        var scroll = document.createElement("div");
+        scroll.className = "table-scroll";
+        var table = document.createElement("table");
+        table.className = "result-table";
+        table.innerHTML = "<thead><tr><th>Fecha</th><th>Origen</th><th>Empresa / Ticker</th>" +
+          "<th>Detalle</th><th class=\"num\">Monto / VN</th></tr></thead>";
+        var tbody = document.createElement("tbody");
+        dates.forEach(function (day) {
+          (byDay[day] || []).forEach(function (event) {
+            var row = document.createElement("tr");
+            if (event.claimed) row.className = "row-reclamada";
+            var value = event.source === "Rentas"
+              ? "VN " + fmtNum(event.quantity)
+              : (event.source === "Manual"
+                ? (event.comment || "Sin comentario")
+                : "$ " + fmtNum(event.amount));
+            [day, event.source, event.title, event.subtitle, value].forEach(function (text, index) {
+              var cell = document.createElement("td");
+              if (index === 4) cell.className = "num";
+              cell.textContent = text || "";
+              row.appendChild(cell);
+            });
+            tbody.appendChild(row);
+          });
+        });
+        table.appendChild(tbody);
+        scroll.appendChild(table);
+        list.appendChild(scroll);
+      }
+
+      function renderCalendar() {
+        var year = parseInt($("cal-year").value, 10);
+        var month = parseInt($("cal-month").value, 10);
+        if (year && month) {
+          $("calendar-grid-wrap").style.display = "block";
+          $("calendar-list").style.display = "none";
+          renderGrid(year, month);
+        } else {
+          $("calendar-grid-wrap").style.display = "none";
+          $("calendar-list").style.display = "block";
+          renderList(matchingDates());
+        }
+      }
+
+      function render(data, preferredDate) {
+        state.data = data;
+        var summary = data.summary || {};
+        $("summary").style.display = "flex";
+        $("summary").innerHTML =
+          '<span class="summary-chip">Total: <strong>' + (summary.total || 0) + "</strong></span>" +
+          '<span class="summary-chip">Rentas: <strong>' + (summary.rentas || 0) + "</strong></span>" +
+          '<span class="summary-chip">Contingente: <strong>' + (summary.contingente || 0) + "</strong></span>" +
+          '<span class="summary-chip">Manuales: <strong>' + (summary.manual || 0) + "</strong></span>" +
+          '<span class="summary-chip">Reprogramados: <strong>' + (summary.moved || 0) + "</strong></span>";
+
+        if (!summary.total) {
+          $("results-section").style.display = "none";
+          $("status-msg").textContent = "Todavía no hay resultados guardados en los calendarios de origen.";
+          return;
+        }
+        $("results-section").style.display = "block";
+        $("status-msg").textContent = "Calendario consolidado actualizado.";
+        $("status-msg").className = "status-msg ok";
+        setupSelectors(preferredDate);
+        renderCalendar();
+      }
+
+      async function load(preferredDate) {
+        try {
+          var response = await sgrFetch("/api/calendario-global/resultados");
+          var data = await response.json();
+          if (!response.ok) throw new Error(data.error || "No se pudo cargar el calendario.");
+          render(data, preferredDate);
+        } catch (error) {
+          $("status-msg").textContent = String(error.message || error);
+          $("status-msg").className = "status-msg error";
+        }
+      }
+
+      async function addManualEvent() {
+        var type = $("manual-type").value.trim();
+        var denomination = $("manual-denomination").value.trim();
+        var date = $("manual-date").value;
+        var comment = $("manual-comment").value.trim();
+        if (!type || !denomination || !date) {
+          $("status-msg").textContent = "Completá tipo, denominación y fecha.";
+          $("status-msg").className = "status-msg error";
+          return;
+        }
+        var button = $("btn-add-manual");
+        button.disabled = true;
+        try {
+          var response = await sgrFetch("/api/calendario-global/manual", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              type: type,
+              denomination: denomination,
+              date: date,
+              comment: comment
+            })
+          });
+          var data = await response.json();
+          if (!response.ok) throw new Error(data.error || "No se pudo guardar el evento.");
+          $("form-manual").reset();
+          render(data, date);
+          $("status-msg").textContent = "Evento manual agregado y guardado.";
+          $("status-msg").className = "status-msg ok";
+        } catch (error) {
+          $("status-msg").textContent = String(error.message || error);
+          $("status-msg").className = "status-msg error";
+        } finally {
+          button.disabled = false;
+        }
+      }
+
+      $("cal-year").addEventListener("change", renderCalendar);
+      $("cal-month").addEventListener("change", renderCalendar);
+      $("btn-add-manual").addEventListener("click", addManualEvent);
+      load();
+    })();
+  </script>
+</body>
+</html>

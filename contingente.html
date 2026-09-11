@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contingente de avales | SGR tools</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="page-interna">
+  <div class="ticker-wrap" aria-label="Precios de mercado">
+    <div id="ticker-bar" class="ticker-bar"></div>
+  </div>
+  <div class="container container-wide">
+    <div class="page-header-row">
+      <a href="index.html" class="back-link">← Volver</a>
+      <header class="site-header">
+        <span class="header-flag" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 16" width="32" height="22"><rect fill="#74ACDF" width="24" height="16"/><rect y="5.33" fill="#FFF" width="24" height="5.34"/><circle cx="12" cy="8" r="2.5" fill="#F4B800"/></svg></span>
+        <h1>SGR tools</h1>
+        <p class="subtitle">SGR</p>
+      </header>
+    </div>
+
+    <main class="page-content">
+      <section class="form-block">
+        <h2 class="tool-title">Contingente de avales bancarios</h2>
+        <ol class="tool-desc tool-desc-list">
+          <li>Cargá el Excel (hoja Base).</li>
+          <li>Al procesar se ordenan los datos calculando Fecha mesa y Aforo.</li>
+          <li>Filtrá por columna, armá la vista y descargá Excel/PDF o usá el calendario.</li>
+        </ol>
+
+        <form id="form-contingente" novalidate action="javascript:void(0);">
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="file-contingente">Archivo Excel</label>
+              <input type="file" id="file-contingente" accept=".xlsx,.xls,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-excel" required>
+            </div>
+            <div class="form-group">
+              <label for="param-dias-mesa">Días · Fecha mesa</label>
+              <input type="number" id="param-dias-mesa" min="0" step="1" value="28">
+            </div>
+            <div class="form-group">
+              <label for="param-modo-dias">Tipo de días</label>
+              <select id="param-modo-dias">
+                <option value="corridos" selected>Días corridos</option>
+                <option value="habiles">Días hábiles (AR)</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="param-aforo">Aforo (%)</label>
+              <input type="number" id="param-aforo" min="0" step="0.01" value="5">
+              <span class="form-hint">Se suma al monto cuota en pesos (ej. 5 = monto + 5%).</span>
+            </div>
+            <div class="form-actions">
+              <button type="button" id="btn-procesar">Procesar</button>
+            </div>
+          </div>
+        </form>
+
+        <p id="status-msg" class="status-msg" role="status" aria-live="polite"></p>
+        <div id="summary" class="summary-chips" style="display:none;"></div>
+      </section>
+
+      <section id="stock-section" class="form-block" hidden>
+        <h2 class="tool-title">Stock de cuotas</h2>
+        <p class="tool-desc">A vencer y reclamado según Fecha mesa, desde hoy. Ranking por monto sobre el total de cuotas.</p>
+        <p id="stock-as-of" class="result-summary"></p>
+        <div class="stock-grid">
+          <article class="kpi-box">
+            <h3>A vencer</h3>
+            <dl id="stock-vencer" class="stock-dl"></dl>
+          </article>
+          <article class="kpi-box">
+            <h3>Reclamado</h3>
+            <dl id="stock-reclamado" class="stock-dl"></dl>
+          </article>
+        </div>
+        <h3 class="stock-rank-title">Ranking por empresa</h3>
+        <div class="table-scroll">
+          <table class="result-table sticky" id="tabla-ranking">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Empresa</th>
+                <th class="num">Cuotas</th>
+                <th class="num">Monto</th>
+                <th class="num">% del total</th>
+              </tr>
+            </thead>
+            <tbody id="ranking-top"></tbody>
+          </table>
+        </div>
+        <details id="ranking-rest-wrap" class="stock-rank-rest" hidden>
+          <summary id="ranking-rest-summary">Ver el resto</summary>
+          <div class="table-scroll">
+            <table class="result-table">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Empresa</th>
+                  <th class="num">Cuotas</th>
+                  <th class="num">Monto</th>
+                  <th class="num">% del total</th>
+                </tr>
+              </thead>
+              <tbody id="ranking-rest"></tbody>
+            </table>
+          </div>
+        </details>
+      </section>
+
+      <section id="results-section" class="form-block" style="display:none;">
+        <div class="view-tabs">
+          <button type="button" class="cards-filter-btn active" data-view="tabla">Tabla</button>
+          <button type="button" class="cards-filter-btn" data-view="calendario">Calendario</button>
+        </div>
+
+        <div id="view-tabla">
+          <div class="toolbar-row">
+            <button type="button" id="btn-limpiar-filtros" class="btn btn-secondary">Limpiar filtros</button>
+            <button type="button" id="btn-excel" class="btn btn-excel">Descargar Excel</button>
+            <button type="button" id="btn-pdf" class="btn">Descargar PDF</button>
+          </div>
+
+          <details open>
+            <summary style="cursor:pointer;color:var(--text-secondary);margin-bottom:0.5rem;">Columnas visibles</summary>
+            <div class="toolbar-row" style="margin-top:0.35rem;">
+              <button type="button" id="btn-cols-todas" class="btn btn-secondary">Seleccionar todas</button>
+              <button type="button" id="btn-cols-ninguna" class="btn btn-secondary">Eliminar selección</button>
+            </div>
+            <div id="col-toggles" class="col-toggle-panel"></div>
+          </details>
+
+          <p id="filter-count" class="result-summary"></p>
+          <div class="table-scroll">
+            <table class="result-table sticky" id="tabla-datos">
+              <thead></thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </div>
+
+        <div id="view-calendario" style="display:none;">
+          <div class="calendar-controls">
+            <div class="form-group">
+              <label for="cal-year">Año</label>
+              <select id="cal-year"></select>
+            </div>
+            <div class="form-group">
+              <label for="cal-month">Mes</label>
+              <select id="cal-month">
+                <option value="">Todos</option>
+                <option value="1">Enero</option>
+                <option value="2">Febrero</option>
+                <option value="3">Marzo</option>
+                <option value="4">Abril</option>
+                <option value="5">Mayo</option>
+                <option value="6">Junio</option>
+                <option value="7">Julio</option>
+                <option value="8">Agosto</option>
+                <option value="9">Septiembre</option>
+                <option value="10">Octubre</option>
+                <option value="11">Noviembre</option>
+                <option value="12">Diciembre</option>
+              </select>
+            </div>
+          </div>
+          <p class="result-summary">Las fechas del calendario son las <strong>Fecha mesa</strong> calculadas, e incluyen las cuotas ya vencidas.</p>
+          <div id="calendar-list"></div>
+          <div id="calendar-grid-wrap" style="display:none;">
+            <div class="calendar-grid" id="calendar-dow"></div>
+            <div class="calendar-grid" id="calendar-days"></div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="assets/api.js"></script>
+  <script src="assets/ticker.js"></script>
+  <script>
+    (function () {
+      "use strict";
+
+      var state = {
+        columns: [],
+        rows: [],
+        visibleCols: {},
+        filters: {},
+        calendar: null,
+        meta: null
+      };
+
+      var MONEY_HINTS = ["monto", "aforo", "amortizacion", "interes", "interés"];
+
+      function $(id) { return document.getElementById(id); }
+
+      function setStatus(msg, kind) {
+        var el = $("status-msg");
+        el.textContent = msg || "";
+        el.className = "status-msg" + (kind ? " " + kind : "");
+      }
+
+      function fmtNum(n) {
+        if (n == null || n === "" || isNaN(Number(n))) return n == null ? "" : String(n);
+        return Number(n).toLocaleString("es-AR", { maximumFractionDigits: 0 });
+      }
+
+      function fmtAsOf(value) {
+        if (!value) return "";
+        var parts = String(value).split("-");
+        if (parts.length === 3) return parts[2] + "/" + parts[1] + "/" + parts[0];
+        return String(value);
+      }
+
+      function isMoneyCol(col) {
+        var s = String(col).toLowerCase();
+        return MONEY_HINTS.some(function (h) { return s.indexOf(h) !== -1; });
+      }
+
+      function filteredRows() {
+        return state.rows.filter(function (row) {
+          return state.columns.every(function (col) {
+            var selected = state.filters[col];
+            if (selected == null) return true; // sin filtro
+            var cell = row[col];
+            var s = cell == null ? "" : String(cell);
+            return selected.indexOf(s) !== -1;
+          });
+        });
+      }
+
+      function visibleColumns() {
+        return state.columns.filter(function (c) { return state.visibleCols[c] !== false; });
+      }
+
+      function uniqueValues(col) {
+        var set = {};
+        state.rows.forEach(function (r) {
+          var v = r[col];
+          if (v != null && String(v).trim() !== "") set[String(v)] = true;
+        });
+        return Object.keys(set).sort(function (a, b) {
+          return a.localeCompare(b, "es", { numeric: true });
+        });
+      }
+
+      function setAllColumns(visible) {
+        state.columns.forEach(function (c) { state.visibleCols[c] = visible; });
+        buildColToggles();
+        renderTable();
+      }
+
+      function buildColToggles() {
+        var wrap = $("col-toggles");
+        wrap.innerHTML = "";
+        state.columns.forEach(function (col) {
+          var lab = document.createElement("label");
+          var cb = document.createElement("input");
+          cb.type = "checkbox";
+          cb.checked = state.visibleCols[col] !== false;
+          cb.addEventListener("change", function () {
+            state.visibleCols[col] = cb.checked;
+            renderTable();
+          });
+          lab.appendChild(cb);
+          lab.appendChild(document.createTextNode(" " + col));
+          wrap.appendChild(lab);
+        });
+      }
+
+      function closeAllHeaderMenus() {
+        document.querySelectorAll(".th-filter-menu.open").forEach(function (m) {
+          m.classList.remove("open");
+          if (m.parentElement === document.body) m.remove();
+        });
+        document.querySelectorAll(".th-filter-btn[aria-expanded='true']").forEach(function (b) {
+          b.setAttribute("aria-expanded", "false");
+        });
+      }
+
+      function filterBadgeText(col) {
+        var selected = state.filters[col];
+        if (selected == null) return "";
+        return String(selected.length);
+      }
+
+      function applyFilterFromMenu(col, menu, btn) {
+        var selected = [];
+        var all = menu.querySelectorAll('input[type="checkbox"]');
+        all.forEach(function (cb) {
+          if (cb.checked) selected.push(cb.value);
+        });
+        // Excel: todos marcados = sin filtro; parcial/vacío = filtro explícito
+        if (selected.length === all.length) {
+          state.filters[col] = null;
+        } else {
+          state.filters[col] = selected;
+        }
+        var badge = btn.querySelector(".th-filter-badge");
+        if (badge) {
+          var t = filterBadgeText(col);
+          badge.textContent = t;
+          badge.hidden = !t;
+        }
+        btn.classList.toggle("has-filter", state.filters[col] != null);
+        renderTableBody();
+        updateFilterCount();
+      }
+
+      function buildHeaderFilter(th, col) {
+        var vals = uniqueValues(col);
+        th.classList.add("th-excel");
+        th.style.minWidth = Math.min(260, Math.max(130, Math.ceil(col.length * 7.2))) + "px";
+
+        var wrap = document.createElement("div");
+        wrap.className = "th-filter";
+
+        var title = document.createElement("span");
+        title.className = "th-filter-title";
+        title.textContent = col;
+        title.title = col;
+        wrap.appendChild(title);
+
+        if (!vals.length) {
+          th.appendChild(wrap);
+          return;
+        }
+
+        var btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "th-filter-btn";
+        btn.setAttribute("aria-expanded", "false");
+        btn.setAttribute("aria-label", "Filtrar columna " + col);
+        btn.title = "Filtrar";
+        var selected = state.filters[col];
+        if (selected != null) btn.classList.add("has-filter");
+        btn.innerHTML = '<span class="th-filter-badge"' + (selected != null ? "" : " hidden") + ">" +
+          (selected != null ? selected.length : "") + '</span><span class="th-filter-caret" aria-hidden="true">▼</span>';
+
+        var menu = document.createElement("div");
+        menu.className = "th-filter-menu";
+        menu.setAttribute("role", "dialog");
+        menu.setAttribute("aria-label", "Filtro: " + col);
+
+        var head = document.createElement("div");
+        head.className = "th-filter-menu-head";
+        head.textContent = col;
+        menu.appendChild(head);
+
+        var actions = document.createElement("div");
+        actions.className = "th-filter-actions";
+        var btnAll = document.createElement("button");
+        btnAll.type = "button";
+        btnAll.className = "linkish";
+        btnAll.textContent = "Seleccionar todo";
+        var btnNone = document.createElement("button");
+        btnNone.type = "button";
+        btnNone.className = "linkish";
+        btnNone.textContent = "Borrar";
+        actions.appendChild(btnAll);
+        actions.appendChild(btnNone);
+        menu.appendChild(actions);
+
+        var search = document.createElement("input");
+        search.type = "search";
+        search.placeholder = "Buscar…";
+        search.className = "th-filter-search";
+        menu.appendChild(search);
+
+        var list = document.createElement("div");
+        list.className = "th-filter-list";
+        vals.forEach(function (v) {
+          var row = document.createElement("label");
+          row.className = "th-filter-option";
+          row.dataset.search = v.toLowerCase();
+          var cb = document.createElement("input");
+          cb.type = "checkbox";
+          cb.value = v;
+          cb.checked = selected == null || selected.indexOf(v) !== -1;
+          cb.addEventListener("change", function () {
+            applyFilterFromMenu(col, list, btn);
+          });
+          row.appendChild(cb);
+          var txt = document.createElement("span");
+          txt.textContent = v;
+          row.appendChild(txt);
+          list.appendChild(row);
+        });
+        menu.appendChild(list);
+
+        btnAll.addEventListener("click", function (e) {
+          e.stopPropagation();
+          list.querySelectorAll('input[type="checkbox"]').forEach(function (cb) { cb.checked = true; });
+          applyFilterFromMenu(col, list, btn);
+        });
+        btnNone.addEventListener("click", function (e) {
+          e.stopPropagation();
+          list.querySelectorAll('input[type="checkbox"]').forEach(function (cb) { cb.checked = false; });
+          applyFilterFromMenu(col, list, btn);
+        });
+        search.addEventListener("input", function () {
+          var q = search.value.toLowerCase().trim();
+          list.querySelectorAll(".th-filter-option").forEach(function (opt) {
+            opt.style.display = (!q || opt.dataset.search.indexOf(q) !== -1) ? "" : "none";
+          });
+        });
+        search.addEventListener("click", function (e) { e.stopPropagation(); });
+        menu.addEventListener("click", function (e) { e.stopPropagation(); });
+
+        btn.addEventListener("click", function (e) {
+          e.stopPropagation();
+          var wasOpen = btn.getAttribute("aria-expanded") === "true";
+          closeAllHeaderMenus();
+          if (!wasOpen) {
+            document.body.appendChild(menu);
+            menu.classList.add("open");
+            btn.setAttribute("aria-expanded", "true");
+            positionMenu(th, menu);
+            search.focus();
+          }
+        });
+
+        wrap.appendChild(btn);
+        th.appendChild(wrap);
+        // keep menu reference on btn for reopen cycle
+        btn._filterMenu = menu;
+      }
+
+      function positionMenu(anchorEl, menu) {
+        var rect = anchorEl.getBoundingClientRect();
+        var width = Math.max(rect.width, 240);
+        width = Math.min(width, 340, window.innerWidth - 16);
+        var left = rect.left;
+        if (left + width > window.innerWidth - 8) {
+          left = Math.max(8, window.innerWidth - width - 8);
+        }
+        var top = rect.bottom + 2;
+        var spaceBelow = window.innerHeight - top - 8;
+        var maxH = Math.min(320, Math.max(160, spaceBelow));
+        if (spaceBelow < 160 && rect.top > spaceBelow) {
+          // abrir hacia arriba si no hay espacio abajo
+          maxH = Math.min(320, rect.top - 8);
+          top = Math.max(8, rect.top - maxH - 2);
+        }
+        menu.style.position = "fixed";
+        menu.style.left = left + "px";
+        menu.style.top = top + "px";
+        menu.style.width = width + "px";
+        menu.style.maxHeight = maxH + "px";
+        menu.style.zIndex = "3000";
+      }
+
+      function updateFilterCount() {
+        var cols = visibleColumns();
+        var rows = filteredRows();
+        $("filter-count").innerHTML =
+          "Mostrando <strong>" + rows.length + "</strong> de <strong>" + state.rows.length + "</strong> registros · " +
+          "<strong>" + cols.length + "</strong> columnas visibles";
+      }
+
+      function renderTableBody() {
+        var cols = visibleColumns();
+        var rows = filteredRows();
+        var tbody = $("tabla-datos").querySelector("tbody");
+        tbody.innerHTML = "";
+        rows.forEach(function (row) {
+          var tr = document.createElement("tr");
+          cols.forEach(function (c) {
+            var td = document.createElement("td");
+            var val = row[c];
+            if (isMoneyCol(c) && typeof val === "number") {
+              td.textContent = fmtNum(val);
+              td.className = "num";
+            } else {
+              td.textContent = val == null ? "" : String(val);
+              if (isMoneyCol(c)) td.className = "num";
+            }
+            tr.appendChild(td);
+          });
+          tbody.appendChild(tr);
+        });
+      }
+
+      function renderTable() {
+        var cols = visibleColumns();
+        var thead = $("tabla-datos").querySelector("thead");
+        thead.innerHTML = "";
+        closeAllHeaderMenus();
+
+        var trh = document.createElement("tr");
+        cols.forEach(function (c) {
+          var th = document.createElement("th");
+          if (isMoneyCol(c)) th.classList.add("num");
+          buildHeaderFilter(th, c);
+          trh.appendChild(th);
+        });
+        thead.appendChild(trh);
+        renderTableBody();
+        updateFilterCount();
+      }
+
+      function fillStockDl(id, buckets) {
+        var labels = { d30: "0–30 días", d60: "31–60 días", d90: "61–90 días" };
+        $("stock-" + id).innerHTML = ["d30", "d60", "d90"].map(function (key) {
+          var item = (buckets && buckets[key]) || {};
+          return "<dt>" + labels[key] + "</dt><dd><strong>" +
+            (item.count || 0) + "</strong> cuotas · $ " + fmtNum(item.monto || 0) + "</dd>";
+        }).join("");
+      }
+
+      function rankingRow(item, index) {
+        var tr = document.createElement("tr");
+        [
+          index + 1,
+          item.empresa,
+          item.count,
+          "$ " + fmtNum(item.monto),
+          (item.pct != null ? Number(item.pct).toLocaleString("es-AR", {
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2
+          }) : "—") + "%"
+        ].forEach(function (value, col) {
+          var td = document.createElement("td");
+          if (col >= 2) td.className = "num";
+          td.textContent = value;
+          tr.appendChild(td);
+        });
+        return tr;
+      }
+
+      function renderStock(data) {
+        var stock = data && data.stock;
+        var section = $("stock-section");
+        if (!stock || !stock.total_count) {
+          section.hidden = true;
+          return;
+        }
+        section.hidden = false;
+        $("stock-as-of").textContent =
+          "Al " + fmtAsOf(stock.as_of) + " · " + stock.total_count +
+          " cuotas · total $ " + fmtNum(stock.total_monto);
+        fillStockDl("vencer", stock.a_vencer);
+        fillStockDl("reclamado", stock.reclamado);
+        var ranking = stock.ranking || [];
+        var top = $("ranking-top");
+        var rest = $("ranking-rest");
+        top.innerHTML = "";
+        rest.innerHTML = "";
+        ranking.slice(0, 5).forEach(function (item, index) {
+          top.appendChild(rankingRow(item, index));
+        });
+        var others = ranking.slice(5);
+        $("ranking-rest-wrap").hidden = others.length === 0;
+        $("ranking-rest-summary").textContent =
+          "Ver el resto (" + others.length + " empresas)";
+        others.forEach(function (item, index) {
+          rest.appendChild(rankingRow(item, index + 5));
+        });
+      }
+
+      function renderSummary(data) {
+        var el = $("summary");
+        var meta = data.meta || {};
+        var dias = meta.dias_mesa != null ? meta.dias_mesa : 28;
+        var modo = meta.modo_dias_display || "corridos";
+        var pct = meta.aforo_pct_display != null ? meta.aforo_pct_display : 5;
+        el.style.display = "flex";
+        el.innerHTML =
+          '<span class="summary-chip">Filas: <strong>' + data.total + "</strong></span>" +
+          '<span class="summary-chip">Hoja: <strong>' + data.sheet + "</strong></span>" +
+          '<span class="summary-chip">Fecha mesa: <strong>+' + dias + " días " + modo + "</strong></span>" +
+          '<span class="summary-chip">Aforo: <strong>+' + pct + "%</strong></span>";
+      }
+
+      function applyData(data, fromSaved) {
+        if (!data || !data.rows || !data.rows.length) return false;
+        state.columns = data.columns || [];
+        state.rows = data.rows || [];
+        state.calendar = data.calendar || null;
+        state.meta = data.meta || null;
+        state.filters = {};
+        state.visibleCols = {};
+        state.columns.forEach(function (c) { state.visibleCols[c] = true; });
+
+        var meta = data.meta || {};
+        if (meta.dias_mesa != null) $("param-dias-mesa").value = meta.dias_mesa;
+        if (meta.modo_dias) $("param-modo-dias").value = meta.modo_dias;
+        if (meta.aforo_pct_display != null) $("param-aforo").value = meta.aforo_pct_display;
+
+        $("results-section").style.display = "block";
+        renderSummary(data);
+        renderStock(data);
+        buildColToggles();
+        renderTable();
+        setupCalendar();
+        if (fromSaved) {
+          setStatus(
+            "Se cargó el último archivo procesado: " + (data.filename || "Contingente") +
+            " · " + data.total + " filas.",
+            "ok"
+          );
+        }
+        return true;
+      }
+
+      async function loadSaved() {
+        try {
+          var response = await sgrFetch("/api/contingente/resultados");
+          if (!response.ok) return;
+          applyData(await response.json(), true);
+        } catch (_error) {
+          setStatus("No se pudo cargar el último Contingente guardado.", "error");
+        }
+      }
+
+      function setupCalendar() {
+        var years = (state.calendar && state.calendar.years) || [];
+        var sel = $("cal-year");
+        sel.innerHTML = "";
+        var optAll = document.createElement("option");
+        optAll.value = "";
+        optAll.textContent = "Todos";
+        sel.appendChild(optAll);
+        years.forEach(function (y) {
+          var o = document.createElement("option");
+          o.value = y;
+          o.textContent = y;
+          sel.appendChild(o);
+        });
+        if (years.length) {
+          var nowY = String(new Date().getFullYear());
+          sel.value = years.indexOf(nowY) >= 0 ? nowY : years[0];
+        }
+        $("cal-month").value = String(new Date().getMonth() + 1);
+        renderCalendar();
+      }
+
+      function esReclamada(ev) {
+        return String((ev && ev.estado) || "").toLowerCase().indexOf("reclamada por el banco") >= 0;
+      }
+
+      function renderCalendar() {
+        var byDay = (state.calendar && state.calendar.by_day) || {};
+        var year = $("cal-year").value;
+        var month = $("cal-month").value;
+        var list = $("calendar-list");
+        var gridWrap = $("calendar-grid-wrap");
+        var daysEl = $("calendar-days");
+        var dowEl = $("calendar-dow");
+
+        var keys = Object.keys(byDay).filter(function (d) {
+          if (year && d.slice(0, 4) !== year) return false;
+          if (month) {
+            var m = parseInt(d.slice(5, 7), 10);
+            if (m !== parseInt(month, 10)) return false;
+          }
+          return true;
+        }).sort();
+
+        if (year && month) {
+          gridWrap.style.display = "block";
+          list.innerHTML = "";
+          dowEl.innerHTML = "";
+          ["Lun", "Mar", "Mié", "Jue", "Vie", "Sáb", "Dom"].forEach(function (d) {
+            var el = document.createElement("div");
+            el.className = "calendar-dow";
+            el.textContent = d;
+            dowEl.appendChild(el);
+          });
+          daysEl.innerHTML = "";
+          var y = parseInt(year, 10);
+          var m = parseInt(month, 10);
+          var first = new Date(y, m - 1, 1);
+          var startPad = (first.getDay() + 6) % 7;
+          var dim = new Date(y, m, 0).getDate();
+          for (var i = 0; i < startPad; i++) {
+            var empty = document.createElement("div");
+            empty.className = "calendar-day empty";
+            daysEl.appendChild(empty);
+          }
+          for (var day = 1; day <= dim; day++) {
+            var iso = year + "-" + String(m).padStart(2, "0") + "-" + String(day).padStart(2, "0");
+            var cell = document.createElement("div");
+            cell.className = "calendar-day";
+            var events = byDay[iso] || [];
+            if (events.length) cell.classList.add("has-events");
+            if (events.some(esReclamada)) cell.classList.add("has-reclamada");
+            var num = document.createElement("div");
+            num.className = "day-num";
+            num.textContent = String(day);
+            cell.appendChild(num);
+            events.forEach(function (ev) {
+              var e = document.createElement("span");
+              e.className = esReclamada(ev) ? "calendar-event reclamada" : "calendar-event";
+              e.title = (ev.empresa || "") + " · Vencimiento: " + (ev.vencimiento || "-") +
+                (ev.estado ? " · " + ev.estado : "");
+              e.innerHTML = "<div>" + (ev.empresa || "") + '</div><div class="ev-amt">' +
+                fmtNum(ev.monto) + "</div>";
+              cell.appendChild(e);
+            });
+            daysEl.appendChild(cell);
+          }
+        } else {
+          gridWrap.style.display = "none";
+          if (!keys.length) {
+            list.innerHTML = '<p class="result-summary">Sin fechas mesa para el filtro elegido.</p>';
+            return;
+          }
+          var html = '<div class="table-scroll"><table class="result-table"><thead><tr>' +
+            "<th>Fecha mesa</th><th>Empresa</th><th class=\"num\">Monto</th><th class=\"num\">Aforo</th><th>Estado</th><th>Fecha vencimiento</th>" +
+            "</tr></thead><tbody>";
+          keys.forEach(function (d) {
+            (byDay[d] || []).forEach(function (ev) {
+              html += '<tr class="' + (esReclamada(ev) ? "row-reclamada" : "") + '"><td>' +
+                d + "</td><td>" + (ev.empresa || "") +
+                '</td><td class="num">' + fmtNum(ev.monto) +
+                '</td><td class="num">' + fmtNum(ev.aforo) +
+                "</td><td>" + (ev.estado || "") +
+                "</td><td>" + (ev.vencimiento || "") + "</td></tr>";
+            });
+          });
+          html += "</tbody></table></div>";
+          list.innerHTML = html;
+        }
+      }
+
+      async function procesar() {
+        var input = $("file-contingente");
+        if (!input.files || !input.files[0]) {
+          setStatus("Seleccioná un archivo Excel.", "error");
+          return;
+        }
+        var dias = $("param-dias-mesa").value;
+        var modo = $("param-modo-dias").value;
+        var aforo = $("param-aforo").value;
+        if (dias === "" || Number(dias) < 0) {
+          setStatus("Indicá los días de Fecha mesa (>= 0).", "error");
+          return;
+        }
+        if (aforo === "" || Number(aforo) < 0) {
+          setStatus("Indicá el aforo % (>= 0).", "error");
+          return;
+        }
+        setStatus("Procesando…");
+        var fd = new FormData();
+        fd.append("file", input.files[0]);
+        fd.append("dias_mesa", dias);
+        fd.append("modo_dias", modo);
+        fd.append("aforo_pct", aforo);
+        try {
+          var res = await sgrFetch("/api/contingente/procesar", { method: "POST", body: fd });
+          var data = await res.json();
+          if (!res.ok) throw new Error(data.error || "Error al procesar");
+          applyData(data, false);
+          setStatus("Procesado OK: " + data.total + " filas.", "ok");
+        } catch (err) {
+          var msg = String(err.message || err);
+          if (msg === "Failed to fetch" || msg.indexOf("NetworkError") !== -1) {
+            msg = "No se pudo conectar al servidor. Ejecutá run.bat y abrí http://127.0.0.1:5055";
+          }
+          setStatus(msg, "error");
+        }
+      }
+
+      async function downloadBlob(url, filename, payload) {
+        var res = await sgrFetch(url, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload)
+        });
+        if (!res.ok) {
+          var err = await res.json().catch(function () { return {}; });
+          throw new Error(err.error || "Error al exportar");
+        }
+        var blob = await res.blob();
+        var a = document.createElement("a");
+        a.href = URL.createObjectURL(blob);
+        a.download = filename;
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+        URL.revokeObjectURL(a.href);
+      }
+
+      function exportPayload() {
+        var cols = visibleColumns();
+        var rows = filteredRows().map(function (r) {
+          var o = {};
+          cols.forEach(function (c) { o[c] = r[c]; });
+          return o;
+        });
+        return { columns: cols, rows: rows, title: "Contingente avales bancarios — vista filtrada" };
+      }
+
+      $("btn-procesar").addEventListener("click", procesar);
+      $("btn-limpiar-filtros").addEventListener("click", function () {
+        state.filters = {};
+        renderTable();
+      });
+      $("btn-cols-todas").addEventListener("click", function () { setAllColumns(true); });
+      $("btn-cols-ninguna").addEventListener("click", function () { setAllColumns(false); });
+      $("btn-excel").addEventListener("click", function () {
+        downloadBlob("/api/contingente/export/excel", "contingente_procesado.xlsx", exportPayload())
+          .catch(function (e) { setStatus(String(e.message || e), "error"); });
+      });
+      $("btn-pdf").addEventListener("click", function () {
+        downloadBlob("/api/contingente/export/pdf", "contingente_procesado.pdf", exportPayload())
+          .catch(function (e) { setStatus(String(e.message || e), "error"); });
+      });
+
+      document.addEventListener("click", closeAllHeaderMenus);
+      window.addEventListener("resize", closeAllHeaderMenus);
+      var tableScroll = document.querySelector(".table-scroll");
+      if (tableScroll) tableScroll.addEventListener("scroll", closeAllHeaderMenus);
+
+      document.querySelectorAll(".view-tabs .cards-filter-btn").forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          document.querySelectorAll(".view-tabs .cards-filter-btn").forEach(function (b) {
+            b.classList.remove("active");
+          });
+          btn.classList.add("active");
+          var view = btn.getAttribute("data-view");
+          $("view-tabla").style.display = view === "tabla" ? "block" : "none";
+          $("view-calendario").style.display = view === "calendario" ? "block" : "none";
+        });
+      });
+
+      $("cal-year").addEventListener("change", renderCalendar);
+      $("cal-month").addEventListener("change", renderCalendar);
+      loadSaved();
+    })();
+  </script>
+</body>
+</html>

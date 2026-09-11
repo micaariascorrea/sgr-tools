@@ -1,0 +1,15 @@
+__pycache__/
+*.py[cod]
+*.pyo
+.venv/
+venv/
+.env
+.env.*
+/data/*
+!/data/.gitkeep
+*.xlsx
+*.xls
+_*.py
+_*.txt
+.DS_Store
+Thumbs.db

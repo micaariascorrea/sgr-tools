@@ -1,0 +1,981 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rendimientos | SGR tools</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="page-interna">
+  <div class="ticker-wrap" aria-label="Precios de mercado">
+    <div id="ticker-bar" class="ticker-bar"></div>
+  </div>
+  <div class="container container-wide">
+    <div class="page-header-row">
+      <a href="index.html" class="back-link">← Volver</a>
+      <header class="site-header">
+        <span class="header-flag" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 16" width="32" height="22"><rect fill="#74ACDF" width="24" height="16"/><rect y="5.33" fill="#FFF" width="24" height="5.34"/><circle cx="12" cy="8" r="2.5" fill="#F4B800"/></svg></span>
+        <h1>SGR tools</h1>
+        <p class="subtitle">Operaciones</p>
+      </header>
+    </div>
+
+    <main class="page-content">
+      <section class="form-block">
+        <h2 class="tool-title">Rendimientos</h2>
+        <ol class="tool-desc tool-desc-list">
+          <li>Cargá uno o varios archivos de <strong>Posición</strong>, o usá el <strong>+</strong> para ingresar Patrimonio Neto y fecha a mano.</li>
+          <li>Cargá el Excel de <strong>Aportes y retiros</strong> (mismo formato que la solapa del reporte). En los cálculos se toma el mes de su fecha.</li>
+          <li>Los archivos del último día hábil de cada mes quedan acumulados para los próximos cálculos.</li>
+        </ol>
+
+        <form id="form-rendimientos" novalidate action="javascript:void(0);">
+          <div class="form-grid">
+            <div class="form-group">
+              <div class="yield-file-head">
+                <label for="files-posicion">Archivos de Posición</label>
+                <button type="button" id="btn-add-row" class="yield-icon-plus" aria-expanded="false" aria-controls="manual-rows" aria-label="Carga manual de patrimonio neto" title="Carga manual">+</button>
+              </div>
+              <input type="file" id="files-posicion" multiple accept=".xlsx,.xls,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-excel">
+              <span class="form-hint">Podés seleccionar varios archivos juntos o agregarlos en selecciones sucesivas.</span>
+              <div id="selected-files" class="yield-selected-files"></div>
+              <div id="manual-rows" class="yield-manual-rows" hidden></div>
+            </div>
+            <div class="form-group">
+              <div class="yield-file-head">
+                <label for="files-a3500">Serie histórica A3500</label>
+                <button type="button" id="btn-add-fx-row" class="yield-icon-plus" aria-expanded="false" aria-controls="manual-fx-rows" aria-label="Carga manual de A3500" title="Carga manual">+</button>
+              </div>
+              <input type="file" id="files-a3500" multiple accept=".xls,.xlsx,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet">
+              <span class="form-hint">Opcional. El sistema también consulta la API oficial del BCRA.</span>
+              <div id="selected-fx-files" class="yield-selected-files"></div>
+              <div id="manual-fx-rows" class="yield-manual-rows" hidden></div>
+            </div>
+            <div class="form-group yield-file-span">
+              <div class="yield-file-head">
+                <label for="files-flujos">Aportes y retiros</label>
+                <button type="button" id="btn-add-flow-row" class="yield-icon-plus" aria-expanded="false" aria-controls="manual-flow-rows" aria-label="Carga manual de movimiento" title="Carga manual">+</button>
+              </div>
+              <input type="file" id="files-flujos" multiple accept=".xlsx,.xls,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-excel">
+              <span class="form-hint">Un solo Excel con tipo, fecha, inversor y monto pesos. Queda guardado hasta cargar uno nuevo.</span>
+              <div id="selected-flow-files" class="yield-selected-files"></div>
+              <div id="manual-flow-rows" class="yield-manual-rows" hidden></div>
+            </div>
+          </div>
+
+          <div class="form-actions">
+            <button type="button" id="btn-procesar">Procesar</button>
+          </div>
+        </form>
+
+        <p id="status-msg" class="status-msg" role="status" aria-live="polite"></p>
+      </section>
+
+      <section id="results-section" class="form-block" style="display:none;">
+        <div class="toolbar-row yield-toolbar">
+          <div class="yield-currency-toggle" aria-label="Unidad de visualización">
+            <button type="button" class="cards-filter-btn active" data-unit="ars">Pesos</button>
+            <button type="button" class="cards-filter-btn" data-unit="a3500">PN / A3500</button>
+          </div>
+          <div class="yield-download">
+            <button type="button" id="btn-descargar" class="btn btn-excel" aria-expanded="false" aria-haspopup="true">Descargar</button>
+            <div id="download-menu" class="yield-download-menu" hidden role="menu">
+              <button type="button" id="btn-excel" role="menuitem">Excel</button>
+              <button type="button" id="btn-pdf" role="menuitem">PDF</button>
+            </div>
+          </div>
+        </div>
+
+        <article class="yield-chart-card">
+          <h3>Evolución del Patrimonio del Fondo de Riesgo</h3>
+          <p id="chart-fdr-disclaimer" class="yield-chart-disclaimer">Eje X en tiempo calendario y eje Y lineal: la misma distancia equivale al mismo plazo o al mismo monto.</p>
+          <p id="chart-gap-warning" class="yield-gap-warning" hidden></p>
+          <div class="yield-chart-legend">
+            <span><i class="pn-dot"></i>PN</span>
+            <span><i class="retiro-dot"></i>Retiros</span>
+            <span><i class="aporte-dot"></i>Aportes</span>
+            <span><i class="pago-dot"></i>Pagos de rendimientos</span>
+            <span><i class="rend-line"></i><span id="chart-rend-legend">Rendimiento ARS</span></span>
+          </div>
+          <svg id="chart-flujos" class="yield-chart" viewBox="0 0 960 420" role="img" aria-label="Evolución del Patrimonio del Fondo de Riesgo"></svg>
+        </article>
+
+        <div class="table-scroll yield-table-below">
+          <table class="result-table sticky" id="tabla-rendimientos">
+              <thead>
+                <tr>
+                  <th>Mes</th>
+                  <th>Fecha utilizada</th>
+                  <th class="num">PN Pesos</th>
+                  <th class="num">PN A3500</th>
+                  <th class="num">Retiros</th>
+                  <th class="num">Aportes</th>
+                  <th class="num">Pagos de rendimientos</th>
+                  <th class="num">Rendimiento ARS</th>
+                  <th class="num">Retiros A3500</th>
+                  <th class="num">Aportes A3500</th>
+                  <th class="num">Pagos A3500</th>
+                  <th class="num">Rendimiento A3500</th>
+                  <th class="num">MoM PN %</th>
+                  <th class="num">MoM PN A3500 %</th>
+                  <th class="num">MoM A3500 %</th>
+                  <th class="num">A3500</th>
+                  <th>Origen</th>
+                  <th>Archivo</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+          </table>
+        </div>
+
+        <div class="yield-manual-head yield-flows-head">
+          <h3>Aportes, retiros y pagos guardados</h3>
+          <button type="button" id="btn-filtrar-flujos" class="btn btn-secondary">Filtrar</button>
+        </div>
+        <div id="flujos-filters" class="yield-flow-filters" hidden>
+          <label class="form-group">
+            Tipo
+            <select id="filter-flow-kind">
+              <option value="">Todos</option>
+              <option value="aporte">Aporte</option>
+              <option value="retiro">Retiro</option>
+              <option value="pago">Pago de rendimiento</option>
+            </select>
+          </label>
+          <label class="form-group">
+            Fecha
+            <select id="filter-flow-date">
+              <option value="">Todas</option>
+            </select>
+          </label>
+          <label class="form-group">
+            Inversor
+            <select id="filter-flow-investor">
+              <option value="">Todos</option>
+            </select>
+          </label>
+        </div>
+        <div class="table-scroll yield-table-below">
+          <table class="result-table sticky" id="tabla-flujos">
+            <thead>
+              <tr>
+                <th>Tipo</th>
+                <th>Fecha</th>
+                <th>Inversor</th>
+                <th class="num">Monto Pesos</th>
+                <th class="num">A3500</th>
+                <th class="num">Monto A3500</th>
+                <th>Archivo</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="assets/api.js"></script>
+  <script src="assets/ticker.js"></script>
+  <script>
+    (function () {
+      "use strict";
+      var SVG_NS = "http://www.w3.org/2000/svg";
+      var state = { data: null, files: [], fxFiles: [], flowFiles: [], unit: "ars" };
+
+      function $(id) { return document.getElementById(id); }
+
+      function setStatus(message, kind) {
+        $("status-msg").textContent = message || "";
+        $("status-msg").className = "status-msg" + (kind ? " " + kind : "");
+      }
+
+      function fmtNum(value) {
+        if (value == null || isNaN(Number(value))) return "—";
+        return Number(value).toLocaleString("es-AR", {
+          maximumFractionDigits: 0
+        });
+      }
+
+      function fmtPct(value, decimals) {
+        if (value == null || isNaN(Number(value))) return "—";
+        return Number(value).toLocaleString("es-AR", {
+          minimumFractionDigits: decimals == null ? 2 : decimals,
+          maximumFractionDigits: decimals == null ? 2 : decimals
+        }) + "%";
+      }
+
+      function fmtRate(value) {
+        if (value == null || isNaN(Number(value))) return "—";
+        return Number(value).toLocaleString("es-AR", {
+          minimumFractionDigits: 2,
+          maximumFractionDigits: 2
+        });
+      }
+
+      function compact(value) {
+        return new Intl.NumberFormat("es-AR", {
+          notation: "compact",
+          maximumFractionDigits: 1
+        }).format(value);
+      }
+
+      function svgElement(name, attributes, text) {
+        var element = document.createElementNS(SVG_NS, name);
+        Object.keys(attributes || {}).forEach(function (key) {
+          element.setAttribute(key, attributes[key]);
+        });
+        if (text != null) element.textContent = text;
+        return element;
+      }
+
+      function addManualRow() {
+        var row = document.createElement("div");
+        row.className = "yield-manual-row";
+
+        var dateGroup = document.createElement("div");
+        dateGroup.className = "form-group";
+        var dateLabel = document.createElement("label");
+        dateLabel.textContent = "Fecha";
+        var dateInput = document.createElement("input");
+        dateInput.type = "date";
+        dateInput.className = "manual-date";
+        dateGroup.appendChild(dateLabel);
+        dateGroup.appendChild(dateInput);
+
+        var amountGroup = document.createElement("div");
+        amountGroup.className = "form-group";
+        var amountLabel = document.createElement("label");
+        amountLabel.textContent = "Patrimonio Neto";
+        var amountInput = document.createElement("input");
+        amountInput.type = "text";
+        amountInput.inputMode = "decimal";
+        amountInput.className = "manual-amount";
+        amountInput.placeholder = "Ej.: 8.971.889.655,85";
+        amountGroup.appendChild(amountLabel);
+        amountGroup.appendChild(amountInput);
+
+        var remove = document.createElement("button");
+        remove.type = "button";
+        remove.className = "btn yield-remove-row";
+        remove.textContent = "Quitar";
+        remove.addEventListener("click", function () {
+          row.remove();
+          if (!$("manual-rows").children.length) {
+            $("manual-rows").hidden = true;
+            $("btn-add-row").setAttribute("aria-expanded", "false");
+          }
+        });
+
+        row.appendChild(dateGroup);
+        row.appendChild(amountGroup);
+        row.appendChild(remove);
+        $("manual-rows").appendChild(row);
+      }
+
+      function addManualFxRow() {
+        var row = document.createElement("div");
+        row.className = "yield-manual-row yield-fx-row";
+
+        var dateGroup = document.createElement("div");
+        dateGroup.className = "form-group";
+        var dateLabel = document.createElement("label");
+        dateLabel.textContent = "Fecha";
+        var dateInput = document.createElement("input");
+        dateInput.type = "date";
+        dateInput.className = "manual-fx-date";
+        dateGroup.appendChild(dateLabel);
+        dateGroup.appendChild(dateInput);
+
+        var rateGroup = document.createElement("div");
+        rateGroup.className = "form-group";
+        var rateLabel = document.createElement("label");
+        rateLabel.textContent = "A3500 ($ por USD)";
+        var rateInput = document.createElement("input");
+        rateInput.type = "text";
+        rateInput.inputMode = "decimal";
+        rateInput.className = "manual-fx-rate";
+        rateInput.placeholder = "Ej.: 1.498,4355";
+        rateGroup.appendChild(rateLabel);
+        rateGroup.appendChild(rateInput);
+
+        var remove = document.createElement("button");
+        remove.type = "button";
+        remove.className = "btn yield-remove-row";
+        remove.textContent = "Quitar";
+        remove.addEventListener("click", function () {
+          row.remove();
+          if (!$("manual-fx-rows").children.length) {
+            $("manual-fx-rows").hidden = true;
+            $("btn-add-fx-row").setAttribute("aria-expanded", "false");
+          }
+        });
+        row.appendChild(dateGroup);
+        row.appendChild(rateGroup);
+        row.appendChild(remove);
+        $("manual-fx-rows").appendChild(row);
+      }
+
+      function addManualFlowRow() {
+        var row = document.createElement("div");
+        row.className = "yield-manual-row yield-flow-manual-row";
+
+        var kindGroup = document.createElement("div");
+        kindGroup.className = "form-group";
+        var kindLabel = document.createElement("label");
+        kindLabel.textContent = "Tipo";
+        var kindInput = document.createElement("select");
+        kindInput.className = "manual-flow-kind";
+        [["aporte", "Aporte"], ["retiro", "Retiro"], ["pago", "Pago de rendimiento"]].forEach(function (option) {
+          var item = document.createElement("option");
+          item.value = option[0];
+          item.textContent = option[1];
+          kindInput.appendChild(item);
+        });
+        kindGroup.appendChild(kindLabel);
+        kindGroup.appendChild(kindInput);
+
+        var dateGroup = document.createElement("div");
+        dateGroup.className = "form-group";
+        var dateLabel = document.createElement("label");
+        dateLabel.textContent = "Fecha";
+        var dateInput = document.createElement("input");
+        dateInput.type = "date";
+        dateInput.className = "manual-flow-date";
+        dateGroup.appendChild(dateLabel);
+        dateGroup.appendChild(dateInput);
+
+        var investorGroup = document.createElement("div");
+        investorGroup.className = "form-group";
+        var investorLabel = document.createElement("label");
+        investorLabel.textContent = "Inversor";
+        var investorInput = document.createElement("input");
+        investorInput.type = "text";
+        investorInput.className = "manual-flow-investor";
+        investorGroup.appendChild(investorLabel);
+        investorGroup.appendChild(investorInput);
+
+        var amountGroup = document.createElement("div");
+        amountGroup.className = "form-group";
+        var amountLabel = document.createElement("label");
+        amountLabel.textContent = "Monto Pesos";
+        var amountInput = document.createElement("input");
+        amountInput.type = "text";
+        amountInput.inputMode = "decimal";
+        amountInput.className = "manual-flow-amount";
+        amountGroup.appendChild(amountLabel);
+        amountGroup.appendChild(amountInput);
+
+        var remove = document.createElement("button");
+        remove.type = "button";
+        remove.className = "btn yield-remove-row";
+        remove.textContent = "Quitar";
+        remove.addEventListener("click", function () {
+          row.remove();
+          if (!$("manual-flow-rows").children.length) {
+            $("manual-flow-rows").hidden = true;
+            $("btn-add-flow-row").setAttribute("aria-expanded", "false");
+          }
+        });
+
+        row.appendChild(kindGroup);
+        row.appendChild(dateGroup);
+        row.appendChild(investorGroup);
+        row.appendChild(amountGroup);
+        row.appendChild(remove);
+        $("manual-flow-rows").appendChild(row);
+      }
+
+      function fileKey(file) {
+        return [file.name, file.size, file.lastModified].join("|");
+      }
+
+      function renderFileList(listId, stateKey) {
+        var list = $(listId);
+        list.innerHTML = "";
+        state[stateKey].forEach(function (file) {
+          var item = document.createElement("span");
+          item.className = "yield-selected-file";
+          var name = document.createElement("span");
+          name.textContent = file.name;
+          name.title = file.name;
+          var remove = document.createElement("button");
+          remove.type = "button";
+          remove.setAttribute("aria-label", "Quitar " + file.name);
+          remove.textContent = "×";
+          remove.addEventListener("click", function () {
+            var key = fileKey(file);
+            state[stateKey] = state[stateKey].filter(function (selected) {
+              return fileKey(selected) !== key;
+            });
+            renderFileList(listId, stateKey);
+          });
+          item.appendChild(name);
+          item.appendChild(remove);
+          list.appendChild(item);
+        });
+      }
+
+      function accumulateFiles(inputId, stateKey, listId) {
+        var input = $(inputId);
+        var incoming = Array.prototype.slice.call(input.files || []);
+        var known = {};
+        state[stateKey].forEach(function (file) { known[fileKey(file)] = true; });
+        incoming.forEach(function (file) {
+          var key = fileKey(file);
+          if (!known[key]) {
+            state[stateKey].push(file);
+            known[key] = true;
+          }
+        });
+        input.value = "";
+        renderFileList(listId, stateKey);
+      }
+
+      function accumulateSelectedFiles() {
+        accumulateFiles("files-posicion", "files", "selected-files");
+      }
+
+      function accumulateFxFiles() {
+        accumulateFiles("files-a3500", "fxFiles", "selected-fx-files");
+      }
+
+      function manualValues() {
+        var values = [];
+        document.querySelectorAll("#manual-rows .yield-manual-row").forEach(function (row, index) {
+          var date = row.querySelector(".manual-date").value;
+          var amount = row.querySelector(".manual-amount").value.trim();
+          if (!date && !amount) return;
+          if (!date || !amount) {
+            throw new Error("Completá fecha y monto en el ingreso manual #" + (index + 1) + ".");
+          }
+          values.push({ date: date, amount: amount });
+        });
+        return values;
+      }
+
+      function manualFxValues() {
+        var values = [];
+        document.querySelectorAll(".yield-fx-row").forEach(function (row, index) {
+          var date = row.querySelector(".manual-fx-date").value;
+          var rate = row.querySelector(".manual-fx-rate").value.trim();
+          if (!date && !rate) return;
+          if (!date || !rate) {
+            throw new Error("Completá fecha y A3500 en el ingreso manual #" + (index + 1) + ".");
+          }
+          values.push({ date: date, rate: rate });
+        });
+        return values;
+      }
+
+      function manualFlowValues() {
+        var values = [];
+        document.querySelectorAll("#manual-flow-rows .yield-flow-manual-row").forEach(function (row, index) {
+          var date = row.querySelector(".manual-flow-date").value;
+          var amount = row.querySelector(".manual-flow-amount").value.trim();
+          var investor = row.querySelector(".manual-flow-investor").value.trim();
+          var kind = row.querySelector(".manual-flow-kind").value;
+          if (!date && !amount && !investor) return;
+          if (!date || !amount) {
+            throw new Error("Completá fecha y monto en el movimiento manual #" + (index + 1) + ".");
+          }
+          values.push({ kind: kind, date: date, amount: amount, investor: investor });
+        });
+        return values;
+      }
+
+      function renderMissingMonths() {
+        var warning = $("chart-gap-warning");
+        var gaps = (state.data.summary || {}).missing_months || [];
+        if (!gaps.length) {
+          warning.hidden = true;
+          warning.textContent = "";
+          return;
+        }
+        warning.hidden = false;
+        warning.textContent = gaps.map(function (gap) {
+          return "Falta " + (gap.missing_labels || []).join(", ") +
+            ": el MoM de " + gap.for_month + " se calcula contra " + gap.compared_to + ".";
+        }).join(" ");
+      }
+
+      function drawAxes(svg, minValue, maxValue, formatter, ticks, layout) {
+        var left = (layout && layout.left) || 85;
+        var top = (layout && layout.top) || 25;
+        var width = (layout && layout.width) || 775;
+        var height = (layout && layout.height) || 245;
+        var step = layout && layout.step;
+        var values = [];
+        if (step && step > 0) {
+          var tickCount = Math.round((maxValue - minValue) / step);
+          for (var tickIndex = 0; tickIndex <= tickCount; tickIndex++) {
+            values.push(minValue + tickIndex * step);
+          }
+        } else {
+          var steps = ticks || 4;
+          for (var index = 0; index <= steps; index++) {
+            values.push(maxValue - ((maxValue - minValue) * index / steps));
+          }
+        }
+        values.forEach(function (value) {
+          var y = top + (maxValue - value) / (maxValue - minValue) * height;
+          var nearZero = step && Math.abs(value) < Math.abs(step) * 1e-6;
+          svg.appendChild(svgElement("line", {
+            x1: left, y1: y, x2: left + width, y2: y,
+            class: nearZero ? "yield-axis-line" : "yield-grid-line"
+          }));
+          svg.appendChild(svgElement("text", {
+            x: left - 10, y: y + 4, "text-anchor": "end", class: "yield-axis-label"
+          }, formatter(value)));
+        });
+        svg.appendChild(svgElement("line", {
+          x1: left, y1: top + height, x2: left + width, y2: top + height,
+          class: "yield-axis-line"
+        }));
+        return { left: left, top: top, width: width, height: height };
+      }
+
+      function niceStep(span, targetTicks) {
+        targetTicks = targetTicks || 6;
+        var raw = Math.abs(span) / targetTicks || 1;
+        var exp = Math.pow(10, Math.floor(Math.log(raw) / Math.LN10));
+        var n = raw / exp;
+        var nice = n <= 1 ? 1 : n <= 2 ? 2 : n <= 5 ? 5 : 10;
+        return nice * exp;
+      }
+
+      function niceScale(min, max) {
+        if (!isFinite(min) || !isFinite(max)) {
+          min = 0;
+          max = 1;
+        }
+        if (min === max) {
+          max = min + (Math.abs(min) || 1);
+        }
+        var step = niceStep(max - min, 6);
+        var niceMin = Math.floor(min / step) * step;
+        var niceMax = Math.ceil(max / step) * step;
+        if (niceMin === niceMax) niceMax += step;
+        return { min: niceMin, max: niceMax, step: step };
+      }
+
+      function dateToMs(value) {
+        var parts = String(value || "").slice(0, 10).split("-");
+        if (parts.length === 3) {
+          var year = Number(parts[0]);
+          var month = Number(parts[1]);
+          var day = Number(parts[2]);
+          if (year && month && day) {
+            return new Date(year, month - 1, day).getTime();
+          }
+        }
+        var parsed = Date.parse(value);
+        return isNaN(parsed) ? null : parsed;
+      }
+
+      function monthTickDates(minMs, maxMs) {
+        var start = new Date(minMs);
+        var cursor = new Date(start.getFullYear(), start.getMonth(), 1);
+        var ticks = [];
+        var guard = 0;
+        while (cursor.getTime() <= maxMs && guard < 120) {
+          ticks.push(new Date(cursor.getTime()));
+          cursor.setMonth(cursor.getMonth() + 1);
+          guard += 1;
+        }
+        var stride = ticks.length > 24 ? 3 : ticks.length > 16 ? 2 : 1;
+        return ticks.filter(function (_tick, index) {
+          return index % stride === 0;
+        });
+      }
+
+      function renderFlowsChart(data) {
+        var svg = $("chart-flujos");
+        svg.innerHTML = "";
+        if (!data) return;
+        var ars = state.unit === "ars";
+        var amountKey = ars ? "amount" : "amount_a3500";
+        var rendKey = ars ? "rendimiento_ars" : "rendimiento_a3500";
+        var unitPrefix = ars ? "$ " : "USD ";
+        var legend = $("chart-rend-legend");
+        if (legend) legend.textContent = ars ? "Rendimiento ARS" : "Rendimiento A3500";
+        var disclaimer = $("chart-fdr-disclaimer");
+        if (disclaimer) {
+          disclaimer.textContent = ars
+            ? "Eje X en tiempo calendario y eje Y lineal en millones de pesos: la misma distancia equivale al mismo plazo o al mismo monto."
+            : "Eje X en tiempo calendario y eje Y lineal en millones (A3500): la misma distancia equivale al mismo plazo o al mismo monto.";
+        }
+        var points = [];
+        (data.monthly || []).forEach(function (row) {
+          var x = dateToMs(row.date);
+          var y = Number(ars ? row.amount_ars : row.amount_a3500);
+          if (x == null || isNaN(y)) return;
+          points.push({
+            x: x, y: y, kind: "pn",
+            label: "PN " + (row.month_label || row.date) + ": " + unitPrefix + fmtNum(y)
+          });
+        });
+        (data.capital_flows || []).forEach(function (flow) {
+          var x = dateToMs(flow.date);
+          var y = Number(flow[amountKey]);
+          if (x == null || isNaN(y)) return;
+          var kind = flow.kind === "retiro" ? "retiro" : (flow.kind === "pago" ? "pago" : "aporte");
+          var kindLabel = kind === "retiro" ? "Retiro " : (kind === "pago" ? "Pago " : "Aporte ");
+          points.push({
+            x: x, y: y, kind: kind,
+            label: kindLabel + (flow.investor || "") + " " + flow.date + ": " + unitPrefix + fmtNum(y)
+          });
+        });
+        var rendPoints = [];
+        (data.monthly || []).forEach(function (row) {
+          if (row[rendKey] == null) return;
+          var x = dateToMs(row.date);
+          var y = Number(row[rendKey]);
+          if (x == null || isNaN(y)) return;
+          rendPoints.push({
+            x: x, y: y,
+            label: (ars ? "Rendimiento ARS " : "Rendimiento A3500 ") + (row.month_label || row.date) + ": " + unitPrefix + fmtNum(y)
+          });
+        });
+        if (!points.length && !rendPoints.length) return;
+        var xs = points.concat(rendPoints).map(function (point) { return point.x; });
+        var ys = points.concat(rendPoints).map(function (point) { return point.y; });
+        var minX = Math.min.apply(null, xs);
+        var maxX = Math.max.apply(null, xs);
+        if (minX === maxX) maxX += 86400000 * 30;
+        var padX = Math.max((maxX - minX) * 0.03, 86400000 * 7);
+        minX -= padX;
+        maxX += padX;
+        rendPoints.sort(function (a, b) { return a.x - b.x; });
+        var scale = niceScale(Math.min.apply(null, ys), Math.max.apply(null, ys));
+        var min = scale.min;
+        var max = scale.max;
+        var layout = { left: 88, top: 20, width: 840, height: 310, step: scale.step };
+        var formatter = function (value) {
+          return Number(value / 1000000).toLocaleString("es-AR", {
+            maximumFractionDigits: 0
+          });
+        };
+        var chart = drawAxes(svg, min, max, formatter, 6, layout);
+        svg.appendChild(svgElement("text", {
+          x: 14,
+          y: chart.top + chart.height / 2,
+          "text-anchor": "middle",
+          class: "yield-axis-label",
+          transform: "rotate(-90 14 " + (chart.top + chart.height / 2) + ")"
+        }, "Millones"));
+        monthTickDates(minX, maxX).forEach(function (tick) {
+          var x = chart.left + (tick.getTime() - minX) / (maxX - minX) * chart.width;
+          if (x < chart.left - 1 || x > chart.left + chart.width + 1) return;
+          svg.appendChild(svgElement("line", {
+            x1: x, y1: chart.top, x2: x, y2: chart.top + chart.height, class: "yield-grid-line"
+          }));
+          var label = String(tick.getMonth() + 1).padStart(2, "0") + "/" + tick.getFullYear();
+          svg.appendChild(svgElement("text", {
+            x: x, y: chart.top + chart.height + 22,
+            "text-anchor": "middle", class: "yield-axis-label"
+          }, label));
+        });
+        function plotX(ms) {
+          return chart.left + (ms - minX) / (maxX - minX) * chart.width;
+        }
+        function plotY(value) {
+          return chart.top + (max - value) / (max - min) * chart.height;
+        }
+        if (rendPoints.length) {
+          svg.appendChild(svgElement("polyline", {
+            points: rendPoints.map(function (point) {
+              return plotX(point.x) + "," + plotY(point.y);
+            }).join(" "),
+            class: "yield-line yield-line-rendimiento"
+          }));
+          rendPoints.forEach(function (point) {
+            var circle = svgElement("circle", {
+              cx: plotX(point.x), cy: plotY(point.y), r: 4, class: "yield-point yield-point-rendimiento"
+            });
+            circle.appendChild(svgElement("title", {}, point.label));
+            svg.appendChild(circle);
+          });
+        }
+        points.forEach(function (point) {
+          var circle = svgElement("circle", {
+            cx: plotX(point.x), cy: plotY(point.y), r: point.kind === "pn" ? 6 : 5,
+            class: "yield-point yield-point-" + point.kind
+          });
+          circle.appendChild(svgElement("title", {}, point.label));
+          svg.appendChild(circle);
+        });
+      }
+
+      function uniqueSorted(values) {
+        return values.filter(function (value, index, list) {
+          return value && list.indexOf(value) === index;
+        }).sort();
+      }
+
+      function fillFlowFilters(flows) {
+        var dateSelect = $("filter-flow-date");
+        var investorSelect = $("filter-flow-investor");
+        var currentDate = dateSelect.value;
+        var currentInvestor = investorSelect.value;
+        dateSelect.innerHTML = '<option value="">Todas</option>';
+        investorSelect.innerHTML = '<option value="">Todos</option>';
+        uniqueSorted(flows.map(function (flow) { return flow.date; })).forEach(function (value) {
+          var option = document.createElement("option");
+          option.value = value;
+          option.textContent = value;
+          dateSelect.appendChild(option);
+        });
+        uniqueSorted(flows.map(function (flow) { return flow.investor; })).forEach(function (value) {
+          var option = document.createElement("option");
+          option.value = value;
+          option.textContent = value;
+          investorSelect.appendChild(option);
+        });
+        dateSelect.value = currentDate;
+        investorSelect.value = currentInvestor;
+      }
+
+      function renderFlowsTable() {
+        var tbody = $("tabla-flujos").querySelector("tbody");
+        tbody.innerHTML = "";
+        var flows = (state.data && state.data.capital_flows) || [];
+        var dateFilter = $("filter-flow-date").value;
+        var investorFilter = $("filter-flow-investor").value;
+        var kindFilter = $("filter-flow-kind").value;
+        flows.filter(function (flow) {
+          if (kindFilter && flow.kind !== kindFilter) return false;
+          if (dateFilter && flow.date !== dateFilter) return false;
+          if (investorFilter && flow.investor !== investorFilter) return false;
+          return true;
+        }).forEach(function (flow) {
+          var tr = document.createElement("tr");
+          [
+            flow.kind === "retiro" ? "Retiro" : (flow.kind === "pago" ? "Pago de rendimiento" : "Aporte"),
+            flow.date,
+            flow.investor || "—",
+            "$ " + fmtNum(flow.amount),
+            fmtRate(flow.fx_rate),
+            fmtNum(flow.amount_a3500),
+            flow.filename || "—"
+          ].forEach(function (value, index) {
+            var td = document.createElement("td");
+            if (index === 3 || index === 4 || index === 5) td.className = "num";
+            td.textContent = value;
+            tr.appendChild(td);
+          });
+          tbody.appendChild(tr);
+        });
+      }
+
+      function renderTable(rows) {
+        var tbody = $("tabla-rendimientos").querySelector("tbody");
+        tbody.innerHTML = "";
+        rows.forEach(function (row) {
+          var tr = document.createElement("tr");
+          [
+            row.month_label,
+            row.date,
+            "$ " + fmtNum(row.amount_ars),
+            fmtNum(row.amount_a3500),
+            "$ " + fmtNum(row.retiros_ars),
+            "$ " + fmtNum(row.aportes_ars),
+            "$ " + fmtNum(row.pagos_ars),
+            row.rendimiento_ars == null ? "—" : "$ " + fmtNum(row.rendimiento_ars),
+            fmtNum(row.retiros_a3500),
+            fmtNum(row.aportes_a3500),
+            fmtNum(row.pagos_a3500),
+            row.rendimiento_a3500 == null ? "—" : fmtNum(row.rendimiento_a3500),
+            fmtPct(row.mom_pct_pn, 0),
+            fmtPct(row.mom_pct_pn_a3500, 0),
+            fmtPct(row.mom_pct_fx, 0),
+            fmtRate(row.fx_rate),
+            row.source,
+            row.filename || "—"
+          ].forEach(function (value, index) {
+            var td = document.createElement("td");
+            if (index >= 2 && index <= 15) td.className = "num";
+            td.textContent = value;
+            tr.appendChild(td);
+          });
+          tbody.appendChild(tr);
+        });
+      }
+
+      function render(data, saved) {
+        if (!data || !data.monthly || !data.monthly.length) return;
+        state.data = data;
+        $("results-section").style.display = "block";
+        renderMissingMonths();
+        renderFlowsChart(data);
+        renderTable(data.monthly);
+        fillFlowFilters(data.capital_flows || []);
+        renderFlowsTable();
+        if (saved) setStatus("Se cargó el último análisis guardado.", "ok");
+      }
+
+      async function processData() {
+        var files = state.files;
+        var manual, manualFx, manualFlows;
+        try {
+          manual = manualValues();
+          manualFx = manualFxValues();
+          manualFlows = manualFlowValues();
+        } catch (error) {
+          setStatus(String(error.message || error), "error");
+          return;
+        }
+        if (
+          !files.length &&
+          !manual.length &&
+          !state.flowFiles.length &&
+          !manualFlows.length &&
+          !state.fxFiles.length &&
+          !manualFx.length
+        ) {
+          setStatus("Cargá al menos un archivo de posición o de aportes y retiros.", "error");
+          return;
+        }
+        var button = $("btn-procesar");
+        button.disabled = true;
+        setStatus("Procesando posiciones y calculando rendimientos…");
+        var formData = new FormData();
+        files.forEach(function (file) {
+          formData.append("files", file);
+        });
+        state.fxFiles.forEach(function (file) {
+          formData.append("fx_files", file);
+        });
+        state.flowFiles.forEach(function (file) {
+          formData.append("flow_files", file);
+        });
+        formData.append("manual", JSON.stringify(manual));
+        formData.append("manual_fx", JSON.stringify(manualFx));
+        formData.append("manual_flows", JSON.stringify(manualFlows));
+        try {
+          var response = await sgrFetch("/api/rendimientos/procesar", {
+            method: "POST", body: formData
+          });
+          var data = await response.json();
+          if (!response.ok) throw new Error(data.error || "No se pudo procesar.");
+          render(data, false);
+          var persistence = data.persistence || {};
+          var notSaved = persistence.not_saved_files || [];
+          var persistenceText = notSaved.length
+            ? " " + notSaved.length + " archivo(s) no se acumularon porque no corresponden al último día hábil del mes."
+            : " Los cierres mensuales válidos quedaron acumulados.";
+          setStatus(
+            "Procesado OK: " + data.summary.observations +
+            " observaciones y " + data.summary.months + " meses." + persistenceText,
+            "ok"
+          );
+        } catch (error) {
+          setStatus(String(error.message || error), "error");
+        } finally {
+          button.disabled = false;
+        }
+      }
+
+      async function downloadReport(path, filename) {
+        try {
+          var separator = path.indexOf("?") === -1 ? "?" : "&";
+          var response = await sgrFetch(path + separator + "_=" + Date.now(), {
+            cache: "no-store"
+          });
+          if (!response.ok) {
+            var error = await response.json().catch(function () { return {}; });
+            throw new Error(error.error || "No se pudo generar el reporte.");
+          }
+          var blob = await response.blob();
+          var link = document.createElement("a");
+          link.href = URL.createObjectURL(blob);
+          link.download = filename;
+          document.body.appendChild(link);
+          link.click();
+          link.remove();
+          URL.revokeObjectURL(link.href);
+        } catch (error) {
+          setStatus(String(error.message || error), "error");
+        }
+      }
+
+      async function loadSaved() {
+        try {
+          var response = await sgrFetch("/api/rendimientos/resultados");
+          if (!response.ok) return;
+          render(await response.json(), true);
+        } catch (_error) {
+          setStatus("No se pudo cargar el análisis guardado.", "error");
+        }
+      }
+
+      $("btn-add-row").addEventListener("click", function () {
+        $("manual-rows").hidden = false;
+        this.setAttribute("aria-expanded", "true");
+        addManualRow();
+      });
+      $("btn-add-fx-row").addEventListener("click", function () {
+        $("manual-fx-rows").hidden = false;
+        this.setAttribute("aria-expanded", "true");
+        addManualFxRow();
+      });
+      $("btn-add-flow-row").addEventListener("click", function () {
+        $("manual-flow-rows").hidden = false;
+        this.setAttribute("aria-expanded", "true");
+        addManualFlowRow();
+      });
+      $("files-posicion").addEventListener("change", accumulateSelectedFiles);
+      $("files-a3500").addEventListener("change", accumulateFxFiles);
+      $("files-flujos").addEventListener("change", function () {
+        accumulateFiles("files-flujos", "flowFiles", "selected-flow-files");
+      });
+      $("btn-procesar").addEventListener("click", processData);
+      function closeDownloadMenu() {
+        $("download-menu").hidden = true;
+        $("btn-descargar").setAttribute("aria-expanded", "false");
+      }
+      $("btn-descargar").addEventListener("click", function (event) {
+        event.stopPropagation();
+        var menu = $("download-menu");
+        var open = menu.hidden;
+        menu.hidden = !open;
+        this.setAttribute("aria-expanded", open ? "true" : "false");
+      });
+      $("btn-excel").addEventListener("click", function () {
+        closeDownloadMenu();
+        downloadReport("/api/rendimientos/export/excel", "reporte_rendimientos.xlsx");
+      });
+      $("btn-pdf").addEventListener("click", function () {
+        closeDownloadMenu();
+        downloadReport("/api/rendimientos/export/pdf", "reporte_rendimientos.pdf");
+      });
+      document.addEventListener("click", function (event) {
+        if (!$("download-menu").hidden && !event.target.closest(".yield-download")) {
+          closeDownloadMenu();
+        }
+      });
+      document.querySelectorAll(".yield-currency-toggle .cards-filter-btn").forEach(function (button) {
+        button.addEventListener("click", function () {
+          document.querySelectorAll(".yield-currency-toggle .cards-filter-btn").forEach(function (item) {
+            item.classList.remove("active");
+          });
+          button.classList.add("active");
+          state.unit = button.dataset.unit;
+          if (state.data) {
+            renderFlowsChart(state.data);
+          }
+        });
+      });
+
+      $("btn-filtrar-flujos").addEventListener("click", function () {
+        var panel = $("flujos-filters");
+        panel.hidden = !panel.hidden;
+      });
+      $("filter-flow-kind").addEventListener("change", renderFlowsTable);
+      $("filter-flow-date").addEventListener("change", renderFlowsTable);
+      $("filter-flow-investor").addEventListener("change", renderFlowsTable);
+      loadSaved();
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calendario de Rentas | SGR tools</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="page-interna">
+  <div class="ticker-wrap" aria-label="Precios de mercado">
+    <div id="ticker-bar" class="ticker-bar"></div>
+  </div>
+  <div class="container container-wide">
+    <div class="page-header-row">
+      <a href="index.html" class="back-link">← Volver</a>
+      <header class="site-header">
+        <span class="header-flag" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 16" width="32" height="22"><rect fill="#74ACDF" width="24" height="16"/><rect y="5.33" fill="#FFF" width="24" height="5.34"/><circle cx="12" cy="8" r="2.5" fill="#F4B800"/></svg></span>
+        <h1>SGR tools</h1>
+        <p class="subtitle">Operaciones</p>
+      </header>
+    </div>
+
+    <main class="page-content">
+      <section class="form-block">
+        <h2 class="tool-title">Calendario de Rentas</h2>
+        <ol class="tool-desc tool-desc-list">
+          <li>Cargá el archivo de <strong>Posición</strong>.</li>
+          <li>Se toma la primera hoja y se cruza ticker y mes con el calendario público de <a href="https://bolsar.info/calendario.php" target="_blank" rel="noopener">Bolsar</a>.</li>
+          <li>Cada carga actualiza la posición guardada: agrega las nuevas tenencias y quita las que ya no están.</li>
+        </ol>
+
+        <form id="form-rentas" novalidate action="javascript:void(0);">
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="file-posicion">Archivo de Posición</label>
+              <input type="file" id="file-posicion" accept=".xlsx,.xls,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-excel" required>
+            </div>
+            <div class="form-actions">
+              <button type="button" id="btn-procesar">Actualizar calendario</button>
+            </div>
+          </div>
+        </form>
+
+        <p id="status-msg" class="status-msg" role="status" aria-live="polite"></p>
+        <div id="summary" class="summary-chips" style="display:none;"></div>
+        <p id="saved-info" class="result-summary"></p>
+      </section>
+
+      <section id="results-section" class="form-block" style="display:none;">
+        <div class="calendar-controls">
+          <div class="form-group">
+            <label for="cal-year">Año</label>
+            <select id="cal-year"></select>
+          </div>
+          <div class="form-group">
+            <label for="cal-month">Mes</label>
+            <select id="cal-month">
+              <option value="">Todos</option>
+              <option value="1">Enero</option>
+              <option value="2">Febrero</option>
+              <option value="3">Marzo</option>
+              <option value="4">Abril</option>
+              <option value="5">Mayo</option>
+              <option value="6">Junio</option>
+              <option value="7">Julio</option>
+              <option value="8">Agosto</option>
+              <option value="9">Septiembre</option>
+              <option value="10">Octubre</option>
+              <option value="11">Noviembre</option>
+              <option value="12">Diciembre</option>
+            </select>
+          </div>
+        </div>
+
+        <div id="calendar-grid-wrap">
+          <div class="calendar-grid" id="calendar-dow"></div>
+          <div class="calendar-grid" id="calendar-days"></div>
+        </div>
+        <div id="calendar-list"></div>
+
+        <details id="unmatched-wrap" class="rentas-details">
+          <summary>Tenencias sin pagos publicados en el período (<span id="unmatched-count">0</span>)</summary>
+          <div id="unmatched-list" class="rentas-ticker-list"></div>
+        </details>
+      </section>
+    </main>
+  </div>
+
+  <script src="assets/api.js"></script>
+  <script src="assets/ticker.js"></script>
+  <script>
+    (function () {
+      "use strict";
+
+      var state = { data: null };
+      var monthNames = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
+        "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
+
+      function $(id) { return document.getElementById(id); }
+
+      function setStatus(message, kind) {
+        var el = $("status-msg");
+        el.textContent = message || "";
+        el.className = "status-msg" + (kind ? " " + kind : "");
+      }
+
+      function fmtNum(value) {
+        if (value == null || value === "" || isNaN(Number(value))) return "—";
+        return Number(value).toLocaleString("es-AR", {
+          maximumFractionDigits: 0
+        });
+      }
+
+      function fmtDateTime(value) {
+        if (!value) return "";
+        var parsed = new Date(value);
+        return isNaN(parsed.getTime()) ? value : parsed.toLocaleString("es-AR");
+      }
+
+      function renderSummary() {
+        var data = state.data;
+        var summary = data.summary || {};
+        var el = $("summary");
+        el.style.display = "flex";
+        el.innerHTML =
+          '<span class="summary-chip">Tenencias: <strong>' + (summary.holdings || 0) + "</strong></span>" +
+          '<span class="summary-chip">Con pagos: <strong>' + (summary.matched || 0) + "</strong></span>" +
+          '<span class="summary-chip">Pagos: <strong>' + (summary.payments || 0) + "</strong></span>" +
+          '<span class="summary-chip">Sin coincidencia: <strong>' + (summary.unmatched || 0) + "</strong></span>";
+
+        var meta = data.meta || {};
+        $("saved-info").textContent = meta.position_file
+          ? "Última posición guardada: " + meta.position_file +
+            " · Fecha de posición: " + (meta.position_date || "—") +
+            " · Actualizado: " + fmtDateTime(meta.updated_at) +
+            " · Fuente: " + (meta.calendar_source || "Bolsar")
+          : "";
+      }
+
+      function setupSelectors() {
+        var data = state.data;
+        var years = (data.calendar && data.calendar.years) || [];
+        var yearSelect = $("cal-year");
+        yearSelect.innerHTML = "";
+        years.forEach(function (year) {
+          var option = document.createElement("option");
+          option.value = year;
+          option.textContent = year;
+          yearSelect.appendChild(option);
+        });
+
+        var metaDate = (data.meta && data.meta.position_date) || "";
+        var defaultYear = metaDate.slice(0, 4);
+        var defaultMonth = parseInt(metaDate.slice(5, 7), 10);
+        if (years.indexOf(defaultYear) < 0 && years.length) defaultYear = years[0];
+        yearSelect.value = defaultYear;
+        $("cal-month").value = String(defaultMonth || 1);
+      }
+
+      function filteredDates() {
+        var byDay = (state.data.calendar && state.data.calendar.by_day) || {};
+        var year = $("cal-year").value;
+        var month = $("cal-month").value;
+        return Object.keys(byDay).filter(function (iso) {
+          if (year && iso.slice(0, 4) !== year) return false;
+          return !month || parseInt(iso.slice(5, 7), 10) === parseInt(month, 10);
+        }).sort();
+      }
+
+      function eventNode(event) {
+        var node = document.createElement("span");
+        node.className = "calendar-event rentas-event";
+        node.title = event.summary || "";
+        var ticker = document.createElement("strong");
+        ticker.textContent = event.ticker || "";
+        var type = document.createElement("span");
+        type.textContent = event.type || "Pago";
+        var quantity = document.createElement("span");
+        quantity.className = "ev-amt";
+        quantity.textContent = "VN " + fmtNum(event.quantity);
+        node.appendChild(ticker);
+        node.appendChild(type);
+        node.appendChild(quantity);
+        return node;
+      }
+
+      function renderGrid(year, month) {
+        var byDay = state.data.calendar.by_day || {};
+        var daysEl = $("calendar-days");
+        var dowEl = $("calendar-dow");
+        dowEl.innerHTML = "";
+        daysEl.innerHTML = "";
+        ["Lun", "Mar", "Mié", "Jue", "Vie", "Sáb", "Dom"].forEach(function (label) {
+          var el = document.createElement("div");
+          el.className = "calendar-dow";
+          el.textContent = label;
+          dowEl.appendChild(el);
+        });
+
+        var first = new Date(year, month - 1, 1);
+        var padding = (first.getDay() + 6) % 7;
+        var daysInMonth = new Date(year, month, 0).getDate();
+        for (var i = 0; i < padding; i++) {
+          var empty = document.createElement("div");
+          empty.className = "calendar-day empty";
+          daysEl.appendChild(empty);
+        }
+        for (var day = 1; day <= daysInMonth; day++) {
+          var iso = String(year) + "-" + String(month).padStart(2, "0") + "-" +
+            String(day).padStart(2, "0");
+          var events = byDay[iso] || [];
+          var cell = document.createElement("div");
+          cell.className = "calendar-day" + (events.length ? " has-events" : "");
+          var number = document.createElement("div");
+          number.className = "day-num";
+          number.textContent = day;
+          cell.appendChild(number);
+          events.forEach(function (event) { cell.appendChild(eventNode(event)); });
+          daysEl.appendChild(cell);
+        }
+      }
+
+      function renderList(dates) {
+        var byDay = state.data.calendar.by_day || {};
+        var wrap = $("calendar-list");
+        wrap.innerHTML = "";
+        if (!dates.length) {
+          var empty = document.createElement("p");
+          empty.className = "result-summary";
+          empty.textContent = "No hay pagos publicados para las tenencias en el período seleccionado.";
+          wrap.appendChild(empty);
+          return;
+        }
+        var scroll = document.createElement("div");
+        scroll.className = "table-scroll";
+        var table = document.createElement("table");
+        table.className = "result-table";
+        table.innerHTML = "<thead><tr><th>Fecha de pago</th><th>Ticker</th>" +
+          '<th class="num">Valores nominales</th><th>Tipo</th><th>Fuente</th></tr></thead>';
+        var tbody = document.createElement("tbody");
+        dates.forEach(function (dateKey) {
+          (byDay[dateKey] || []).forEach(function (event) {
+            var row = document.createElement("tr");
+            [dateKey, event.ticker, fmtNum(event.quantity), event.type, event.source].forEach(
+              function (value, index) {
+                var cell = document.createElement("td");
+                if (index === 2) cell.className = "num";
+                cell.textContent = value || "";
+                row.appendChild(cell);
+              }
+            );
+            tbody.appendChild(row);
+          });
+        });
+        table.appendChild(tbody);
+        scroll.appendChild(table);
+        wrap.appendChild(scroll);
+      }
+
+      function renderCalendar() {
+        var year = parseInt($("cal-year").value, 10);
+        var month = parseInt($("cal-month").value, 10);
+        var dates = filteredDates();
+        if (year && month) {
+          $("calendar-grid-wrap").style.display = "block";
+          $("calendar-list").style.display = "none";
+          renderGrid(year, month);
+        } else {
+          $("calendar-grid-wrap").style.display = "none";
+          $("calendar-list").style.display = "block";
+          renderList(dates);
+        }
+      }
+
+      function renderUnmatched() {
+        var rows = state.data.unmatched || [];
+        $("unmatched-count").textContent = rows.length;
+        var list = $("unmatched-list");
+        list.innerHTML = "";
+        rows.forEach(function (row) {
+          var item = document.createElement("span");
+          item.textContent = row.ticker + " · VN " + fmtNum(row.quantity);
+          list.appendChild(item);
+        });
+        $("unmatched-wrap").style.display = rows.length ? "block" : "none";
+      }
+
+      function render(data) {
+        state.data = data;
+        var hasSaved = data.meta && data.meta.position_file;
+        $("results-section").style.display = hasSaved ? "block" : "none";
+        if (!hasSaved) return;
+        renderSummary();
+        setupSelectors();
+        renderCalendar();
+        renderUnmatched();
+      }
+
+      async function loadSaved() {
+        try {
+          var response = await sgrFetch("/api/calendario-rentas/resultados");
+          if (!response.ok) return;
+          var data = await response.json();
+          render(data);
+          if (data.meta && data.meta.position_file) {
+            setStatus("Se cargó el último calendario guardado.", "ok");
+          }
+        } catch (_error) {
+          setStatus("No se pudo cargar el calendario guardado.", "error");
+        }
+      }
+
+      async function processFile() {
+        var file = $("file-posicion").files && $("file-posicion").files[0];
+        if (!file) {
+          setStatus("Seleccioná un archivo de posición.", "error");
+          return;
+        }
+        var button = $("btn-procesar");
+        button.disabled = true;
+        setStatus("Leyendo posición y consultando el calendario de Bolsar…");
+        var formData = new FormData();
+        formData.append("posicion", file);
+        try {
+          var response = await sgrFetch("/api/calendario-rentas/procesar", {
+            method: "POST",
+            body: formData
+          });
+          var data = await response.json();
+          if (!response.ok) throw new Error(data.error || "No se pudo procesar la posición.");
+          render(data);
+          setStatus(
+            "Calendario actualizado: " + (data.summary.payments || 0) +
+            " pagos para " + (data.summary.matched || 0) + " especies.",
+            "ok"
+          );
+        } catch (error) {
+          var message = String(error.message || error);
+          if (message === "Failed to fetch" || message.indexOf("NetworkError") !== -1) {
+            message = "No se pudo conectar al servidor.";
+          }
+          setStatus(message, "error");
+        } finally {
+          button.disabled = false;
+        }
+      }
+
+      $("btn-procesar").addEventListener("click", processFile);
+      $("cal-year").addEventListener("change", renderCalendar);
+      $("cal-month").addEventListener("change", renderCalendar);
+      loadSaved();
+    })();
+  </script>
+</body>
+</html>
