@@ -1,0 +1,346 @@
+{
+  "events": [
+    {
+      "date": "2026-08-13",
+      "ticker": "LR6BO",
+      "quantity": 275000.0,
+      "type": "Amortización",
+      "summary": "Pago de amortización –   LR6BO; LR6CO",
+      "source": "Bolsar"
+    },
+    {
+      "date": "2026-08-13",
+      "ticker": "LR6BO",
+      "quantity": 275000.0,
+      "type": "Renta",
+      "summary": "Pago de renta –   BAF27; LR3DO; LR6BO; LR6CO; ORS1L",
+      "source": "Bolsar"
+    },
+    {
+      "date": "2026-08-31",
+      "ticker": "D31G6",
+      "quantity": 488000.0,
+      "type": "Amortización",
+      "summary": "Pago de amortización – BUG26; BYCVO; D31G6; M31G6; S31G6; T662O",
+      "source": "Bolsar"
+    },
+    {
+      "date": "2026-08-31",
+      "ticker": "D31G6",
+      "quantity": 488000.0,
+      "type": "Renta",
+      "summary": "Pago de renta – AO27; AO28; BUG26; BUN26; BYCVO; D31G6; M31G6; S31G6; T662O",
+      "source": "Bolsar"
+    },
+    {
+      "date": "2026-09-07",
+      "ticker": "CAC6O",
+      "quantity": 200000.0,
+      "type": "Amortización",
+      "summary": "Pago de amortización –  CAC6O; CP28O",
+      "source": "Bolsar"
+    },
+    {
+      "date": "2026-09-07",
+      "ticker": "PQCKO",
+      "quantity": 100000.0,
+      "type": "Renta",
+      "summary": "Pago de renta – PQCKO; PZCEO; VSCUO",
+      "source": "Bolsar"
+    },
+    {
+      "date": "2026-09-29",
+      "ticker": "LUC4O",
+      "quantity": 575000.0,
+      "type": "Amortización",
+      "summary": "Pago de amortización – LUC4O; WBS1O",
+      "source": "Bolsar"
+    },
+    {
+      "date": "2026-09-30",
+      "ticker": "D30S6",
+      "quantity": 300000.0,
+      "type": "Amortización",
+      "summary": "Pago de amortización –  D30S6; S30S6; X30S6",
+      "source": "Bolsar"
+    },
+    {
+      "date": "2026-10-10",
+      "ticker": "YMCTO",
+      "quantity": 300000.0,
+      "type": "Amortización",
+      "summary": "Pago de amortización – MI31; YMCTO",
+      "source": "Bolsar"
+    },
+    {
+      "date": "2026-10-16",
+      "ticker": "PQCQO",
+      "quantity": 500000.0,
+      "type": "Renta",
+      "summary": "Pago de renta –  MSSGO; PQCQO; SBC2O; TTCBO; YFCJO; YSS2L",
+      "source": "Bolsar"
+    },
+    {
+      "date": "2026-10-31",
+      "ticker": "BPOD7",
+      "quantity": 389606.0,
+      "type": "Renta",
+      "summary": "Pago de renta – BPOA7; BPOA8; BPOB7; BPOB8; BPOC7; BPOD7; RB60O",
+      "source": "Bolsar"
+    }
+  ],
+  "calendar": {
+    "by_day": {
+      "2026-08-13": [
+        {
+          "date": "2026-08-13",
+          "ticker": "LR6BO",
+          "quantity": 275000.0,
+          "type": "Amortización",
+          "summary": "Pago de amortización –   LR6BO; LR6CO",
+          "source": "Bolsar"
+        },
+        {
+          "date": "2026-08-13",
+          "ticker": "LR6BO",
+          "quantity": 275000.0,
+          "type": "Renta",
+          "summary": "Pago de renta –   BAF27; LR3DO; LR6BO; LR6CO; ORS1L",
+          "source": "Bolsar"
+        }
+      ],
+      "2026-08-31": [
+        {
+          "date": "2026-08-31",
+          "ticker": "D31G6",
+          "quantity": 488000.0,
+          "type": "Amortización",
+          "summary": "Pago de amortización – BUG26; BYCVO; D31G6; M31G6; S31G6; T662O",
+          "source": "Bolsar"
+        },
+        {
+          "date": "2026-08-31",
+          "ticker": "D31G6",
+          "quantity": 488000.0,
+          "type": "Renta",
+          "summary": "Pago de renta – AO27; AO28; BUG26; BUN26; BYCVO; D31G6; M31G6; S31G6; T662O",
+          "source": "Bolsar"
+        }
+      ],
+      "2026-09-07": [
+        {
+          "date": "2026-09-07",
+          "ticker": "CAC6O",
+          "quantity": 200000.0,
+          "type": "Amortización",
+          "summary": "Pago de amortización –  CAC6O; CP28O",
+          "source": "Bolsar"
+        },
+        {
+          "date": "2026-09-07",
+          "ticker": "PQCKO",
+          "quantity": 100000.0,
+          "type": "Renta",
+          "summary": "Pago de renta – PQCKO; PZCEO; VSCUO",
+          "source": "Bolsar"
+        }
+      ],
+      "2026-09-29": [
+        {
+          "date": "2026-09-29",
+          "ticker": "LUC4O",
+          "quantity": 575000.0,
+          "type": "Amortización",
+          "summary": "Pago de amortización – LUC4O; WBS1O",
+          "source": "Bolsar"
+        }
+      ],
+      "2026-09-30": [
+        {
+          "date": "2026-09-30",
+          "ticker": "D30S6",
+          "quantity": 300000.0,
+          "type": "Amortización",
+          "summary": "Pago de amortización –  D30S6; S30S6; X30S6",
+          "source": "Bolsar"
+        }
+      ],
+      "2026-10-10": [
+        {
+          "date": "2026-10-10",
+          "ticker": "YMCTO",
+          "quantity": 300000.0,
+          "type": "Amortización",
+          "summary": "Pago de amortización – MI31; YMCTO",
+          "source": "Bolsar"
+        }
+      ],
+      "2026-10-16": [
+        {
+          "date": "2026-10-16",
+          "ticker": "PQCQO",
+          "quantity": 500000.0,
+          "type": "Renta",
+          "summary": "Pago de renta –  MSSGO; PQCQO; SBC2O; TTCBO; YFCJO; YSS2L",
+          "source": "Bolsar"
+        }
+      ],
+      "2026-10-31": [
+        {
+          "date": "2026-10-31",
+          "ticker": "BPOD7",
+          "quantity": 389606.0,
+          "type": "Renta",
+          "summary": "Pago de renta – BPOA7; BPOA8; BPOB7; BPOB8; BPOC7; BPOD7; RB60O",
+          "source": "Bolsar"
+        }
+      ]
+    },
+    "years": [
+      "2026"
+    ]
+  },
+  "holdings": [
+    {
+      "ticker": "AL30",
+      "quantity": 28546.0
+    },
+    {
+      "ticker": "BPOD7",
+      "quantity": 389606.0
+    },
+    {
+      "ticker": "BT21P",
+      "quantity": 500000.0
+    },
+    {
+      "ticker": "CAC6O",
+      "quantity": 200000.0
+    },
+    {
+      "ticker": "D30S6",
+      "quantity": 300000.0
+    },
+    {
+      "ticker": "D31G6",
+      "quantity": 488000.0
+    },
+    {
+      "ticker": "DOLAR",
+      "quantity": 0.0
+    },
+    {
+      "ticker": "FCI",
+      "quantity": 689492179.868848
+    },
+    {
+      "ticker": "GE22P",
+      "quantity": 100000.0
+    },
+    {
+      "ticker": "LR6BO",
+      "quantity": 275000.0
+    },
+    {
+      "ticker": "LUC4O",
+      "quantity": 575000.0
+    },
+    {
+      "ticker": "MONEY",
+      "quantity": 160703599.045262
+    },
+    {
+      "ticker": "PQCKO",
+      "quantity": 100000.0
+    },
+    {
+      "ticker": "PQCQO",
+      "quantity": 500000.0
+    },
+    {
+      "ticker": "PYME",
+      "quantity": 2181333.922999
+    },
+    {
+      "ticker": "TLCKO",
+      "quantity": 250000.0
+    },
+    {
+      "ticker": "TZV27",
+      "quantity": 312942.0
+    },
+    {
+      "ticker": "TZVD8",
+      "quantity": 600000.0
+    },
+    {
+      "ticker": "YMCTO",
+      "quantity": 300000.0
+    },
+    {
+      "ticker": "ZUS2P",
+      "quantity": 50000.0
+    }
+  ],
+  "unmatched": [
+    {
+      "ticker": "AL30",
+      "quantity": 28546.0
+    },
+    {
+      "ticker": "BT21P",
+      "quantity": 500000.0
+    },
+    {
+      "ticker": "DOLAR",
+      "quantity": 0.0
+    },
+    {
+      "ticker": "FCI",
+      "quantity": 689492179.868848
+    },
+    {
+      "ticker": "GE22P",
+      "quantity": 100000.0
+    },
+    {
+      "ticker": "MONEY",
+      "quantity": 160703599.045262
+    },
+    {
+      "ticker": "PYME",
+      "quantity": 2181333.922999
+    },
+    {
+      "ticker": "TLCKO",
+      "quantity": 250000.0
+    },
+    {
+      "ticker": "TZV27",
+      "quantity": 312942.0
+    },
+    {
+      "ticker": "TZVD8",
+      "quantity": 600000.0
+    },
+    {
+      "ticker": "ZUS2P",
+      "quantity": 50000.0
+    }
+  ],
+  "summary": {
+    "holdings": 20,
+    "matched": 9,
+    "unmatched": 11,
+    "payments": 11
+  },
+  "meta": {
+    "position_file": "Tablero de control - 07-08-2026.xlsx",
+    "position_date": "2026-08-07",
+    "position_sheet": "Limites operativos",
+    "calendar_source": "Bolsar (en línea)",
+    "calendar_url": "https://bolsar.info/calendario.php",
+    "updated_at": "2026-08-12T21:20:29.300208+00:00",
+    "rule": "Cada carga reemplaza la posición anterior."
+  }
+}

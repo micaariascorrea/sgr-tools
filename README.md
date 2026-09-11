@@ -12,7 +12,3 @@ No es una web pública: corre en tu PC.
 4. En Chrome o Edge abrí: http://127.0.0.1:5055
 
 La primera vez `run.bat` instala las librerías (`requirements.txt`) y hace falta internet.
-
-## Qué no va en este repo
-
-La carpeta `data/` (resultados procesados, flujos, A3500 guardado) no se publica. Cada computadora genera la suya al procesar los Excel.

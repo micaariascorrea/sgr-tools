@@ -5,8 +5,6 @@ __pycache__/
 venv/
 .env
 .env.*
-/data/*
-!/data/.gitkeep
 *.xlsx
 *.xls
 _*.py
