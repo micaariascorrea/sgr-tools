@@ -1,0 +1,4650 @@
+{
+  "calendar": {
+    "by_day": {
+      "2026-08-13": [
+        {
+          "id": "1f6a3a802cc58f401ae00b7b",
+          "date": "2026-08-13",
+          "original_date": "2026-08-13",
+          "source": "Rentas",
+          "title": "LR6BO",
+          "subtitle": "Amortización",
+          "ticker": "LR6BO",
+          "quantity": 275000.0,
+          "summary": "Pago de amortización –   LR6BO; LR6CO",
+          "moved": false
+        },
+        {
+          "id": "5b99e056101359c9df893eb6",
+          "date": "2026-08-13",
+          "original_date": "2026-08-13",
+          "source": "Rentas",
+          "title": "LR6BO",
+          "subtitle": "Renta",
+          "ticker": "LR6BO",
+          "quantity": 275000.0,
+          "summary": "Pago de renta –   BAF27; LR3DO; LR6BO; LR6CO; ORS1L",
+          "moved": false
+        }
+      ],
+      "2026-08-31": [
+        {
+          "id": "d6c6b6a53d26b403a7729ea2",
+          "date": "2026-08-31",
+          "original_date": "2026-08-31",
+          "source": "Rentas",
+          "title": "D31G6",
+          "subtitle": "Amortización",
+          "ticker": "D31G6",
+          "quantity": 488000.0,
+          "summary": "Pago de amortización – BUG26; BYCVO; D31G6; M31G6; S31G6; T662O",
+          "moved": false
+        },
+        {
+          "id": "47ec24d44609291d1e808633",
+          "date": "2026-08-31",
+          "original_date": "2026-08-31",
+          "source": "Rentas",
+          "title": "D31G6",
+          "subtitle": "Renta",
+          "ticker": "D31G6",
+          "quantity": 488000.0,
+          "summary": "Pago de renta – AO27; AO28; BUG26; BUN26; BYCVO; D31G6; M31G6; S31G6; T662O",
+          "moved": false
+        }
+      ],
+      "2026-09-07": [
+        {
+          "id": "ea6898f78b35359194baf836",
+          "date": "2026-09-07",
+          "original_date": "2026-09-07",
+          "source": "Rentas",
+          "title": "CAC6O",
+          "subtitle": "Amortización",
+          "ticker": "CAC6O",
+          "quantity": 200000.0,
+          "summary": "Pago de amortización –  CAC6O; CP28O",
+          "moved": false
+        },
+        {
+          "id": "11c97f5644f0ca7f60c0e75d",
+          "date": "2026-09-07",
+          "original_date": "2026-09-07",
+          "source": "Rentas",
+          "title": "PQCKO",
+          "subtitle": "Renta",
+          "ticker": "PQCKO",
+          "quantity": 100000.0,
+          "summary": "Pago de renta – PQCKO; PZCEO; VSCUO",
+          "moved": false
+        }
+      ],
+      "2026-09-29": [
+        {
+          "id": "b4f90d2beffd325003a3e669",
+          "date": "2026-09-29",
+          "original_date": "2026-09-29",
+          "source": "Contingente",
+          "title": "VIÑEDOS DE LA PATAGONIA SRL",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 3620290.56,
+          "aforo": 3801305.09,
+          "due_date": "2026-08-31",
+          "claimed": false,
+          "moved": false
+        },
+        {
+          "id": "45008e919cf4a2bc34af0963",
+          "date": "2026-09-29",
+          "original_date": "2026-09-29",
+          "source": "Rentas",
+          "title": "LUC4O",
+          "subtitle": "Amortización",
+          "ticker": "LUC4O",
+          "quantity": 575000.0,
+          "summary": "Pago de amortización – LUC4O; WBS1O",
+          "moved": false
+        }
+      ],
+      "2026-09-30": [
+        {
+          "id": "893853774352b5546c2c32ba",
+          "date": "2026-09-30",
+          "original_date": "2026-09-30",
+          "source": "Contingente",
+          "title": "BAIFER SRL",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 2364295.67,
+          "aforo": 2482510.45,
+          "due_date": "2026-09-01",
+          "claimed": false,
+          "moved": false
+        },
+        {
+          "id": "aa0052bcb8c539779ef2c844",
+          "date": "2026-09-30",
+          "original_date": "2026-09-30",
+          "source": "Rentas",
+          "title": "D30S6",
+          "subtitle": "Amortización",
+          "ticker": "D30S6",
+          "quantity": 300000.0,
+          "summary": "Pago de amortización –  D30S6; S30S6; X30S6",
+          "moved": false
+        }
+      ],
+      "2026-10-10": [
+        {
+          "id": "4700f663eb718a59a467eae0",
+          "date": "2026-10-10",
+          "original_date": "2026-10-10",
+          "source": "Rentas",
+          "title": "YMCTO",
+          "subtitle": "Amortización",
+          "ticker": "YMCTO",
+          "quantity": 300000.0,
+          "summary": "Pago de amortización – MI31; YMCTO",
+          "moved": false
+        }
+      ],
+      "2026-10-16": [
+        {
+          "id": "5ebb02c442da28d5049ffb1c",
+          "date": "2026-10-16",
+          "original_date": "2026-10-16",
+          "source": "Contingente",
+          "title": "SERVIGRUAS S. A.",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 24158454.77,
+          "aforo": 25366377.51,
+          "due_date": "2026-09-19",
+          "claimed": false,
+          "moved": false
+        },
+        {
+          "id": "dd51d04a5d7cf2684d77fb3c",
+          "date": "2026-10-16",
+          "original_date": "2026-10-16",
+          "source": "Rentas",
+          "title": "PQCQO",
+          "subtitle": "Renta",
+          "ticker": "PQCQO",
+          "quantity": 500000.0,
+          "summary": "Pago de renta –  MSSGO; PQCQO; SBC2O; TTCBO; YFCJO; YSS2L",
+          "moved": false
+        }
+      ],
+      "2026-10-31": [
+        {
+          "id": "eedcd0fbc9c568a1004bf675",
+          "date": "2026-10-31",
+          "original_date": "2026-10-31",
+          "source": "Rentas",
+          "title": "BPOD7",
+          "subtitle": "Renta",
+          "ticker": "BPOD7",
+          "quantity": 389606.0,
+          "summary": "Pago de renta – BPOA7; BPOA8; BPOB7; BPOB8; BPOC7; BPOD7; RB60O",
+          "moved": false
+        }
+      ],
+      "2025-05-06": [
+        {
+          "id": "6c03877ea39918007d291141",
+          "date": "2025-05-06",
+          "original_date": "2025-05-06",
+          "source": "Contingente",
+          "title": "VIÑEDOS DE LA PATAGONIA SRL",
+          "subtitle": "Abonada por el cliente",
+          "amount": 3620290.56,
+          "aforo": 3801305.09,
+          "due_date": "2025-04-07",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2025-06-05": [
+        {
+          "id": "cd5c70545762a6ffb1998a0e",
+          "date": "2025-06-05",
+          "original_date": "2025-06-05",
+          "source": "Contingente",
+          "title": "VIÑEDOS DE LA PATAGONIA SRL",
+          "subtitle": "Abonada por el cliente",
+          "amount": 3620290.56,
+          "aforo": 3801305.09,
+          "due_date": "2025-05-07",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2025-07-04": [
+        {
+          "id": "b9d8a5107d2d466c2c24346a",
+          "date": "2025-07-04",
+          "original_date": "2025-07-04",
+          "source": "Contingente",
+          "title": "VIÑEDOS DE LA PATAGONIA SRL",
+          "subtitle": "Abonada por el cliente",
+          "amount": 3620290.56,
+          "aforo": 3801305.09,
+          "due_date": "2025-06-06",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2025-08-05": [
+        {
+          "id": "f92593b5e0b4359655dce5c5",
+          "date": "2025-08-05",
+          "original_date": "2025-08-05",
+          "source": "Contingente",
+          "title": "VIÑEDOS DE LA PATAGONIA SRL",
+          "subtitle": "Abonada por el cliente",
+          "amount": 3620290.56,
+          "aforo": 3801305.09,
+          "due_date": "2025-07-07",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2025-08-29": [
+        {
+          "id": "4a45780deda1828b251bdaac",
+          "date": "2025-08-29",
+          "original_date": "2025-08-29",
+          "source": "Contingente",
+          "title": "BAIFER SRL",
+          "subtitle": "Abonada por el cliente",
+          "amount": 2364295.67,
+          "aforo": 2482510.45,
+          "due_date": "2025-08-01",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2025-09-03": [
+        {
+          "id": "a0441c537835ab8d162c682c",
+          "date": "2025-09-03",
+          "original_date": "2025-09-03",
+          "source": "Contingente",
+          "title": "VIÑEDOS DE LA PATAGONIA SRL",
+          "subtitle": "Abonada por el cliente",
+          "amount": 3620290.56,
+          "aforo": 3801305.09,
+          "due_date": "2025-08-05",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2025-09-23": [
+        {
+          "id": "21de568564c1af22fc75bc1f",
+          "date": "2025-09-23",
+          "original_date": "2025-09-23",
+          "source": "Contingente",
+          "title": "DON BAUTISTA SAS",
+          "subtitle": "Abonada por el cliente",
+          "amount": 79392.52,
+          "aforo": 83362.15,
+          "due_date": "2025-08-25",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2025-09-30": [
+        {
+          "id": "98afd10c4ff86905202eeac2",
+          "date": "2025-09-30",
+          "original_date": "2025-09-30",
+          "source": "Contingente",
+          "title": "BAIFER SRL",
+          "subtitle": "Abonada por el cliente",
+          "amount": 2364295.67,
+          "aforo": 2482510.45,
+          "due_date": "2025-09-01",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2025-10-03": [
+        {
+          "id": "2550fe06c882f3aad52229e8",
+          "date": "2025-10-03",
+          "original_date": "2025-10-03",
+          "source": "Contingente",
+          "title": "VIÑEDOS DE LA PATAGONIA SRL",
+          "subtitle": "Abonada por el cliente",
+          "amount": 3620290.56,
+          "aforo": 3801305.09,
+          "due_date": "2025-09-04",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2025-10-07": [
+        {
+          "id": "28718e3ffc7dc889c66d7e5d",
+          "date": "2025-10-07",
+          "original_date": "2025-10-07",
+          "source": "Contingente",
+          "title": "ZAFRA SA",
+          "subtitle": "Abonada por el cliente",
+          "amount": 19118918.59,
+          "aforo": 20074864.52,
+          "due_date": "2025-09-08",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2025-10-17": [
+        {
+          "id": "02ee90fb846f9f171e94e353",
+          "date": "2025-10-17",
+          "original_date": "2025-10-17",
+          "source": "Contingente",
+          "title": "SERVIGRUAS S. A.",
+          "subtitle": "Abonada por el cliente",
+          "amount": 24158454.77,
+          "aforo": 25366377.51,
+          "due_date": "2025-09-19",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2025-10-24": [
+        {
+          "id": "dde34b5eaa000e30fd634cca",
+          "date": "2025-10-24",
+          "original_date": "2025-10-24",
+          "source": "Contingente",
+          "title": "DON BAUTISTA SAS",
+          "subtitle": "Abonada por el cliente",
+          "amount": 79392.52,
+          "aforo": 83362.15,
+          "due_date": "2025-09-25",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2025-10-30": [
+        {
+          "id": "a2251f0e4b4202f2a58ffb61",
+          "date": "2025-10-30",
+          "original_date": "2025-10-30",
+          "source": "Contingente",
+          "title": "BAIFER SRL",
+          "subtitle": "Abonada por el cliente",
+          "amount": 2364295.67,
+          "aforo": 2482510.45,
+          "due_date": "2025-10-01",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2025-11-04": [
+        {
+          "id": "839939e770a58ec78532c766",
+          "date": "2025-11-04",
+          "original_date": "2025-11-04",
+          "source": "Contingente",
+          "title": "VIÑEDOS DE LA PATAGONIA SRL",
+          "subtitle": "Abonada por el cliente",
+          "amount": 3620290.56,
+          "aforo": 3801305.09,
+          "due_date": "2025-10-06",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2025-11-06": [
+        {
+          "id": "4da4e6fa529de0703d04188f",
+          "date": "2025-11-06",
+          "original_date": "2025-11-06",
+          "source": "Contingente",
+          "title": "ZAFRA SA",
+          "subtitle": "Abonada por el cliente",
+          "amount": 19118918.59,
+          "aforo": 20074864.52,
+          "due_date": "2025-10-08",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2025-11-07": [
+        {
+          "id": "930896712a34f53010616d7e",
+          "date": "2025-11-07",
+          "original_date": "2025-11-07",
+          "source": "Contingente",
+          "title": "CONDOR WIRELINE S.R.L.",
+          "subtitle": "Abonada por el cliente",
+          "amount": 8995552.3,
+          "aforo": 9445329.92,
+          "due_date": "2025-10-09",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2025-11-17": [
+        {
+          "id": "9d2afdbbce1baa329ff58ce3",
+          "date": "2025-11-17",
+          "original_date": "2025-11-17",
+          "source": "Contingente",
+          "title": "SERVIGRUAS S. A.",
+          "subtitle": "Abonada por el cliente",
+          "amount": 24158454.77,
+          "aforo": 25366377.51,
+          "due_date": "2025-10-19",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2025-11-20": [
+        {
+          "id": "43dfb3c9cb1d385068b5be7e",
+          "date": "2025-11-20",
+          "original_date": "2025-11-20",
+          "source": "Contingente",
+          "title": "DON BAUTISTA SAS",
+          "subtitle": "Abonada por el cliente",
+          "amount": 79392.52,
+          "aforo": 83362.15,
+          "due_date": "2025-10-25",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2025-11-28": [
+        {
+          "id": "ce2d8e3c6951ad8d848aa66f",
+          "date": "2025-11-28",
+          "original_date": "2025-11-28",
+          "source": "Contingente",
+          "title": "BAIFER SRL",
+          "subtitle": "Abonada por el cliente",
+          "amount": 2364295.67,
+          "aforo": 2482510.45,
+          "due_date": "2025-11-01",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2025-12-02": [
+        {
+          "id": "2bcb4e09facaf89d710720f5",
+          "date": "2025-12-02",
+          "original_date": "2025-12-02",
+          "source": "Contingente",
+          "title": "VIÑEDOS DE LA PATAGONIA SRL",
+          "subtitle": "Abonada por el cliente",
+          "amount": 3620290.56,
+          "aforo": 3801305.09,
+          "due_date": "2025-11-03",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2025-12-05": [
+        {
+          "id": "05fe1d0845df4e6a651e0ea8",
+          "date": "2025-12-05",
+          "original_date": "2025-12-05",
+          "source": "Contingente",
+          "title": "ZAFRA SA",
+          "subtitle": "Abonada por el cliente",
+          "amount": 19118918.59,
+          "aforo": 20074864.52,
+          "due_date": "2025-11-08",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2025-12-09": [
+        {
+          "id": "06e83afd8e1d6869e0a6de03",
+          "date": "2025-12-09",
+          "original_date": "2025-12-09",
+          "source": "Contingente",
+          "title": "CONDOR WIRELINE S.R.L.",
+          "subtitle": "Abonada por el cliente",
+          "amount": 8995552.3,
+          "aforo": 9445329.92,
+          "due_date": "2025-11-10",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2025-12-12": [
+        {
+          "id": "5c07837eeff5d3c702d327b4",
+          "date": "2025-12-12",
+          "original_date": "2025-12-12",
+          "source": "Contingente",
+          "title": "BODEGA JEAN BOUSQUET TUPUNGATO S.A.",
+          "subtitle": "Abonada por el cliente",
+          "amount": 1702910.98,
+          "aforo": 1788056.53,
+          "due_date": "2025-11-13",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2025-12-18": [
+        {
+          "id": "24e4dd5b66fc0615e3b21812",
+          "date": "2025-12-18",
+          "original_date": "2025-12-18",
+          "source": "Contingente",
+          "title": "SERVIGRUAS S. A.",
+          "subtitle": "Abonada por el cliente",
+          "amount": 24158454.77,
+          "aforo": 25366377.51,
+          "due_date": "2025-11-19",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2025-12-24": [
+        {
+          "id": "529c9940f934be5386d88cf8",
+          "date": "2025-12-24",
+          "original_date": "2025-12-24",
+          "source": "Contingente",
+          "title": "DON BAUTISTA SAS",
+          "subtitle": "Abonada por el cliente",
+          "amount": 79392.52,
+          "aforo": 83362.15,
+          "due_date": "2025-11-25",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2025-12-30": [
+        {
+          "id": "113da8d0f104811e38850b7d",
+          "date": "2025-12-30",
+          "original_date": "2025-12-30",
+          "source": "Contingente",
+          "title": "BAIFER SRL",
+          "subtitle": "Abonada por el cliente",
+          "amount": 2364295.67,
+          "aforo": 2482510.45,
+          "due_date": "2025-12-01",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2025-12-31": [
+        {
+          "id": "2e9307641142a987644e871f",
+          "date": "2025-12-31",
+          "original_date": "2025-12-31",
+          "source": "Contingente",
+          "title": "VIÑEDOS DE LA PATAGONIA SRL",
+          "subtitle": "Abonada por el cliente",
+          "amount": 3620290.56,
+          "aforo": 3801305.09,
+          "due_date": "2025-12-03",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2026-01-06": [
+        {
+          "id": "8be313ae0cec5756232f810e",
+          "date": "2026-01-06",
+          "original_date": "2026-01-06",
+          "source": "Contingente",
+          "title": "ZAFRA SA",
+          "subtitle": "Abonada por el cliente",
+          "amount": 19118918.59,
+          "aforo": 20074864.52,
+          "due_date": "2025-12-08",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2026-01-07": [
+        {
+          "id": "98205936fc9b2253255486ea",
+          "date": "2026-01-07",
+          "original_date": "2026-01-07",
+          "source": "Contingente",
+          "title": "CONDOR WIRELINE S.R.L.",
+          "subtitle": "Abonada por el cliente",
+          "amount": 8995552.3,
+          "aforo": 9445329.92,
+          "due_date": "2025-12-09",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2026-01-09": [
+        {
+          "id": "cff78263281545aa0b8d1c06",
+          "date": "2026-01-09",
+          "original_date": "2026-01-09",
+          "source": "Contingente",
+          "title": "BODEGA JEAN BOUSQUET TUPUNGATO S.A.",
+          "subtitle": "Abonada por el cliente",
+          "amount": 1702910.98,
+          "aforo": 1788056.53,
+          "due_date": "2025-12-13",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2026-01-16": [
+        {
+          "id": "e9d8bc5ca3f894303c75fe59",
+          "date": "2026-01-16",
+          "original_date": "2026-01-16",
+          "source": "Contingente",
+          "title": "SERVIGRUAS S. A.",
+          "subtitle": "Abonada por el cliente",
+          "amount": 24158454.77,
+          "aforo": 25366377.51,
+          "due_date": "2025-12-19",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2026-01-23": [
+        {
+          "id": "1081df018484d2da689bfa19",
+          "date": "2026-01-23",
+          "original_date": "2026-01-23",
+          "source": "Contingente",
+          "title": "DON BAUTISTA SAS",
+          "subtitle": "Abonada por el cliente",
+          "amount": 79392.52,
+          "aforo": 83362.15,
+          "due_date": "2025-12-25",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2026-01-30": [
+        {
+          "id": "a370ae695cf3714345f61d37",
+          "date": "2026-01-30",
+          "original_date": "2026-01-30",
+          "source": "Contingente",
+          "title": "BAIFER SRL",
+          "subtitle": "Abonada por el cliente",
+          "amount": 2364295.67,
+          "aforo": 2482510.45,
+          "due_date": "2026-01-01",
+          "claimed": false,
+          "moved": false
+        },
+        {
+          "id": "55c676edbeb46a7024aa13e3",
+          "date": "2026-01-30",
+          "original_date": "2026-01-30",
+          "source": "Contingente",
+          "title": "VIÑEDOS DE LA PATAGONIA SRL",
+          "subtitle": "Abonada por el cliente",
+          "amount": 3620290.56,
+          "aforo": 3801305.09,
+          "due_date": "2026-01-02",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2026-02-06": [
+        {
+          "id": "0baf633ca72fdf6827d12eec",
+          "date": "2026-02-06",
+          "original_date": "2026-02-06",
+          "source": "Contingente",
+          "title": "CONDOR WIRELINE S.R.L.",
+          "subtitle": "Abonada por el cliente",
+          "amount": 8995552.3,
+          "aforo": 9445329.92,
+          "due_date": "2026-01-09",
+          "claimed": false,
+          "moved": false
+        },
+        {
+          "id": "ad67386f943051baf3661f2c",
+          "date": "2026-02-06",
+          "original_date": "2026-02-06",
+          "source": "Contingente",
+          "title": "ZAFRA SA",
+          "subtitle": "Abonada por la SGR",
+          "amount": 19118918.59,
+          "aforo": 20074864.52,
+          "due_date": "2026-01-08",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2026-02-11": [
+        {
+          "id": "42227e657056399abb3b0b49",
+          "date": "2026-02-11",
+          "original_date": "2026-02-11",
+          "source": "Contingente",
+          "title": "BODEGA JEAN BOUSQUET TUPUNGATO S.A.",
+          "subtitle": "Abonada por el cliente",
+          "amount": 1702910.98,
+          "aforo": 1788056.53,
+          "due_date": "2026-01-13",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2026-02-13": [
+        {
+          "id": "5dc670de12246cd40fcfc581",
+          "date": "2026-02-13",
+          "original_date": "2026-02-13",
+          "source": "Contingente",
+          "title": "SERVIGRUAS S. A.",
+          "subtitle": "Abonada por la SGR",
+          "amount": 24158454.77,
+          "aforo": 25366377.51,
+          "due_date": "2026-01-19",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2026-02-23": [
+        {
+          "id": "b5952839bdca32c269b167b6",
+          "date": "2026-02-23",
+          "original_date": "2026-02-23",
+          "source": "Contingente",
+          "title": "DON BAUTISTA SAS",
+          "subtitle": "Abonada por el cliente",
+          "amount": 79392.52,
+          "aforo": 83362.15,
+          "due_date": "2026-01-25",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2026-03-02": [
+        {
+          "id": "0819af048061fb979d9ba037",
+          "date": "2026-03-02",
+          "original_date": "2026-03-02",
+          "source": "Contingente",
+          "title": "BAIFER SRL",
+          "subtitle": "Abonada por el cliente",
+          "amount": 2364295.67,
+          "aforo": 2482510.45,
+          "due_date": "2026-02-01",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2026-03-03": [
+        {
+          "id": "b4f6418ee1669e8a18f5c071",
+          "date": "2026-03-03",
+          "original_date": "2026-03-03",
+          "source": "Contingente",
+          "title": "VIÑEDOS DE LA PATAGONIA SRL",
+          "subtitle": "Abonada por el cliente",
+          "amount": 3620290.56,
+          "aforo": 3801305.09,
+          "due_date": "2026-02-02",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2026-03-09": [
+        {
+          "id": "de2a234f37a0d1360a8e43c7",
+          "date": "2026-03-09",
+          "original_date": "2026-03-09",
+          "source": "Contingente",
+          "title": "ZAFRA SA",
+          "subtitle": "Abonada por la SGR",
+          "amount": 19118918.59,
+          "aforo": 20074864.52,
+          "due_date": "2026-02-08",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2026-03-10": [
+        {
+          "id": "a003e4cd2c207df15f365c0f",
+          "date": "2026-03-10",
+          "original_date": "2026-03-10",
+          "source": "Contingente",
+          "title": "CONDOR WIRELINE S.R.L.",
+          "subtitle": "Abonada por el cliente",
+          "amount": 8995552.3,
+          "aforo": 9445329.92,
+          "due_date": "2026-02-09",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2026-03-13": [
+        {
+          "id": "20a4aaef7eb7ae1b28dc8aca",
+          "date": "2026-03-13",
+          "original_date": "2026-03-13",
+          "source": "Contingente",
+          "title": "BODEGA JEAN BOUSQUET TUPUNGATO S.A.",
+          "subtitle": "Abonada por el cliente",
+          "amount": 1702910.98,
+          "aforo": 1788056.53,
+          "due_date": "2026-02-13",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2026-03-20": [
+        {
+          "id": "5d0708efeb2a43c81703cbd0",
+          "date": "2026-03-20",
+          "original_date": "2026-03-20",
+          "source": "Contingente",
+          "title": "SERVIGRUAS S. A.",
+          "subtitle": "Abonada por la SGR",
+          "amount": 24158454.77,
+          "aforo": 25366377.51,
+          "due_date": "2026-02-19",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2026-03-26": [
+        {
+          "id": "50d223dd5c46c58ea7d59d92",
+          "date": "2026-03-26",
+          "original_date": "2026-03-26",
+          "source": "Contingente",
+          "title": "DON BAUTISTA SAS",
+          "subtitle": "Abonada por el cliente",
+          "amount": 239986.95,
+          "aforo": 251986.29,
+          "due_date": "2026-02-25",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2026-03-30": [
+        {
+          "id": "5e0da5ba726fbc16b376e921",
+          "date": "2026-03-30",
+          "original_date": "2026-03-30",
+          "source": "Contingente",
+          "title": "BAIFER SRL",
+          "subtitle": "Abonada por el cliente",
+          "amount": 2364295.67,
+          "aforo": 2482510.45,
+          "due_date": "2026-03-01",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2026-04-01": [
+        {
+          "id": "f3c13f167063177b6a321804",
+          "date": "2026-04-01",
+          "original_date": "2026-04-01",
+          "source": "Contingente",
+          "title": "VIÑEDOS DE LA PATAGONIA SRL",
+          "subtitle": "Abonada por el cliente",
+          "amount": 3620290.56,
+          "aforo": 3801305.09,
+          "due_date": "2026-03-03",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2026-04-06": [
+        {
+          "id": "24e06e3ef5b93b6cc9587ae2",
+          "date": "2026-04-06",
+          "original_date": "2026-04-06",
+          "source": "Contingente",
+          "title": "ZAFRA SA",
+          "subtitle": "Abonada por la SGR",
+          "amount": 19118918.59,
+          "aforo": 20074864.52,
+          "due_date": "2026-03-08",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2026-04-07": [
+        {
+          "id": "a700481eec24385bb42bb229",
+          "date": "2026-04-07",
+          "original_date": "2026-04-07",
+          "source": "Contingente",
+          "title": "CONDOR WIRELINE S.R.L.",
+          "subtitle": "Abonada por el cliente",
+          "amount": 8995552.3,
+          "aforo": 9445329.92,
+          "due_date": "2026-03-09",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2026-04-10": [
+        {
+          "id": "38622c2268a99e27aa12c579",
+          "date": "2026-04-10",
+          "original_date": "2026-04-10",
+          "source": "Contingente",
+          "title": "BODEGA JEAN BOUSQUET TUPUNGATO S.A.",
+          "subtitle": "Abonada por el cliente",
+          "amount": 1702910.98,
+          "aforo": 1788056.53,
+          "due_date": "2026-03-13",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2026-04-17": [
+        {
+          "id": "4385cc1c04c6ffb0f34594c0",
+          "date": "2026-04-17",
+          "original_date": "2026-04-17",
+          "source": "Contingente",
+          "title": "SERVIGRUAS S. A.",
+          "subtitle": "Abonada por la SGR",
+          "amount": 24158454.77,
+          "aforo": 25366377.51,
+          "due_date": "2026-03-19",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2026-04-23": [
+        {
+          "id": "b2ff30c75ad63aaf10d43971",
+          "date": "2026-04-23",
+          "original_date": "2026-04-23",
+          "source": "Contingente",
+          "title": "DON BAUTISTA SAS",
+          "subtitle": "Abonada por el cliente",
+          "amount": 239986.95,
+          "aforo": 251986.29,
+          "due_date": "2026-03-25",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2026-04-30": [
+        {
+          "id": "b173ad77ddb1940541888283",
+          "date": "2026-04-30",
+          "original_date": "2026-04-30",
+          "source": "Contingente",
+          "title": "BAIFER SRL",
+          "subtitle": "Abonada por el cliente",
+          "amount": 2364295.67,
+          "aforo": 2482510.45,
+          "due_date": "2026-04-01",
+          "claimed": false,
+          "moved": false
+        },
+        {
+          "id": "65bb18c4b7d21be5fdc76ced",
+          "date": "2026-04-30",
+          "original_date": "2026-04-30",
+          "source": "Contingente",
+          "title": "VIÑEDOS DE LA PATAGONIA SRL",
+          "subtitle": "Abonada por el cliente",
+          "amount": 3620290.56,
+          "aforo": 3801305.09,
+          "due_date": "2026-04-02",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2026-05-07": [
+        {
+          "id": "c91dcadad94000f5feb5f6e1",
+          "date": "2026-05-07",
+          "original_date": "2026-05-07",
+          "source": "Contingente",
+          "title": "ZAFRA SA",
+          "subtitle": "Abonada por la SGR",
+          "amount": 19118918.59,
+          "aforo": 20074864.52,
+          "due_date": "2026-04-08",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2026-05-08": [
+        {
+          "id": "7e599e7685e3cbb88dfc2727",
+          "date": "2026-05-08",
+          "original_date": "2026-05-08",
+          "source": "Contingente",
+          "title": "CONDOR WIRELINE S.R.L.",
+          "subtitle": "Abonada por el cliente",
+          "amount": 8995552.3,
+          "aforo": 9445329.92,
+          "due_date": "2026-04-09",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2026-05-12": [
+        {
+          "id": "5de80ca91f9002506a277bea",
+          "date": "2026-05-12",
+          "original_date": "2026-05-12",
+          "source": "Contingente",
+          "title": "BODEGA JEAN BOUSQUET TUPUNGATO S.A.",
+          "subtitle": "Abonada por el cliente",
+          "amount": 1702910.98,
+          "aforo": 1788056.53,
+          "due_date": "2026-04-13",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2026-05-18": [
+        {
+          "id": "50ed9c1986e448e0030c06df",
+          "date": "2026-05-18",
+          "original_date": "2026-05-18",
+          "source": "Contingente",
+          "title": "SERVIGRUAS S. A.",
+          "subtitle": "Abonada por la SGR",
+          "amount": 24158454.77,
+          "aforo": 25366377.51,
+          "due_date": "2026-04-19",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2026-05-22": [
+        {
+          "id": "f6c3f3f2975cb19bb099e520",
+          "date": "2026-05-22",
+          "original_date": "2026-05-22",
+          "source": "Contingente",
+          "title": "DON BAUTISTA SAS",
+          "subtitle": "Reclamada por el banco",
+          "amount": 239986.95,
+          "aforo": 251986.29,
+          "due_date": "2026-04-25",
+          "claimed": true,
+          "moved": false
+        }
+      ],
+      "2026-05-29": [
+        {
+          "id": "d251f27068152dd3ecb68710",
+          "date": "2026-05-29",
+          "original_date": "2026-05-29",
+          "source": "Contingente",
+          "title": "BAIFER SRL",
+          "subtitle": "Abonada por el cliente",
+          "amount": 2364295.67,
+          "aforo": 2482510.45,
+          "due_date": "2026-05-01",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2026-06-02": [
+        {
+          "id": "f4f8cdf053175ffeb6bde5ae",
+          "date": "2026-06-02",
+          "original_date": "2026-06-02",
+          "source": "Contingente",
+          "title": "VIÑEDOS DE LA PATAGONIA SRL",
+          "subtitle": "Abonada por el cliente",
+          "amount": 3620290.56,
+          "aforo": 3801305.09,
+          "due_date": "2026-05-04",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2026-06-05": [
+        {
+          "id": "58d9e347108b616d4bfff28a",
+          "date": "2026-06-05",
+          "original_date": "2026-06-05",
+          "source": "Contingente",
+          "title": "ZAFRA SA",
+          "subtitle": "Abonada por la SGR",
+          "amount": 19118918.59,
+          "aforo": 20074864.52,
+          "due_date": "2026-05-08",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2026-06-09": [
+        {
+          "id": "613b51571684220077d3b9d4",
+          "date": "2026-06-09",
+          "original_date": "2026-06-09",
+          "source": "Contingente",
+          "title": "CONDOR WIRELINE S.R.L.",
+          "subtitle": "Abonada por el cliente",
+          "amount": 8995552.3,
+          "aforo": 9445329.92,
+          "due_date": "2026-05-11",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2026-06-11": [
+        {
+          "id": "d7f0854e69f45d479a388fb8",
+          "date": "2026-06-11",
+          "original_date": "2026-06-11",
+          "source": "Contingente",
+          "title": "BODEGA JEAN BOUSQUET TUPUNGATO S.A.",
+          "subtitle": "Abonada por el cliente",
+          "amount": 2356784.98,
+          "aforo": 2474624.23,
+          "due_date": "2026-05-13",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2026-06-17": [
+        {
+          "id": "6b8b55e2857059bc55edcc91",
+          "date": "2026-06-17",
+          "original_date": "2026-06-17",
+          "source": "Contingente",
+          "title": "SERVIGRUAS S. A.",
+          "subtitle": "Abonada por la SGR",
+          "amount": 24158454.77,
+          "aforo": 25366377.51,
+          "due_date": "2026-05-19",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2026-06-23": [
+        {
+          "id": "89cffa5514a8fab2fd5b2fe2",
+          "date": "2026-06-23",
+          "original_date": "2026-06-23",
+          "source": "Contingente",
+          "title": "DON BAUTISTA SAS",
+          "subtitle": "Reclamada por el banco",
+          "amount": 239986.95,
+          "aforo": 251986.29,
+          "due_date": "2026-05-25",
+          "claimed": true,
+          "moved": false
+        }
+      ],
+      "2026-06-30": [
+        {
+          "id": "e3f0d434f0fd14e6fcaabe91",
+          "date": "2026-06-30",
+          "original_date": "2026-06-30",
+          "source": "Contingente",
+          "title": "BAIFER SRL",
+          "subtitle": "Abonada por el cliente",
+          "amount": 2364295.67,
+          "aforo": 2482510.45,
+          "due_date": "2026-06-01",
+          "claimed": false,
+          "moved": false
+        },
+        {
+          "id": "9c2376a920473055ce594370",
+          "date": "2026-06-30",
+          "original_date": "2026-06-30",
+          "source": "Contingente",
+          "title": "VIÑEDOS DE LA PATAGONIA SRL",
+          "subtitle": "Abonada por el cliente",
+          "amount": 3620290.56,
+          "aforo": 3801305.09,
+          "due_date": "2026-06-01",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2026-07-07": [
+        {
+          "id": "0ac5be5417156005404aabe3",
+          "date": "2026-07-07",
+          "original_date": "2026-07-07",
+          "source": "Contingente",
+          "title": "ZAFRA SA",
+          "subtitle": "Abonada por la SGR",
+          "amount": 19118918.59,
+          "aforo": 20074864.52,
+          "due_date": "2026-06-08",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2026-07-08": [
+        {
+          "id": "7eefa4fbda4dbe133b167b1b",
+          "date": "2026-07-08",
+          "original_date": "2026-07-08",
+          "source": "Contingente",
+          "title": "BODEGA JEAN BOUSQUET TUPUNGATO S.A.",
+          "subtitle": "Abonada por el cliente",
+          "amount": 2356784.98,
+          "aforo": 2474624.23,
+          "due_date": "2026-06-13",
+          "claimed": false,
+          "moved": false
+        },
+        {
+          "id": "fc561e8c5d968fd6ce8ca608",
+          "date": "2026-07-08",
+          "original_date": "2026-07-08",
+          "source": "Contingente",
+          "title": "CONDOR WIRELINE S.R.L.",
+          "subtitle": "Abonada por el cliente",
+          "amount": 8995552.3,
+          "aforo": 9445329.92,
+          "due_date": "2026-06-09",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2026-07-17": [
+        {
+          "id": "6680256500a757c7eeafa09b",
+          "date": "2026-07-17",
+          "original_date": "2026-07-17",
+          "source": "Contingente",
+          "title": "SERVIGRUAS S. A.",
+          "subtitle": "Abonada por la SGR",
+          "amount": 24158454.77,
+          "aforo": 25366377.51,
+          "due_date": "2026-06-19",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2026-07-24": [
+        {
+          "id": "3a020110f91a2cba24a21f57",
+          "date": "2026-07-24",
+          "original_date": "2026-07-24",
+          "source": "Contingente",
+          "title": "DON BAUTISTA SAS",
+          "subtitle": "Reclamada por el banco",
+          "amount": 239986.95,
+          "aforo": 251986.29,
+          "due_date": "2026-06-25",
+          "claimed": true,
+          "moved": false
+        }
+      ],
+      "2026-07-30": [
+        {
+          "id": "7666e1f09eb40b7f7d6ce256",
+          "date": "2026-07-30",
+          "original_date": "2026-07-30",
+          "source": "Contingente",
+          "title": "BAIFER SRL",
+          "subtitle": "Reclamada por el banco",
+          "amount": 2364295.67,
+          "aforo": 2482510.45,
+          "due_date": "2026-07-01",
+          "claimed": true,
+          "moved": false
+        },
+        {
+          "id": "76964ab4cc34b41bffd263ba",
+          "date": "2026-07-30",
+          "original_date": "2026-07-30",
+          "source": "Contingente",
+          "title": "VIÑEDOS DE LA PATAGONIA SRL",
+          "subtitle": "Reclamada por el banco",
+          "amount": 3620290.56,
+          "aforo": 3801305.09,
+          "due_date": "2026-07-01",
+          "claimed": true,
+          "moved": false
+        }
+      ],
+      "2026-08-05": [
+        {
+          "id": "92feedb457bf74c61becc811",
+          "date": "2026-08-05",
+          "original_date": "2026-08-06",
+          "source": "Contingente",
+          "title": "ZAFRA SA",
+          "subtitle": "Reclamada por el banco",
+          "amount": 19118918.59,
+          "aforo": 20074864.52,
+          "due_date": "2026-07-08",
+          "claimed": true,
+          "moved": true
+        }
+      ],
+      "2026-08-07": [
+        {
+          "id": "6215eea58f8eaa2947fcf908",
+          "date": "2026-08-07",
+          "original_date": "2026-08-07",
+          "source": "Contingente",
+          "title": "AZUL JACARANDA S.A.",
+          "subtitle": "En proceso de refinanciacion",
+          "amount": 0.0,
+          "aforo": 0.0,
+          "due_date": "2026-07-10",
+          "claimed": false,
+          "moved": false
+        },
+        {
+          "id": "75e45c30e01d71661f62a527",
+          "date": "2026-08-07",
+          "original_date": "2026-08-07",
+          "source": "Contingente",
+          "title": "CONDOR WIRELINE S.R.L.",
+          "subtitle": "Reclamada por el banco",
+          "amount": 8995552.3,
+          "aforo": 9445329.92,
+          "due_date": "2026-07-09",
+          "claimed": true,
+          "moved": false
+        }
+      ],
+      "2026-08-11": [
+        {
+          "id": "2d2683cc62d8e91818abb9ae",
+          "date": "2026-08-11",
+          "original_date": "2026-08-11",
+          "source": "Contingente",
+          "title": "BODEGA JEAN BOUSQUET TUPUNGATO S.A.",
+          "subtitle": "Reclamada por el banco",
+          "amount": 2356784.98,
+          "aforo": 2474624.23,
+          "due_date": "2026-07-13",
+          "claimed": true,
+          "moved": false
+        }
+      ],
+      "2026-08-14": [
+        {
+          "id": "52eccd8b2f1a1ec9839c5913",
+          "date": "2026-08-14",
+          "original_date": "2026-08-14",
+          "source": "Contingente",
+          "title": "SERVIGRUAS S. A.",
+          "subtitle": "Reclamada por el banco",
+          "amount": 24158454.77,
+          "aforo": 25366377.51,
+          "due_date": "2026-07-19",
+          "claimed": true,
+          "moved": false
+        }
+      ],
+      "2026-08-21": [
+        {
+          "id": "ca6af3b42d40e74c3906c88a",
+          "date": "2026-08-21",
+          "original_date": "2026-08-21",
+          "source": "Contingente",
+          "title": "DON BAUTISTA SAS",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 239986.95,
+          "aforo": 251986.29,
+          "due_date": "2026-07-25",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2026-08-28": [
+        {
+          "id": "fd4323f094b334d68ab608db",
+          "date": "2026-08-28",
+          "original_date": "2026-08-28",
+          "source": "Contingente",
+          "title": "BAIFER SRL",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 2364295.67,
+          "aforo": 2482510.45,
+          "due_date": "2026-08-01",
+          "claimed": false,
+          "moved": false
+        },
+        {
+          "id": "b704b600bb67942c80bf55e4",
+          "date": "2026-08-28",
+          "original_date": "2026-08-28",
+          "source": "Contingente",
+          "title": "VIÑEDOS DE LA PATAGONIA SRL",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 3620290.56,
+          "aforo": 3801305.09,
+          "due_date": "2026-07-31",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2026-09-04": [
+        {
+          "id": "01298b4bfca7d66e4469a579",
+          "date": "2026-09-04",
+          "original_date": "2026-09-04",
+          "source": "Contingente",
+          "title": "ZAFRA SA",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 19118918.59,
+          "aforo": 20074864.52,
+          "due_date": "2026-08-08",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2026-09-08": [
+        {
+          "id": "84e0f38737b414c2abe2d5d5",
+          "date": "2026-09-08",
+          "original_date": "2026-09-08",
+          "source": "Contingente",
+          "title": "CONDOR WIRELINE S.R.L.",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 8995552.3,
+          "aforo": 9445329.92,
+          "due_date": "2026-08-10",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2026-09-11": [
+        {
+          "id": "6c778479012d126f7c59c64e",
+          "date": "2026-09-11",
+          "original_date": "2026-09-11",
+          "source": "Contingente",
+          "title": "BODEGA JEAN BOUSQUET TUPUNGATO S.A.",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 2356784.98,
+          "aforo": 2474624.23,
+          "due_date": "2026-08-13",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2026-09-17": [
+        {
+          "id": "4e1552f28fad922c9d83dc83",
+          "date": "2026-09-17",
+          "original_date": "2026-09-17",
+          "source": "Contingente",
+          "title": "SERVIGRUAS S. A.",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 24158454.77,
+          "aforo": 25366377.51,
+          "due_date": "2026-08-19",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2026-09-23": [
+        {
+          "id": "1b92830719e077f5198009f8",
+          "date": "2026-09-23",
+          "original_date": "2026-09-23",
+          "source": "Contingente",
+          "title": "DON BAUTISTA SAS",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 239986.95,
+          "aforo": 251986.29,
+          "due_date": "2026-08-25",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2026-10-07": [
+        {
+          "id": "f8777c6529578ff9c6c3741c",
+          "date": "2026-10-07",
+          "original_date": "2026-10-07",
+          "source": "Contingente",
+          "title": "ZAFRA SA",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 19118918.59,
+          "aforo": 20074864.52,
+          "due_date": "2026-09-08",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2026-10-08": [
+        {
+          "id": "a7d07784fff1d07374091948",
+          "date": "2026-10-08",
+          "original_date": "2026-10-08",
+          "source": "Contingente",
+          "title": "CONDOR WIRELINE S.R.L.",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 8995552.3,
+          "aforo": 9445329.92,
+          "due_date": "2026-09-09",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2026-10-09": [
+        {
+          "id": "c0dc081126a5276793df176e",
+          "date": "2026-10-09",
+          "original_date": "2026-10-09",
+          "source": "Contingente",
+          "title": "BODEGA JEAN BOUSQUET TUPUNGATO S.A.",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 2356784.98,
+          "aforo": 2474624.23,
+          "due_date": "2026-09-13",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2026-10-23": [
+        {
+          "id": "bb4a0ac436080288247757a6",
+          "date": "2026-10-23",
+          "original_date": "2026-10-23",
+          "source": "Contingente",
+          "title": "DON BAUTISTA SAS",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 239986.95,
+          "aforo": 251986.29,
+          "due_date": "2026-09-25",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2026-10-28": [
+        {
+          "id": "5d52dfb05fa24e5d0abed98f",
+          "date": "2026-10-28",
+          "original_date": "2026-10-28",
+          "source": "Contingente",
+          "title": "VIÑEDOS DE LA PATAGONIA SRL",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 3620290.56,
+          "aforo": 3801305.09,
+          "due_date": "2026-09-29",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2026-10-30": [
+        {
+          "id": "75c9f48be0b53a6dce72546b",
+          "date": "2026-10-30",
+          "original_date": "2026-10-30",
+          "source": "Contingente",
+          "title": "BAIFER SRL",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 2364295.67,
+          "aforo": 2482510.45,
+          "due_date": "2026-10-01",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2026-11-06": [
+        {
+          "id": "bf6d9935e3ad49018f43ed87",
+          "date": "2026-11-06",
+          "original_date": "2026-11-06",
+          "source": "Contingente",
+          "title": "CONDOR WIRELINE S.R.L.",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 8995552.3,
+          "aforo": 9445329.92,
+          "due_date": "2026-10-09",
+          "claimed": false,
+          "moved": false
+        },
+        {
+          "id": "423e4304e0e457a2caa209f8",
+          "date": "2026-11-06",
+          "original_date": "2026-11-06",
+          "source": "Contingente",
+          "title": "ZAFRA SA",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 19118918.59,
+          "aforo": 20074864.52,
+          "due_date": "2026-10-08",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2026-11-11": [
+        {
+          "id": "1b7c3479e75b79267875660f",
+          "date": "2026-11-11",
+          "original_date": "2026-11-11",
+          "source": "Contingente",
+          "title": "BODEGA JEAN BOUSQUET TUPUNGATO S.A.",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 2356784.98,
+          "aforo": 2474624.23,
+          "due_date": "2026-10-13",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2026-11-17": [
+        {
+          "id": "8bc2b3c189b7c55e9257b7f6",
+          "date": "2026-11-17",
+          "original_date": "2026-11-17",
+          "source": "Contingente",
+          "title": "SERVIGRUAS S. A.",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 24158454.77,
+          "aforo": 25366377.51,
+          "due_date": "2026-10-19",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2026-11-20": [
+        {
+          "id": "539ea1f0f9b6bf05d6b4db8b",
+          "date": "2026-11-20",
+          "original_date": "2026-11-20",
+          "source": "Contingente",
+          "title": "DON BAUTISTA SAS",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 239986.95,
+          "aforo": 251986.29,
+          "due_date": "2026-10-25",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2026-11-27": [
+        {
+          "id": "bc0247c10b2b10d087d93050",
+          "date": "2026-11-27",
+          "original_date": "2026-11-27",
+          "source": "Contingente",
+          "title": "VIÑEDOS DE LA PATAGONIA SRL",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 3620290.56,
+          "aforo": 3801305.09,
+          "due_date": "2026-10-29",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2026-11-30": [
+        {
+          "id": "22fe46d5308f47dbc621789a",
+          "date": "2026-11-30",
+          "original_date": "2026-11-30",
+          "source": "Contingente",
+          "title": "BAIFER SRL",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 2364295.67,
+          "aforo": 2482510.45,
+          "due_date": "2026-11-01",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2026-12-04": [
+        {
+          "id": "c22fac45ab8b6410aa8454e1",
+          "date": "2026-12-04",
+          "original_date": "2026-12-04",
+          "source": "Contingente",
+          "title": "CONDOR WIRELINE S.R.L.",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 8995552.3,
+          "aforo": 9445329.92,
+          "due_date": "2026-11-09",
+          "claimed": false,
+          "moved": false
+        },
+        {
+          "id": "42c8d0655b03428ee2beb258",
+          "date": "2026-12-04",
+          "original_date": "2026-12-04",
+          "source": "Contingente",
+          "title": "ZAFRA SA",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 19118918.59,
+          "aforo": 20074864.52,
+          "due_date": "2026-11-08",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2026-12-11": [
+        {
+          "id": "5fc5c10d203085fe39a811af",
+          "date": "2026-12-11",
+          "original_date": "2026-12-11",
+          "source": "Contingente",
+          "title": "BODEGA JEAN BOUSQUET TUPUNGATO S.A.",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 2356784.98,
+          "aforo": 2474624.23,
+          "due_date": "2026-11-13",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2026-12-18": [
+        {
+          "id": "a865bc5f36951bc7164e2395",
+          "date": "2026-12-18",
+          "original_date": "2026-12-18",
+          "source": "Contingente",
+          "title": "SERVIGRUAS S. A.",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 24158454.77,
+          "aforo": 25366377.51,
+          "due_date": "2026-11-19",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2026-12-24": [
+        {
+          "id": "88d4e4fef21fc891dd158743",
+          "date": "2026-12-24",
+          "original_date": "2026-12-24",
+          "source": "Contingente",
+          "title": "DON BAUTISTA SAS",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 239986.95,
+          "aforo": 251986.29,
+          "due_date": "2026-11-25",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2026-12-29": [
+        {
+          "id": "ec3ad20cf2f79185dd3a08b4",
+          "date": "2026-12-29",
+          "original_date": "2026-12-29",
+          "source": "Contingente",
+          "title": "VIÑEDOS DE LA PATAGONIA SRL",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 3620290.56,
+          "aforo": 3801305.09,
+          "due_date": "2026-11-30",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2026-12-30": [
+        {
+          "id": "957022a19aa5c0a2285cdcc9",
+          "date": "2026-12-30",
+          "original_date": "2026-12-30",
+          "source": "Contingente",
+          "title": "BAIFER SRL",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 2364295.67,
+          "aforo": 2482510.45,
+          "due_date": "2026-12-01",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2027-01-06": [
+        {
+          "id": "1f02f9752a24d90fa9628e8f",
+          "date": "2027-01-06",
+          "original_date": "2027-01-06",
+          "source": "Contingente",
+          "title": "ZAFRA SA",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 19118918.59,
+          "aforo": 20074864.52,
+          "due_date": "2026-12-08",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2027-01-07": [
+        {
+          "id": "151f5ed479e1b96daf08f8e2",
+          "date": "2027-01-07",
+          "original_date": "2027-01-07",
+          "source": "Contingente",
+          "title": "CONDOR WIRELINE S.R.L.",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 8995552.3,
+          "aforo": 9445329.92,
+          "due_date": "2026-12-09",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2027-01-11": [
+        {
+          "id": "fcccd2cace2638bcef814a53",
+          "date": "2027-01-11",
+          "original_date": "2027-01-11",
+          "source": "Contingente",
+          "title": "BODEGA JEAN BOUSQUET TUPUNGATO S.A.",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 2356784.98,
+          "aforo": 2474624.23,
+          "due_date": "2026-12-13",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2027-01-15": [
+        {
+          "id": "3c08a17afda18e293a058225",
+          "date": "2027-01-15",
+          "original_date": "2027-01-15",
+          "source": "Contingente",
+          "title": "SERVIGRUAS S. A.",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 24158454.77,
+          "aforo": 25366377.51,
+          "due_date": "2026-12-19",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2027-01-22": [
+        {
+          "id": "b6e968d09b9debbb716cfd92",
+          "date": "2027-01-22",
+          "original_date": "2027-01-22",
+          "source": "Contingente",
+          "title": "DON BAUTISTA SAS",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 239986.95,
+          "aforo": 251986.29,
+          "due_date": "2026-12-25",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2027-01-26": [
+        {
+          "id": "1a715eb4f05fe6a5273de08a",
+          "date": "2027-01-26",
+          "original_date": "2027-01-26",
+          "source": "Contingente",
+          "title": "VIÑEDOS DE LA PATAGONIA SRL",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 3620290.56,
+          "aforo": 3801305.09,
+          "due_date": "2026-12-28",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2027-01-29": [
+        {
+          "id": "dd7d0a17f4d65bc8df6da31c",
+          "date": "2027-01-29",
+          "original_date": "2027-01-29",
+          "source": "Contingente",
+          "title": "BAIFER SRL",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 2364295.67,
+          "aforo": 2482510.45,
+          "due_date": "2027-01-01",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2027-02-05": [
+        {
+          "id": "25ddb74240c043ea7837f70c",
+          "date": "2027-02-05",
+          "original_date": "2027-02-05",
+          "source": "Contingente",
+          "title": "CONDOR WIRELINE S.R.L.",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 8995552.3,
+          "aforo": 9445329.92,
+          "due_date": "2027-01-11",
+          "claimed": false,
+          "moved": false
+        },
+        {
+          "id": "b591cd4dc416666218bcfd34",
+          "date": "2027-02-05",
+          "original_date": "2027-02-05",
+          "source": "Contingente",
+          "title": "ZAFRA SA",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 19118918.59,
+          "aforo": 20074864.52,
+          "due_date": "2027-01-08",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2027-02-11": [
+        {
+          "id": "bf6d766b39544b2c38a92f16",
+          "date": "2027-02-11",
+          "original_date": "2027-02-11",
+          "source": "Contingente",
+          "title": "BODEGA JEAN BOUSQUET TUPUNGATO S.A.",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 2356784.98,
+          "aforo": 2474624.23,
+          "due_date": "2027-01-13",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2027-02-17": [
+        {
+          "id": "b8832ca3d679566c94303aed",
+          "date": "2027-02-17",
+          "original_date": "2027-02-17",
+          "source": "Contingente",
+          "title": "SERVIGRUAS S. A.",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 24158454.77,
+          "aforo": 25366377.51,
+          "due_date": "2027-01-19",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2027-02-23": [
+        {
+          "id": "6dd78e2f778809d91552702e",
+          "date": "2027-02-23",
+          "original_date": "2027-02-23",
+          "source": "Contingente",
+          "title": "DON BAUTISTA SAS",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 239986.95,
+          "aforo": 251986.29,
+          "due_date": "2027-01-25",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2027-02-25": [
+        {
+          "id": "45976f5974239adeedbc8cff",
+          "date": "2027-02-25",
+          "original_date": "2027-02-25",
+          "source": "Contingente",
+          "title": "VIÑEDOS DE LA PATAGONIA SRL",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 3620290.56,
+          "aforo": 3801305.09,
+          "due_date": "2027-01-27",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2027-03-02": [
+        {
+          "id": "ba7f9c8eaeaf3fa0786cc2b3",
+          "date": "2027-03-02",
+          "original_date": "2027-03-02",
+          "source": "Contingente",
+          "title": "BAIFER SRL",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 2364295.67,
+          "aforo": 2482510.45,
+          "due_date": "2027-02-01",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2027-03-09": [
+        {
+          "id": "585d84694759b0d4a134cb29",
+          "date": "2027-03-09",
+          "original_date": "2027-03-09",
+          "source": "Contingente",
+          "title": "ZAFRA SA",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 19118918.59,
+          "aforo": 20074864.52,
+          "due_date": "2027-02-08",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2027-03-10": [
+        {
+          "id": "f65ad5dd5ef6d0ca64a6c6a2",
+          "date": "2027-03-10",
+          "original_date": "2027-03-10",
+          "source": "Contingente",
+          "title": "CONDOR WIRELINE S.R.L.",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 8995552.3,
+          "aforo": 9445329.92,
+          "due_date": "2027-02-09",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2027-03-12": [
+        {
+          "id": "1bcba6f58fb42cf7ff5edc17",
+          "date": "2027-03-12",
+          "original_date": "2027-03-12",
+          "source": "Contingente",
+          "title": "BODEGA JEAN BOUSQUET TUPUNGATO S.A.",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 2356784.98,
+          "aforo": 2474624.23,
+          "due_date": "2027-02-13",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2027-03-19": [
+        {
+          "id": "9acdc825f810a8737ddc7901",
+          "date": "2027-03-19",
+          "original_date": "2027-03-19",
+          "source": "Contingente",
+          "title": "SERVIGRUAS S. A.",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 24158454.77,
+          "aforo": 25366377.51,
+          "due_date": "2027-02-19",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2027-03-23": [
+        {
+          "id": "cfba62bb145bff1ada487f42",
+          "date": "2027-03-23",
+          "original_date": "2027-03-23",
+          "source": "Contingente",
+          "title": "DON BAUTISTA SAS",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 239986.95,
+          "aforo": 251986.29,
+          "due_date": "2027-02-25",
+          "claimed": false,
+          "moved": false
+        },
+        {
+          "id": "4fb807627fd97abb1570e7ff",
+          "date": "2027-03-23",
+          "original_date": "2027-03-23",
+          "source": "Contingente",
+          "title": "VIÑEDOS DE LA PATAGONIA SRL",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 3620290.56,
+          "aforo": 3801305.09,
+          "due_date": "2027-02-26",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2027-03-30": [
+        {
+          "id": "add95ce8f61129a172a887b8",
+          "date": "2027-03-30",
+          "original_date": "2027-03-30",
+          "source": "Contingente",
+          "title": "BAIFER SRL",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 2364295.67,
+          "aforo": 2482510.45,
+          "due_date": "2027-03-01",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2027-04-06": [
+        {
+          "id": "5e07d812af23caafa20e2827",
+          "date": "2027-04-06",
+          "original_date": "2027-04-06",
+          "source": "Contingente",
+          "title": "ZAFRA SA",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 19118918.59,
+          "aforo": 20074864.52,
+          "due_date": "2027-03-08",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2027-04-07": [
+        {
+          "id": "a8db4b3fb571331d5cac96ed",
+          "date": "2027-04-07",
+          "original_date": "2027-04-07",
+          "source": "Contingente",
+          "title": "CONDOR WIRELINE S.R.L.",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 8995552.3,
+          "aforo": 9445329.92,
+          "due_date": "2027-03-09",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2027-04-09": [
+        {
+          "id": "3babfd3e36d10b9dd3c6b2ec",
+          "date": "2027-04-09",
+          "original_date": "2027-04-09",
+          "source": "Contingente",
+          "title": "BODEGA JEAN BOUSQUET TUPUNGATO S.A.",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 2356784.98,
+          "aforo": 2474624.23,
+          "due_date": "2027-03-13",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2027-04-16": [
+        {
+          "id": "9bec69ce0c9a373e88ef9405",
+          "date": "2027-04-16",
+          "original_date": "2027-04-16",
+          "source": "Contingente",
+          "title": "SERVIGRUAS S. A.",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 24158454.77,
+          "aforo": 25366377.51,
+          "due_date": "2027-03-19",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2027-04-23": [
+        {
+          "id": "34c769f544f0044cceb4fe23",
+          "date": "2027-04-23",
+          "original_date": "2027-04-23",
+          "source": "Contingente",
+          "title": "DON BAUTISTA SAS",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 239986.95,
+          "aforo": 251986.29,
+          "due_date": "2027-03-25",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2027-04-27": [
+        {
+          "id": "013b1cc251dec66fa94bbace",
+          "date": "2027-04-27",
+          "original_date": "2027-04-27",
+          "source": "Contingente",
+          "title": "VIÑEDOS DE LA PATAGONIA SRL",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 3620290.56,
+          "aforo": 3801305.09,
+          "due_date": "2027-03-29",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2027-04-30": [
+        {
+          "id": "03782578db006f58b95be354",
+          "date": "2027-04-30",
+          "original_date": "2027-04-30",
+          "source": "Contingente",
+          "title": "BAIFER SRL",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 2364295.67,
+          "aforo": 2482510.45,
+          "due_date": "2027-04-01",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2027-05-07": [
+        {
+          "id": "9e002fa627e89dd775ba9a65",
+          "date": "2027-05-07",
+          "original_date": "2027-05-07",
+          "source": "Contingente",
+          "title": "CONDOR WIRELINE S.R.L.",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 8995552.3,
+          "aforo": 9445329.92,
+          "due_date": "2027-04-09",
+          "claimed": false,
+          "moved": false
+        },
+        {
+          "id": "37dbc72b2d3a61d2ff4c4c99",
+          "date": "2027-05-07",
+          "original_date": "2027-05-07",
+          "source": "Contingente",
+          "title": "ZAFRA SA",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 19118918.59,
+          "aforo": 20074864.52,
+          "due_date": "2027-04-08",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2027-05-12": [
+        {
+          "id": "0fdbc52b3f7bade9d8b3cac9",
+          "date": "2027-05-12",
+          "original_date": "2027-05-12",
+          "source": "Contingente",
+          "title": "BODEGA JEAN BOUSQUET TUPUNGATO S.A.",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 2356784.98,
+          "aforo": 2474624.23,
+          "due_date": "2027-04-13",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2027-05-18": [
+        {
+          "id": "b15e8ac313b5d38913d6c773",
+          "date": "2027-05-18",
+          "original_date": "2027-05-18",
+          "source": "Contingente",
+          "title": "SERVIGRUAS S. A.",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 24158454.77,
+          "aforo": 25366377.51,
+          "due_date": "2027-04-19",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2027-05-24": [
+        {
+          "id": "98369ddb1c1be2ccec1e1db2",
+          "date": "2027-05-24",
+          "original_date": "2027-05-24",
+          "source": "Contingente",
+          "title": "DON BAUTISTA SAS",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 239986.95,
+          "aforo": 251986.29,
+          "due_date": "2027-04-25",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2027-05-26": [
+        {
+          "id": "b07404e4c78aab23e631ea93",
+          "date": "2027-05-26",
+          "original_date": "2027-05-26",
+          "source": "Contingente",
+          "title": "VIÑEDOS DE LA PATAGONIA SRL",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 3620290.56,
+          "aforo": 3801305.09,
+          "due_date": "2027-04-27",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2027-05-28": [
+        {
+          "id": "58ea6a0d66b1783167c4b0c4",
+          "date": "2027-05-28",
+          "original_date": "2027-05-28",
+          "source": "Contingente",
+          "title": "BAIFER SRL",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 2364295.67,
+          "aforo": 2482510.45,
+          "due_date": "2027-05-01",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2027-06-04": [
+        {
+          "id": "21f33d7d9ee615e399606642",
+          "date": "2027-06-04",
+          "original_date": "2027-06-04",
+          "source": "Contingente",
+          "title": "ZAFRA SA",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 19118918.59,
+          "aforo": 20074864.52,
+          "due_date": "2027-05-08",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2027-06-08": [
+        {
+          "id": "f37719debec91c617f850592",
+          "date": "2027-06-08",
+          "original_date": "2027-06-08",
+          "source": "Contingente",
+          "title": "CONDOR WIRELINE S.R.L.",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 8995552.3,
+          "aforo": 9445329.92,
+          "due_date": "2027-05-10",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2027-06-11": [
+        {
+          "id": "d437e5b58076766d0c82aee6",
+          "date": "2027-06-11",
+          "original_date": "2027-06-11",
+          "source": "Contingente",
+          "title": "BODEGA JEAN BOUSQUET TUPUNGATO S.A.",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 2356784.98,
+          "aforo": 2474624.23,
+          "due_date": "2027-05-13",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2027-06-17": [
+        {
+          "id": "70f93b12b9270bed1df68529",
+          "date": "2027-06-17",
+          "original_date": "2027-06-17",
+          "source": "Contingente",
+          "title": "SERVIGRUAS S. A.",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 24158454.77,
+          "aforo": 25366377.51,
+          "due_date": "2027-05-19",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2027-06-23": [
+        {
+          "id": "25df84c0fe8c0e2e2ee5d5b5",
+          "date": "2027-06-23",
+          "original_date": "2027-06-23",
+          "source": "Contingente",
+          "title": "DON BAUTISTA SAS",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 239986.95,
+          "aforo": 251986.29,
+          "due_date": "2027-05-25",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2027-06-25": [
+        {
+          "id": "2400b93fed46c5c014435a59",
+          "date": "2027-06-25",
+          "original_date": "2027-06-25",
+          "source": "Contingente",
+          "title": "VIÑEDOS DE LA PATAGONIA SRL",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 3620290.56,
+          "aforo": 3801305.09,
+          "due_date": "2027-05-27",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2027-06-30": [
+        {
+          "id": "4953910992e5e9aff7953ca0",
+          "date": "2027-06-30",
+          "original_date": "2027-06-30",
+          "source": "Contingente",
+          "title": "BAIFER SRL",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 2364295.67,
+          "aforo": 2482510.45,
+          "due_date": "2027-06-01",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2027-07-07": [
+        {
+          "id": "2acb7a3587ebf945f080adaf",
+          "date": "2027-07-07",
+          "original_date": "2027-07-07",
+          "source": "Contingente",
+          "title": "ZAFRA SA",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 19118918.59,
+          "aforo": 20074864.52,
+          "due_date": "2027-06-08",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2027-07-08": [
+        {
+          "id": "837259e0df6b4824b1fd6a92",
+          "date": "2027-07-08",
+          "original_date": "2027-07-08",
+          "source": "Contingente",
+          "title": "CONDOR WIRELINE S.R.L.",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 8995552.3,
+          "aforo": 9445329.92,
+          "due_date": "2027-06-09",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2027-07-12": [
+        {
+          "id": "7c9a8aa4e8398e15b320ad52",
+          "date": "2027-07-12",
+          "original_date": "2027-07-12",
+          "source": "Contingente",
+          "title": "BODEGA JEAN BOUSQUET TUPUNGATO S.A.",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 2356784.98,
+          "aforo": 2474624.23,
+          "due_date": "2027-06-13",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2027-07-16": [
+        {
+          "id": "95f9dfc8bc67ce033cef2605",
+          "date": "2027-07-16",
+          "original_date": "2027-07-16",
+          "source": "Contingente",
+          "title": "SERVIGRUAS S. A.",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 24158454.77,
+          "aforo": 25366377.51,
+          "due_date": "2027-06-19",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2027-07-23": [
+        {
+          "id": "a54804a0607007e19218a8f7",
+          "date": "2027-07-23",
+          "original_date": "2027-07-23",
+          "source": "Contingente",
+          "title": "DON BAUTISTA SAS",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 239986.95,
+          "aforo": 251986.29,
+          "due_date": "2027-06-25",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2027-07-27": [
+        {
+          "id": "29739dfb801bcc1e8f6ae474",
+          "date": "2027-07-27",
+          "original_date": "2027-07-27",
+          "source": "Contingente",
+          "title": "VIÑEDOS DE LA PATAGONIA SRL",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 3620290.56,
+          "aforo": 3801305.09,
+          "due_date": "2027-06-28",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2027-07-30": [
+        {
+          "id": "5628eff31d59f6db0d8ce8b9",
+          "date": "2027-07-30",
+          "original_date": "2027-07-30",
+          "source": "Contingente",
+          "title": "BAIFER SRL",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 2364295.67,
+          "aforo": 2482510.45,
+          "due_date": "2027-07-01",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2027-08-06": [
+        {
+          "id": "d1cf86c44c3d404d41b342ba",
+          "date": "2027-08-06",
+          "original_date": "2027-08-06",
+          "source": "Contingente",
+          "title": "CONDOR WIRELINE S.R.L.",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 8995552.3,
+          "aforo": 9445329.92,
+          "due_date": "2027-07-09",
+          "claimed": false,
+          "moved": false
+        },
+        {
+          "id": "d023dada0fa40167ee75303b",
+          "date": "2027-08-06",
+          "original_date": "2027-08-06",
+          "source": "Contingente",
+          "title": "ZAFRA SA",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 19118918.59,
+          "aforo": 20074864.52,
+          "due_date": "2027-07-08",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2027-08-11": [
+        {
+          "id": "4e6cc1f8fa84477a04ade983",
+          "date": "2027-08-11",
+          "original_date": "2027-08-11",
+          "source": "Contingente",
+          "title": "BODEGA JEAN BOUSQUET TUPUNGATO S.A.",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 2356784.98,
+          "aforo": 2474624.23,
+          "due_date": "2027-07-13",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2027-08-17": [
+        {
+          "id": "ed73abdca0bdf322a80fb12f",
+          "date": "2027-08-17",
+          "original_date": "2027-08-17",
+          "source": "Contingente",
+          "title": "SERVIGRUAS S. A.",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 24158454.77,
+          "aforo": 25366377.51,
+          "due_date": "2027-07-19",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2027-08-23": [
+        {
+          "id": "6f89c9c5aab8b6f67b3ad533",
+          "date": "2027-08-23",
+          "original_date": "2027-08-23",
+          "source": "Contingente",
+          "title": "DON BAUTISTA SAS",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 239986.95,
+          "aforo": 251986.29,
+          "due_date": "2027-07-25",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2027-08-24": [
+        {
+          "id": "3e61c4097c5634515e776919",
+          "date": "2027-08-24",
+          "original_date": "2027-08-24",
+          "source": "Contingente",
+          "title": "VIÑEDOS DE LA PATAGONIA SRL",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 3620290.56,
+          "aforo": 3801305.09,
+          "due_date": "2027-07-26",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2027-08-30": [
+        {
+          "id": "6e8856f165366a579437f555",
+          "date": "2027-08-30",
+          "original_date": "2027-08-30",
+          "source": "Contingente",
+          "title": "BAIFER SRL",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 2364295.67,
+          "aforo": 2482510.45,
+          "due_date": "2027-08-01",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2027-09-06": [
+        {
+          "id": "75d7d6d6f9a956b27039461d",
+          "date": "2027-09-06",
+          "original_date": "2027-09-06",
+          "source": "Contingente",
+          "title": "ZAFRA SA",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 19118918.59,
+          "aforo": 20074864.52,
+          "due_date": "2027-08-08",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2027-09-07": [
+        {
+          "id": "210ab1b92ed0abcff1c9589e",
+          "date": "2027-09-07",
+          "original_date": "2027-09-07",
+          "source": "Contingente",
+          "title": "CONDOR WIRELINE S.R.L.",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 8995552.3,
+          "aforo": 9445329.92,
+          "due_date": "2027-08-09",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2027-09-10": [
+        {
+          "id": "de8898f2ba3e88a9613b685f",
+          "date": "2027-09-10",
+          "original_date": "2027-09-10",
+          "source": "Contingente",
+          "title": "BODEGA JEAN BOUSQUET TUPUNGATO S.A.",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 2356784.98,
+          "aforo": 2474624.23,
+          "due_date": "2027-08-13",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2027-09-17": [
+        {
+          "id": "5184d22cc213ce276ce024ca",
+          "date": "2027-09-17",
+          "original_date": "2027-09-17",
+          "source": "Contingente",
+          "title": "SERVIGRUAS S. A.",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 24158454.61,
+          "aforo": 25366377.34,
+          "due_date": "2027-08-19",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2027-09-23": [
+        {
+          "id": "bf916289f66873d2dfd55ffb",
+          "date": "2027-09-23",
+          "original_date": "2027-09-23",
+          "source": "Contingente",
+          "title": "DON BAUTISTA SAS",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 239986.95,
+          "aforo": 251986.29,
+          "due_date": "2027-08-25",
+          "claimed": false,
+          "moved": false
+        },
+        {
+          "id": "53d1beac22e73d956455b13a",
+          "date": "2027-09-23",
+          "original_date": "2027-09-23",
+          "source": "Contingente",
+          "title": "VIÑEDOS DE LA PATAGONIA SRL",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 3620290.56,
+          "aforo": 3801305.09,
+          "due_date": "2027-08-25",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2027-09-30": [
+        {
+          "id": "3cb777a29397cb8a778333b1",
+          "date": "2027-09-30",
+          "original_date": "2027-09-30",
+          "source": "Contingente",
+          "title": "BAIFER SRL",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 2364295.67,
+          "aforo": 2482510.45,
+          "due_date": "2027-09-01",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2027-10-07": [
+        {
+          "id": "be9084186e8d24ab7540933d",
+          "date": "2027-10-07",
+          "original_date": "2027-10-07",
+          "source": "Contingente",
+          "title": "ZAFRA SA",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 19118918.59,
+          "aforo": 20074864.52,
+          "due_date": "2027-09-08",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2027-10-08": [
+        {
+          "id": "62c91239f41b4dc48ad20276",
+          "date": "2027-10-08",
+          "original_date": "2027-10-08",
+          "source": "Contingente",
+          "title": "CONDOR WIRELINE S.R.L.",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 8995552.3,
+          "aforo": 9445329.92,
+          "due_date": "2027-09-09",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2027-10-12": [
+        {
+          "id": "275c302cfded175a8cfbc3bd",
+          "date": "2027-10-12",
+          "original_date": "2027-10-12",
+          "source": "Contingente",
+          "title": "BODEGA JEAN BOUSQUET TUPUNGATO S.A.",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 2356784.98,
+          "aforo": 2474624.23,
+          "due_date": "2027-09-13",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2027-10-22": [
+        {
+          "id": "c66b971e6d3498823e11545a",
+          "date": "2027-10-22",
+          "original_date": "2027-10-22",
+          "source": "Contingente",
+          "title": "DON BAUTISTA SAS",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 239986.95,
+          "aforo": 251986.29,
+          "due_date": "2027-09-25",
+          "claimed": false,
+          "moved": false
+        },
+        {
+          "id": "bba28cb68c0dd0c6f7b0e09e",
+          "date": "2027-10-22",
+          "original_date": "2027-10-22",
+          "source": "Contingente",
+          "title": "VIÑEDOS DE LA PATAGONIA SRL",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 3620290.56,
+          "aforo": 3801305.09,
+          "due_date": "2027-09-24",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2027-10-29": [
+        {
+          "id": "b4f6c9cd08e626915e110775",
+          "date": "2027-10-29",
+          "original_date": "2027-10-29",
+          "source": "Contingente",
+          "title": "BAIFER SRL",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 2364295.67,
+          "aforo": 2482510.45,
+          "due_date": "2027-10-01",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2027-11-05": [
+        {
+          "id": "148ad3675afda5467dc77b82",
+          "date": "2027-11-05",
+          "original_date": "2027-11-05",
+          "source": "Contingente",
+          "title": "ZAFRA SA",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 19118918.59,
+          "aforo": 20074864.52,
+          "due_date": "2027-10-08",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2027-11-09": [
+        {
+          "id": "0eeed31d623e7f9accf428a1",
+          "date": "2027-11-09",
+          "original_date": "2027-11-09",
+          "source": "Contingente",
+          "title": "CONDOR WIRELINE S.R.L.",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 8995552.3,
+          "aforo": 9445329.92,
+          "due_date": "2027-10-11",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2027-11-11": [
+        {
+          "id": "86d0c3f09ca8b5efbe74685b",
+          "date": "2027-11-11",
+          "original_date": "2027-11-11",
+          "source": "Contingente",
+          "title": "BODEGA JEAN BOUSQUET TUPUNGATO S.A.",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 2356784.98,
+          "aforo": 2474624.23,
+          "due_date": "2027-10-13",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2027-11-23": [
+        {
+          "id": "01c3a226e195f24af691317d",
+          "date": "2027-11-23",
+          "original_date": "2027-11-23",
+          "source": "Contingente",
+          "title": "DON BAUTISTA SAS",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 239986.95,
+          "aforo": 251986.29,
+          "due_date": "2027-10-25",
+          "claimed": false,
+          "moved": false
+        },
+        {
+          "id": "55eed0c3362f767726374f7c",
+          "date": "2027-11-23",
+          "original_date": "2027-11-23",
+          "source": "Contingente",
+          "title": "VIÑEDOS DE LA PATAGONIA SRL",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 3620290.56,
+          "aforo": 3801305.09,
+          "due_date": "2027-10-25",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2027-11-30": [
+        {
+          "id": "05f0f760fd67d24f35897612",
+          "date": "2027-11-30",
+          "original_date": "2027-11-30",
+          "source": "Contingente",
+          "title": "BAIFER SRL",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 2364295.67,
+          "aforo": 2482510.45,
+          "due_date": "2027-11-01",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2027-12-07": [
+        {
+          "id": "61acc53333b736c1330890c5",
+          "date": "2027-12-07",
+          "original_date": "2027-12-07",
+          "source": "Contingente",
+          "title": "CONDOR WIRELINE S.R.L.",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 8995552.3,
+          "aforo": 9445329.92,
+          "due_date": "2027-11-09",
+          "claimed": false,
+          "moved": false
+        },
+        {
+          "id": "15eba2cc704eaebb38ea9e1b",
+          "date": "2027-12-07",
+          "original_date": "2027-12-07",
+          "source": "Contingente",
+          "title": "ZAFRA SA",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 19118918.59,
+          "aforo": 20074864.52,
+          "due_date": "2027-11-08",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2027-12-10": [
+        {
+          "id": "288b6abf1a40997a6d3fc43c",
+          "date": "2027-12-10",
+          "original_date": "2027-12-10",
+          "source": "Contingente",
+          "title": "BODEGA JEAN BOUSQUET TUPUNGATO S.A.",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 2356784.98,
+          "aforo": 2474624.23,
+          "due_date": "2027-11-13",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2027-12-22": [
+        {
+          "id": "04c878d1588ec456dbc3f0e5",
+          "date": "2027-12-22",
+          "original_date": "2027-12-22",
+          "source": "Contingente",
+          "title": "VIÑEDOS DE LA PATAGONIA SRL",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 3620290.56,
+          "aforo": 3801305.09,
+          "due_date": "2027-11-23",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2027-12-24": [
+        {
+          "id": "0a217f502fafb2f1440de5cb",
+          "date": "2027-12-24",
+          "original_date": "2027-12-24",
+          "source": "Contingente",
+          "title": "DON BAUTISTA SAS",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 239986.95,
+          "aforo": 251986.29,
+          "due_date": "2027-11-25",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2027-12-30": [
+        {
+          "id": "0aba19446e705a1c4f27fcbe",
+          "date": "2027-12-30",
+          "original_date": "2027-12-30",
+          "source": "Contingente",
+          "title": "BAIFER SRL",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 2364295.67,
+          "aforo": 2482510.45,
+          "due_date": "2027-12-01",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2028-01-06": [
+        {
+          "id": "7baf18895caa3953810b5152",
+          "date": "2028-01-06",
+          "original_date": "2028-01-06",
+          "source": "Contingente",
+          "title": "ZAFRA SA",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 19118918.59,
+          "aforo": 20074864.52,
+          "due_date": "2027-12-08",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2028-01-07": [
+        {
+          "id": "9f1d41e5f733ae5ab4800aa8",
+          "date": "2028-01-07",
+          "original_date": "2028-01-07",
+          "source": "Contingente",
+          "title": "CONDOR WIRELINE S.R.L.",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 8995552.3,
+          "aforo": 9445329.92,
+          "due_date": "2027-12-09",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2028-01-11": [
+        {
+          "id": "2ccf2f7a32861f806d3e8d20",
+          "date": "2028-01-11",
+          "original_date": "2028-01-11",
+          "source": "Contingente",
+          "title": "BODEGA JEAN BOUSQUET TUPUNGATO S.A.",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 2356784.98,
+          "aforo": 2474624.23,
+          "due_date": "2027-12-13",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2028-01-21": [
+        {
+          "id": "e9d7657acec75999e596e85a",
+          "date": "2028-01-21",
+          "original_date": "2028-01-21",
+          "source": "Contingente",
+          "title": "DON BAUTISTA SAS",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 239986.95,
+          "aforo": 251986.29,
+          "due_date": "2027-12-25",
+          "claimed": false,
+          "moved": false
+        },
+        {
+          "id": "4b40889efe44e37b466efcbe",
+          "date": "2028-01-21",
+          "original_date": "2028-01-21",
+          "source": "Contingente",
+          "title": "VIÑEDOS DE LA PATAGONIA SRL",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 3620290.56,
+          "aforo": 3801305.09,
+          "due_date": "2027-12-23",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2028-01-28": [
+        {
+          "id": "b5b5196a96b119adb39e0f6a",
+          "date": "2028-01-28",
+          "original_date": "2028-01-28",
+          "source": "Contingente",
+          "title": "BAIFER SRL",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 2364295.67,
+          "aforo": 2482510.45,
+          "due_date": "2028-01-01",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2028-02-04": [
+        {
+          "id": "489b84bddcbd9a97c7b029c3",
+          "date": "2028-02-04",
+          "original_date": "2028-02-04",
+          "source": "Contingente",
+          "title": "ZAFRA SA",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 19118918.59,
+          "aforo": 20074864.52,
+          "due_date": "2028-01-08",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2028-02-08": [
+        {
+          "id": "7b620bf70188ff6b1302ffa1",
+          "date": "2028-02-08",
+          "original_date": "2028-02-08",
+          "source": "Contingente",
+          "title": "CONDOR WIRELINE S.R.L.",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 8995552.3,
+          "aforo": 9445329.92,
+          "due_date": "2028-01-10",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2028-02-11": [
+        {
+          "id": "44d45389c6165487fe53389e",
+          "date": "2028-02-11",
+          "original_date": "2028-02-11",
+          "source": "Contingente",
+          "title": "BODEGA JEAN BOUSQUET TUPUNGATO S.A.",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 2356784.98,
+          "aforo": 2474624.23,
+          "due_date": "2028-01-13",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2028-02-22": [
+        {
+          "id": "e3ff02ba4d0f40edfdc327a6",
+          "date": "2028-02-22",
+          "original_date": "2028-02-22",
+          "source": "Contingente",
+          "title": "VIÑEDOS DE LA PATAGONIA SRL",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 3620290.56,
+          "aforo": 3801305.09,
+          "due_date": "2028-01-24",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2028-02-23": [
+        {
+          "id": "21f60e15f9052721193b1b50",
+          "date": "2028-02-23",
+          "original_date": "2028-02-23",
+          "source": "Contingente",
+          "title": "DON BAUTISTA SAS",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 239986.95,
+          "aforo": 251986.29,
+          "due_date": "2028-01-25",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2028-03-01": [
+        {
+          "id": "07d46c352676a9ad67df4afc",
+          "date": "2028-03-01",
+          "original_date": "2028-03-01",
+          "source": "Contingente",
+          "title": "BAIFER SRL",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 2364295.67,
+          "aforo": 2482510.45,
+          "due_date": "2028-02-01",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2028-03-08": [
+        {
+          "id": "b99b013f74c1a4cb1495a6ae",
+          "date": "2028-03-08",
+          "original_date": "2028-03-08",
+          "source": "Contingente",
+          "title": "ZAFRA SA",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 19118918.59,
+          "aforo": 20074864.52,
+          "due_date": "2028-02-08",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2028-03-09": [
+        {
+          "id": "7d6e8c38037b7877c0343f8e",
+          "date": "2028-03-09",
+          "original_date": "2028-03-09",
+          "source": "Contingente",
+          "title": "CONDOR WIRELINE S.R.L.",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 8995552.3,
+          "aforo": 9445329.92,
+          "due_date": "2028-02-09",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2028-03-13": [
+        {
+          "id": "4a62b84bd636416a84177054",
+          "date": "2028-03-13",
+          "original_date": "2028-03-13",
+          "source": "Contingente",
+          "title": "BODEGA JEAN BOUSQUET TUPUNGATO S.A.",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 2356784.98,
+          "aforo": 2474624.23,
+          "due_date": "2028-02-13",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2028-03-21": [
+        {
+          "id": "b168bd4d1db598a6f03708dd",
+          "date": "2028-03-21",
+          "original_date": "2028-03-21",
+          "source": "Contingente",
+          "title": "VIÑEDOS DE LA PATAGONIA SRL",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 3620290.56,
+          "aforo": 3801305.09,
+          "due_date": "2028-02-21",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2028-03-23": [
+        {
+          "id": "b2112c913d78299431a0c912",
+          "date": "2028-03-23",
+          "original_date": "2028-03-23",
+          "source": "Contingente",
+          "title": "DON BAUTISTA SAS",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 239986.95,
+          "aforo": 251986.29,
+          "due_date": "2028-02-25",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2028-03-30": [
+        {
+          "id": "036621710ab10ceee6957d6b",
+          "date": "2028-03-30",
+          "original_date": "2028-03-30",
+          "source": "Contingente",
+          "title": "BAIFER SRL",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 2364295.67,
+          "aforo": 2482510.45,
+          "due_date": "2028-03-01",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2028-04-06": [
+        {
+          "id": "a515ae8195d931d96c2fa3ab",
+          "date": "2028-04-06",
+          "original_date": "2028-04-06",
+          "source": "Contingente",
+          "title": "ZAFRA SA",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 19118918.59,
+          "aforo": 20074864.52,
+          "due_date": "2028-03-08",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2028-04-07": [
+        {
+          "id": "dbba3c58dbf6979909fdfde1",
+          "date": "2028-04-07",
+          "original_date": "2028-04-07",
+          "source": "Contingente",
+          "title": "CONDOR WIRELINE S.R.L.",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 8995552.3,
+          "aforo": 9445329.92,
+          "due_date": "2028-03-09",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2028-04-11": [
+        {
+          "id": "a725fa71c69d73a074e813be",
+          "date": "2028-04-11",
+          "original_date": "2028-04-11",
+          "source": "Contingente",
+          "title": "BODEGA JEAN BOUSQUET TUPUNGATO S.A.",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 2356784.98,
+          "aforo": 2474624.23,
+          "due_date": "2028-03-13",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2028-04-20": [
+        {
+          "id": "9536bddd7c54ae8ef43336bf",
+          "date": "2028-04-20",
+          "original_date": "2028-04-20",
+          "source": "Contingente",
+          "title": "VIÑEDOS DE LA PATAGONIA SRL",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 3620290.56,
+          "aforo": 3801305.09,
+          "due_date": "2028-03-22",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2028-04-21": [
+        {
+          "id": "ba65a741b0fb8c34da729efa",
+          "date": "2028-04-21",
+          "original_date": "2028-04-21",
+          "source": "Contingente",
+          "title": "DON BAUTISTA SAS",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 239986.95,
+          "aforo": 251986.29,
+          "due_date": "2028-03-25",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2028-04-28": [
+        {
+          "id": "78d60aa369f2b7fae2064b78",
+          "date": "2028-04-28",
+          "original_date": "2028-04-28",
+          "source": "Contingente",
+          "title": "BAIFER SRL",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 2364295.67,
+          "aforo": 2482510.45,
+          "due_date": "2028-04-01",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2028-05-05": [
+        {
+          "id": "815eafed74a94e322d89436b",
+          "date": "2028-05-05",
+          "original_date": "2028-05-05",
+          "source": "Contingente",
+          "title": "ZAFRA SA",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 19118918.59,
+          "aforo": 20074864.52,
+          "due_date": "2028-04-08",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2028-05-09": [
+        {
+          "id": "3530fefd5f8d77a44194f5a9",
+          "date": "2028-05-09",
+          "original_date": "2028-05-09",
+          "source": "Contingente",
+          "title": "CONDOR WIRELINE S.R.L.",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 8995552.3,
+          "aforo": 9445329.92,
+          "due_date": "2028-04-10",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2028-05-12": [
+        {
+          "id": "556adc86d0a3000774150352",
+          "date": "2028-05-12",
+          "original_date": "2028-05-12",
+          "source": "Contingente",
+          "title": "BODEGA JEAN BOUSQUET TUPUNGATO S.A.",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 2356784.98,
+          "aforo": 2474624.23,
+          "due_date": "2028-04-13",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2028-05-19": [
+        {
+          "id": "8fe239e9a5ad0f701070a88a",
+          "date": "2028-05-19",
+          "original_date": "2028-05-19",
+          "source": "Contingente",
+          "title": "VIÑEDOS DE LA PATAGONIA SRL",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 3620290.56,
+          "aforo": 3801305.09,
+          "due_date": "2028-04-21",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2028-05-24": [
+        {
+          "id": "2f058fa6c0744deadcbeb8b6",
+          "date": "2028-05-24",
+          "original_date": "2028-05-24",
+          "source": "Contingente",
+          "title": "DON BAUTISTA SAS",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 239986.95,
+          "aforo": 251986.29,
+          "due_date": "2028-04-25",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2028-05-30": [
+        {
+          "id": "7a57b6850842683aa60d04c2",
+          "date": "2028-05-30",
+          "original_date": "2028-05-30",
+          "source": "Contingente",
+          "title": "BAIFER SRL",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 2364295.67,
+          "aforo": 2482510.45,
+          "due_date": "2028-05-01",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2028-06-06": [
+        {
+          "id": "e4b93b7c32ace82de711643e",
+          "date": "2028-06-06",
+          "original_date": "2028-06-06",
+          "source": "Contingente",
+          "title": "ZAFRA SA",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 19118918.59,
+          "aforo": 20074864.52,
+          "due_date": "2028-05-08",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2028-06-07": [
+        {
+          "id": "eb8bbc004503cac33e855662",
+          "date": "2028-06-07",
+          "original_date": "2028-06-07",
+          "source": "Contingente",
+          "title": "CONDOR WIRELINE S.R.L.",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 8995552.3,
+          "aforo": 9445329.92,
+          "due_date": "2028-05-09",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2028-06-09": [
+        {
+          "id": "794d7b0457c6783d46950021",
+          "date": "2028-06-09",
+          "original_date": "2028-06-09",
+          "source": "Contingente",
+          "title": "BODEGA JEAN BOUSQUET TUPUNGATO S.A.",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 2356784.98,
+          "aforo": 2474624.23,
+          "due_date": "2028-05-13",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2028-06-19": [
+        {
+          "id": "c2949ac96ebc1580769c8b28",
+          "date": "2028-06-19",
+          "original_date": "2028-06-19",
+          "source": "Contingente",
+          "title": "VIÑEDOS DE LA PATAGONIA SRL",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 3620290.56,
+          "aforo": 3801305.09,
+          "due_date": "2028-05-22",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2028-06-23": [
+        {
+          "id": "b7713a40576f945de7bf9e39",
+          "date": "2028-06-23",
+          "original_date": "2028-06-23",
+          "source": "Contingente",
+          "title": "DON BAUTISTA SAS",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 239986.95,
+          "aforo": 251986.29,
+          "due_date": "2028-05-25",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2028-06-30": [
+        {
+          "id": "fc5d622a09349b7938bbcb0c",
+          "date": "2028-06-30",
+          "original_date": "2028-06-30",
+          "source": "Contingente",
+          "title": "BAIFER SRL",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 2364295.67,
+          "aforo": 2482510.45,
+          "due_date": "2028-06-01",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2028-07-07": [
+        {
+          "id": "bb47f69497c8e3aef174d9a4",
+          "date": "2028-07-07",
+          "original_date": "2028-07-07",
+          "source": "Contingente",
+          "title": "CONDOR WIRELINE S.R.L.",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 8995552.3,
+          "aforo": 9445329.92,
+          "due_date": "2028-06-09",
+          "claimed": false,
+          "moved": false
+        },
+        {
+          "id": "9b538cce6b2ef6a8c54273b4",
+          "date": "2028-07-07",
+          "original_date": "2028-07-07",
+          "source": "Contingente",
+          "title": "ZAFRA SA",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 19118918.59,
+          "aforo": 20074864.52,
+          "due_date": "2028-06-08",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2028-07-12": [
+        {
+          "id": "6ff97b62e9122cd52902faf6",
+          "date": "2028-07-12",
+          "original_date": "2028-07-12",
+          "source": "Contingente",
+          "title": "BODEGA JEAN BOUSQUET TUPUNGATO S.A.",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 2356784.98,
+          "aforo": 2474624.23,
+          "due_date": "2028-06-13",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2028-07-19": [
+        {
+          "id": "90dcdcb08ead5a2a8b4be8b2",
+          "date": "2028-07-19",
+          "original_date": "2028-07-19",
+          "source": "Contingente",
+          "title": "VIÑEDOS DE LA PATAGONIA SRL",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 3620290.56,
+          "aforo": 3801305.09,
+          "due_date": "2028-06-20",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2028-07-24": [
+        {
+          "id": "1805312d7a291fcb813ffbd4",
+          "date": "2028-07-24",
+          "original_date": "2028-07-24",
+          "source": "Contingente",
+          "title": "DON BAUTISTA SAS",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 239986.95,
+          "aforo": 251986.29,
+          "due_date": "2028-06-25",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2028-07-28": [
+        {
+          "id": "f08bf049f39d19e45a25ff9a",
+          "date": "2028-07-28",
+          "original_date": "2028-07-28",
+          "source": "Contingente",
+          "title": "BAIFER SRL",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 2364295.67,
+          "aforo": 2482510.45,
+          "due_date": "2028-07-01",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2028-08-04": [
+        {
+          "id": "855a84e62614856ba61518cb",
+          "date": "2028-08-04",
+          "original_date": "2028-08-04",
+          "source": "Contingente",
+          "title": "ZAFRA SA",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 19118918.59,
+          "aforo": 20074864.52,
+          "due_date": "2028-07-08",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2028-08-08": [
+        {
+          "id": "798e20c5c00afeb5a58226af",
+          "date": "2028-08-08",
+          "original_date": "2028-08-08",
+          "source": "Contingente",
+          "title": "CONDOR WIRELINE S.R.L.",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 8995552.3,
+          "aforo": 9445329.92,
+          "due_date": "2028-07-10",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2028-08-11": [
+        {
+          "id": "9ebe840f40aa6be68aa1d355",
+          "date": "2028-08-11",
+          "original_date": "2028-08-11",
+          "source": "Contingente",
+          "title": "BODEGA JEAN BOUSQUET TUPUNGATO S.A.",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 2356784.98,
+          "aforo": 2474624.23,
+          "due_date": "2028-07-13",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2028-08-18": [
+        {
+          "id": "eed035ab9a18bb6813c1ebf6",
+          "date": "2028-08-18",
+          "original_date": "2028-08-18",
+          "source": "Contingente",
+          "title": "VIÑEDOS DE LA PATAGONIA SRL",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 3620290.56,
+          "aforo": 3801305.09,
+          "due_date": "2028-07-20",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2028-08-23": [
+        {
+          "id": "411196bb3ec54cca2a0b7195",
+          "date": "2028-08-23",
+          "original_date": "2028-08-23",
+          "source": "Contingente",
+          "title": "DON BAUTISTA SAS",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 239986.95,
+          "aforo": 251986.29,
+          "due_date": "2028-07-25",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2028-08-30": [
+        {
+          "id": "42b351803f1ad28ede249b36",
+          "date": "2028-08-30",
+          "original_date": "2028-08-30",
+          "source": "Contingente",
+          "title": "BAIFER SRL",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 2364295.67,
+          "aforo": 2482510.45,
+          "due_date": "2028-08-01",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2028-09-06": [
+        {
+          "id": "7f2a2d2edf0f775468fc08ed",
+          "date": "2028-09-06",
+          "original_date": "2028-09-06",
+          "source": "Contingente",
+          "title": "ZAFRA SA",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 19118918.32,
+          "aforo": 20074864.24,
+          "due_date": "2028-08-08",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2028-09-07": [
+        {
+          "id": "6478ab6746e78a9a87e697c3",
+          "date": "2028-09-07",
+          "original_date": "2028-09-07",
+          "source": "Contingente",
+          "title": "CONDOR WIRELINE S.R.L.",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 8995552.3,
+          "aforo": 9445329.92,
+          "due_date": "2028-08-09",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2028-09-11": [
+        {
+          "id": "fff3fb092abc223f38ef9b69",
+          "date": "2028-09-11",
+          "original_date": "2028-09-11",
+          "source": "Contingente",
+          "title": "BODEGA JEAN BOUSQUET TUPUNGATO S.A.",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 2356784.98,
+          "aforo": 2474624.23,
+          "due_date": "2028-08-13",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2028-09-19": [
+        {
+          "id": "50ef7ef5559a1242d390308b",
+          "date": "2028-09-19",
+          "original_date": "2028-09-19",
+          "source": "Contingente",
+          "title": "VIÑEDOS DE LA PATAGONIA SRL",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 3620290.56,
+          "aforo": 3801305.09,
+          "due_date": "2028-08-21",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2028-09-22": [
+        {
+          "id": "90834ba792eacf7a774ff1a7",
+          "date": "2028-09-22",
+          "original_date": "2028-09-22",
+          "source": "Contingente",
+          "title": "DON BAUTISTA SAS",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 239986.95,
+          "aforo": 251986.29,
+          "due_date": "2028-08-25",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2028-09-29": [
+        {
+          "id": "157198d7bb9e17426cadc2fc",
+          "date": "2028-09-29",
+          "original_date": "2028-09-29",
+          "source": "Contingente",
+          "title": "BAIFER SRL",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 2364295.67,
+          "aforo": 2482510.45,
+          "due_date": "2028-09-01",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2028-10-10": [
+        {
+          "id": "025c121606ad3a6894c44e54",
+          "date": "2028-10-10",
+          "original_date": "2028-10-10",
+          "source": "Contingente",
+          "title": "CONDOR WIRELINE S.R.L.",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 8995552.19,
+          "aforo": 9445329.8,
+          "due_date": "2028-09-11",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2028-10-12": [
+        {
+          "id": "5c946cd29978a1670255caa7",
+          "date": "2028-10-12",
+          "original_date": "2028-10-12",
+          "source": "Contingente",
+          "title": "BODEGA JEAN BOUSQUET TUPUNGATO S.A.",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 2356784.98,
+          "aforo": 2474624.23,
+          "due_date": "2028-09-13",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2028-10-17": [
+        {
+          "id": "f50652252bae5b2f978fc2e0",
+          "date": "2028-10-17",
+          "original_date": "2028-10-17",
+          "source": "Contingente",
+          "title": "VIÑEDOS DE LA PATAGONIA SRL",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 3620290.56,
+          "aforo": 3801305.09,
+          "due_date": "2028-09-18",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2028-10-24": [
+        {
+          "id": "bf5d1b45f18cda2f757b2fa0",
+          "date": "2028-10-24",
+          "original_date": "2028-10-24",
+          "source": "Contingente",
+          "title": "DON BAUTISTA SAS",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 239986.95,
+          "aforo": 251986.29,
+          "due_date": "2028-09-25",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2028-10-30": [
+        {
+          "id": "c57b14ab366c45da3745470b",
+          "date": "2028-10-30",
+          "original_date": "2028-10-30",
+          "source": "Contingente",
+          "title": "BAIFER SRL",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 2364295.67,
+          "aforo": 2482510.45,
+          "due_date": "2028-10-01",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2028-11-10": [
+        {
+          "id": "3b94fab5f5ff165be3bec605",
+          "date": "2028-11-10",
+          "original_date": "2028-11-10",
+          "source": "Contingente",
+          "title": "BODEGA JEAN BOUSQUET TUPUNGATO S.A.",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 2356784.97,
+          "aforo": 2474624.22,
+          "due_date": "2028-10-13",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2028-11-16": [
+        {
+          "id": "2bbe748095fa2f8132dc97b8",
+          "date": "2028-11-16",
+          "original_date": "2028-11-16",
+          "source": "Contingente",
+          "title": "VIÑEDOS DE LA PATAGONIA SRL",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 3620290.56,
+          "aforo": 3801305.09,
+          "due_date": "2028-10-18",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2028-11-23": [
+        {
+          "id": "fca20a5b9f2a8a1657ae2ae1",
+          "date": "2028-11-23",
+          "original_date": "2028-11-23",
+          "source": "Contingente",
+          "title": "DON BAUTISTA SAS",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 239986.95,
+          "aforo": 251986.29,
+          "due_date": "2028-10-25",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2028-11-30": [
+        {
+          "id": "0a1f0eb6c124385664a676ce",
+          "date": "2028-11-30",
+          "original_date": "2028-11-30",
+          "source": "Contingente",
+          "title": "BAIFER SRL",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 2364295.67,
+          "aforo": 2482510.45,
+          "due_date": "2028-11-01",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2028-12-15": [
+        {
+          "id": "6b8ba3dc7f5af54c806815d9",
+          "date": "2028-12-15",
+          "original_date": "2028-12-15",
+          "source": "Contingente",
+          "title": "VIÑEDOS DE LA PATAGONIA SRL",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 3620290.56,
+          "aforo": 3801305.09,
+          "due_date": "2028-11-17",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2028-12-22": [
+        {
+          "id": "005a43e6868d86bc5511c49a",
+          "date": "2028-12-22",
+          "original_date": "2028-12-22",
+          "source": "Contingente",
+          "title": "DON BAUTISTA SAS",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 239986.95,
+          "aforo": 251986.29,
+          "due_date": "2028-11-25",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2028-12-29": [
+        {
+          "id": "5917ba8722bf7fa2ae0ce364",
+          "date": "2028-12-29",
+          "original_date": "2028-12-29",
+          "source": "Contingente",
+          "title": "BAIFER SRL",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 2364295.67,
+          "aforo": 2482510.45,
+          "due_date": "2028-12-01",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2029-01-16": [
+        {
+          "id": "9d9c266deb7c3e3064b38167",
+          "date": "2029-01-16",
+          "original_date": "2029-01-16",
+          "source": "Contingente",
+          "title": "VIÑEDOS DE LA PATAGONIA SRL",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 3620290.56,
+          "aforo": 3801305.09,
+          "due_date": "2028-12-18",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2029-01-23": [
+        {
+          "id": "027d410224fab6a6f14e9623",
+          "date": "2029-01-23",
+          "original_date": "2029-01-23",
+          "source": "Contingente",
+          "title": "DON BAUTISTA SAS",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 239986.95,
+          "aforo": 251986.29,
+          "due_date": "2028-12-25",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2029-01-30": [
+        {
+          "id": "57bec45b5eb70c805256d337",
+          "date": "2029-01-30",
+          "original_date": "2029-01-30",
+          "source": "Contingente",
+          "title": "BAIFER SRL",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 2364295.67,
+          "aforo": 2482510.45,
+          "due_date": "2029-01-01",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2029-02-14": [
+        {
+          "id": "6bf315bab7474e739b371c16",
+          "date": "2029-02-14",
+          "original_date": "2029-02-14",
+          "source": "Contingente",
+          "title": "VIÑEDOS DE LA PATAGONIA SRL",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 3620290.56,
+          "aforo": 3801305.09,
+          "due_date": "2029-01-16",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2029-02-23": [
+        {
+          "id": "ff624be2aff8a8c7d9e35fb2",
+          "date": "2029-02-23",
+          "original_date": "2029-02-23",
+          "source": "Contingente",
+          "title": "DON BAUTISTA SAS",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 239986.95,
+          "aforo": 251986.29,
+          "due_date": "2029-01-25",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2029-03-02": [
+        {
+          "id": "5af888e90021fdd0c2f69eb0",
+          "date": "2029-03-02",
+          "original_date": "2029-03-02",
+          "source": "Contingente",
+          "title": "BAIFER SRL",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 2364295.67,
+          "aforo": 2482510.45,
+          "due_date": "2029-02-01",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2029-03-16": [
+        {
+          "id": "daae6a6548b180f2c11bf21b",
+          "date": "2029-03-16",
+          "original_date": "2029-03-16",
+          "source": "Contingente",
+          "title": "VIÑEDOS DE LA PATAGONIA SRL",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 3620290.5,
+          "aforo": 3801305.03,
+          "due_date": "2029-02-15",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2029-03-26": [
+        {
+          "id": "43575781d4a7c35b2cc3ec14",
+          "date": "2029-03-26",
+          "original_date": "2029-03-26",
+          "source": "Contingente",
+          "title": "DON BAUTISTA SAS",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 239986.95,
+          "aforo": 251986.29,
+          "due_date": "2029-02-25",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2029-03-28": [
+        {
+          "id": "aaf0f30a6027ab0ecdb002ed",
+          "date": "2029-03-28",
+          "original_date": "2029-03-28",
+          "source": "Contingente",
+          "title": "BAIFER SRL",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 2364295.67,
+          "aforo": 2482510.45,
+          "due_date": "2029-03-01",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2029-04-23": [
+        {
+          "id": "d60cf5e000e8237aa2a9d740",
+          "date": "2029-04-23",
+          "original_date": "2029-04-23",
+          "source": "Contingente",
+          "title": "DON BAUTISTA SAS",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 239986.95,
+          "aforo": 251986.29,
+          "due_date": "2029-03-25",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2029-04-30": [
+        {
+          "id": "e3a318c9124791d7427bf84d",
+          "date": "2029-04-30",
+          "original_date": "2029-04-30",
+          "source": "Contingente",
+          "title": "BAIFER SRL",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 2364295.67,
+          "aforo": 2482510.45,
+          "due_date": "2029-04-01",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2029-05-24": [
+        {
+          "id": "3a17290e108d518a4a748ec5",
+          "date": "2029-05-24",
+          "original_date": "2029-05-24",
+          "source": "Contingente",
+          "title": "DON BAUTISTA SAS",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 239986.95,
+          "aforo": 251986.29,
+          "due_date": "2029-04-25",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2029-05-30": [
+        {
+          "id": "fbbea943c5af28ab6ee64c19",
+          "date": "2029-05-30",
+          "original_date": "2029-05-30",
+          "source": "Contingente",
+          "title": "BAIFER SRL",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 2364295.67,
+          "aforo": 2482510.45,
+          "due_date": "2029-05-01",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2029-06-22": [
+        {
+          "id": "887de8a57d87a3bb5e123a49",
+          "date": "2029-06-22",
+          "original_date": "2029-06-22",
+          "source": "Contingente",
+          "title": "DON BAUTISTA SAS",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 239986.95,
+          "aforo": 251986.29,
+          "due_date": "2029-05-25",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2029-06-29": [
+        {
+          "id": "8da16b5a96e78cf4599d1ffe",
+          "date": "2029-06-29",
+          "original_date": "2029-06-29",
+          "source": "Contingente",
+          "title": "BAIFER SRL",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 2364295.67,
+          "aforo": 2482510.45,
+          "due_date": "2029-06-01",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2029-07-24": [
+        {
+          "id": "61ce66a750acddfe8d697a0e",
+          "date": "2029-07-24",
+          "original_date": "2029-07-24",
+          "source": "Contingente",
+          "title": "DON BAUTISTA SAS",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 239986.95,
+          "aforo": 251986.29,
+          "due_date": "2029-06-25",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2029-07-30": [
+        {
+          "id": "2444b566a9ac8406db3e8003",
+          "date": "2029-07-30",
+          "original_date": "2029-07-30",
+          "source": "Contingente",
+          "title": "BAIFER SRL",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 2364295.67,
+          "aforo": 2482510.45,
+          "due_date": "2029-07-01",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2029-08-23": [
+        {
+          "id": "df0a5a651c6fa664f9766e5f",
+          "date": "2029-08-23",
+          "original_date": "2029-08-23",
+          "source": "Contingente",
+          "title": "DON BAUTISTA SAS",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 239986.95,
+          "aforo": 251986.29,
+          "due_date": "2029-07-25",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2029-08-30": [
+        {
+          "id": "55b443f242f233d118d961f5",
+          "date": "2029-08-30",
+          "original_date": "2029-08-30",
+          "source": "Contingente",
+          "title": "BAIFER SRL",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 2364295.67,
+          "aforo": 2482510.45,
+          "due_date": "2029-08-01",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2029-09-21": [
+        {
+          "id": "00bb834fe6e7998589a114bd",
+          "date": "2029-09-21",
+          "original_date": "2029-09-21",
+          "source": "Contingente",
+          "title": "DON BAUTISTA SAS",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 239986.95,
+          "aforo": 251986.29,
+          "due_date": "2029-08-25",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2029-09-28": [
+        {
+          "id": "09178136cfb111eb986cdadb",
+          "date": "2029-09-28",
+          "original_date": "2029-09-28",
+          "source": "Contingente",
+          "title": "BAIFER SRL",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 2364295.67,
+          "aforo": 2482510.45,
+          "due_date": "2029-09-01",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2029-10-24": [
+        {
+          "id": "0b5b5a4f7f1fb1a80546148e",
+          "date": "2029-10-24",
+          "original_date": "2029-10-24",
+          "source": "Contingente",
+          "title": "DON BAUTISTA SAS",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 239986.95,
+          "aforo": 251986.29,
+          "due_date": "2029-09-25",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2029-10-30": [
+        {
+          "id": "a687b529e40a09e9b2c628d8",
+          "date": "2029-10-30",
+          "original_date": "2029-10-30",
+          "source": "Contingente",
+          "title": "BAIFER SRL",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 2364295.67,
+          "aforo": 2482510.45,
+          "due_date": "2029-10-01",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2029-11-23": [
+        {
+          "id": "a7e98940925df0ee8c0174b6",
+          "date": "2029-11-23",
+          "original_date": "2029-11-23",
+          "source": "Contingente",
+          "title": "DON BAUTISTA SAS",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 239986.95,
+          "aforo": 251986.29,
+          "due_date": "2029-10-25",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2029-11-30": [
+        {
+          "id": "ba61bec654f417e935c56bf9",
+          "date": "2029-11-30",
+          "original_date": "2029-11-30",
+          "source": "Contingente",
+          "title": "BAIFER SRL",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 2364295.67,
+          "aforo": 2482510.45,
+          "due_date": "2029-11-01",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2029-12-24": [
+        {
+          "id": "0d4865f2995a0529ba11aa4e",
+          "date": "2029-12-24",
+          "original_date": "2029-12-24",
+          "source": "Contingente",
+          "title": "DON BAUTISTA SAS",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 239986.95,
+          "aforo": 251986.29,
+          "due_date": "2029-11-25",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2029-12-28": [
+        {
+          "id": "31ef75db2bb7e48c9dd0772c",
+          "date": "2029-12-28",
+          "original_date": "2029-12-28",
+          "source": "Contingente",
+          "title": "BAIFER SRL",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 2364295.67,
+          "aforo": 2482510.45,
+          "due_date": "2029-12-01",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2030-01-23": [
+        {
+          "id": "f190c42f698b9de15d8327b0",
+          "date": "2030-01-23",
+          "original_date": "2030-01-23",
+          "source": "Contingente",
+          "title": "DON BAUTISTA SAS",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 239986.95,
+          "aforo": 251986.29,
+          "due_date": "2029-12-25",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2030-01-30": [
+        {
+          "id": "e2db39c83d65df15de9452de",
+          "date": "2030-01-30",
+          "original_date": "2030-01-30",
+          "source": "Contingente",
+          "title": "BAIFER SRL",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 2364295.67,
+          "aforo": 2482510.45,
+          "due_date": "2030-01-01",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2030-02-22": [
+        {
+          "id": "47e6991e340937465a1bf998",
+          "date": "2030-02-22",
+          "original_date": "2030-02-22",
+          "source": "Contingente",
+          "title": "DON BAUTISTA SAS",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 239986.95,
+          "aforo": 251986.29,
+          "due_date": "2030-01-25",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2030-03-01": [
+        {
+          "id": "80f66998e1fa812bf6916905",
+          "date": "2030-03-01",
+          "original_date": "2030-03-01",
+          "source": "Contingente",
+          "title": "BAIFER SRL",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 2364295.67,
+          "aforo": 2482510.45,
+          "due_date": "2030-02-01",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2030-03-26": [
+        {
+          "id": "d7b31974e313b4c2bef275a9",
+          "date": "2030-03-26",
+          "original_date": "2030-03-26",
+          "source": "Contingente",
+          "title": "DON BAUTISTA SAS",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 239986.95,
+          "aforo": 251986.29,
+          "due_date": "2030-02-25",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2030-03-29": [
+        {
+          "id": "f3373029ce0c3217169d1deb",
+          "date": "2030-03-29",
+          "original_date": "2030-03-29",
+          "source": "Contingente",
+          "title": "BAIFER SRL",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 2364295.67,
+          "aforo": 2482510.45,
+          "due_date": "2030-03-01",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2030-04-23": [
+        {
+          "id": "d1833647c9f42fa744bd96d5",
+          "date": "2030-04-23",
+          "original_date": "2030-04-23",
+          "source": "Contingente",
+          "title": "DON BAUTISTA SAS",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 239986.95,
+          "aforo": 251986.29,
+          "due_date": "2030-03-25",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2030-04-30": [
+        {
+          "id": "0ea22e77ed63e836f5609d72",
+          "date": "2030-04-30",
+          "original_date": "2030-04-30",
+          "source": "Contingente",
+          "title": "BAIFER SRL",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 2364295.67,
+          "aforo": 2482510.45,
+          "due_date": "2030-04-01",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2030-05-24": [
+        {
+          "id": "86ba117305428e9f4bd1e0d7",
+          "date": "2030-05-24",
+          "original_date": "2030-05-24",
+          "source": "Contingente",
+          "title": "DON BAUTISTA SAS",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 239986.95,
+          "aforo": 251986.29,
+          "due_date": "2030-04-25",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2030-05-30": [
+        {
+          "id": "19342d268580a026618c7ff1",
+          "date": "2030-05-30",
+          "original_date": "2030-05-30",
+          "source": "Contingente",
+          "title": "BAIFER SRL",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 2364295.67,
+          "aforo": 2482510.45,
+          "due_date": "2030-05-01",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2030-06-21": [
+        {
+          "id": "7825b0fda245c2431f2315be",
+          "date": "2030-06-21",
+          "original_date": "2030-06-21",
+          "source": "Contingente",
+          "title": "DON BAUTISTA SAS",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 239986.95,
+          "aforo": 251986.29,
+          "due_date": "2030-05-25",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2030-06-28": [
+        {
+          "id": "61cea52d7e78392a9b2ecd1c",
+          "date": "2030-06-28",
+          "original_date": "2030-06-28",
+          "source": "Contingente",
+          "title": "BAIFER SRL",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 2364295.67,
+          "aforo": 2482510.45,
+          "due_date": "2030-06-01",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2030-07-24": [
+        {
+          "id": "f53b4d8708ebe40113b4c9cd",
+          "date": "2030-07-24",
+          "original_date": "2030-07-24",
+          "source": "Contingente",
+          "title": "DON BAUTISTA SAS",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 239986.95,
+          "aforo": 251986.29,
+          "due_date": "2030-06-25",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2030-07-30": [
+        {
+          "id": "c389727f6ab9d0572183ab3c",
+          "date": "2030-07-30",
+          "original_date": "2030-07-30",
+          "source": "Contingente",
+          "title": "BAIFER SRL",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 2364294.61,
+          "aforo": 2482509.34,
+          "due_date": "2030-07-01",
+          "claimed": false,
+          "moved": false
+        }
+      ],
+      "2030-08-23": [
+        {
+          "id": "63f4193560ac6d4b6d0a9491",
+          "date": "2030-08-23",
+          "original_date": "2030-08-23",
+          "source": "Contingente",
+          "title": "DON BAUTISTA SAS",
+          "subtitle": "Pendiente de reclamo",
+          "amount": 239986.95,
+          "aforo": 251986.29,
+          "due_date": "2030-07-25",
+          "claimed": false,
+          "moved": false
+        }
+      ]
+    },
+    "years": [
+      "2025",
+      "2026",
+      "2027",
+      "2028",
+      "2029",
+      "2030"
+    ]
+  },
+  "summary": {
+    "total": 312,
+    "rentas": 11,
+    "contingente": 301,
+    "manual": 0,
+    "moved": 1
+  },
+  "sources": {
+    "rentas": {
+      "available": true,
+      "filename": "Tablero de control - 07-08-2026.xlsx",
+      "updated_at": "2026-08-12T21:20:29.300208+00:00"
+    },
+    "contingente": {
+      "available": true,
+      "filename": "Copia de Contingente avales bancarios.xlsx",
+      "updated_at": "2026-08-12T21:00:18.805558+00:00"
+    }
+  }
+}

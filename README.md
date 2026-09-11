@@ -1,10 +1,12 @@
 # SGR tools
 
-Herramientas locales (Flask) para contingente, calendario, conciliación y rendimientos del Fondo de Riesgo.
+Herramientas para contingente, calendario, conciliación y rendimientos del Fondo de Riesgo.
 
-No es una web pública: corre en tu PC.
+Web de consulta: https://micaariascorrea.github.io/sgr-tools/
 
-## Cómo usarla
+Procesar archivos y exportar reportes se hace en la PC.
+
+## Cómo usarla en la PC
 
 1. Instalá [Python 3](https://www.python.org/downloads/) y tildá **Add python.exe to PATH**.
 2. Entrá a esta carpeta y hacé doble clic en `run.bat`.
